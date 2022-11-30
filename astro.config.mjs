@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-blog-template.netlify.app',
+  site: 'https://ephemeral-bublanina-1c718e.netlify.appz',
   integrations: [mdx(), svelte()],
   markdown: {
     shikiConfig: {
