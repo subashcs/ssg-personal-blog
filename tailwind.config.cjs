@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+// const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -10,7 +10,13 @@ module.exports = {
 				secondary: colors.pink,
 			},
 			fontFamily: {
-				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
+				sans: ['Inter var, sans-serif', { fontFeatureSettings: '"cv11", "ss01"' }],
+			},
+			fontSize: {
+				sm: ['14px', '20px'],
+				base: ['16px', '24px'],
+				lg: ['20px', '28px'],
+				xl: ['24px', '32px'],
 			},
 		},
 	},

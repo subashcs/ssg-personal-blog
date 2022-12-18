@@ -34,19 +34,7 @@ const links = [
 			{ title: 'Skills', href: '#' },
 			{ title: 'Status', href: '#' },
 		],
-	},
-	{
-		title: 'Company',
-		items: [
-			{ title: 'About', href: '#' },
-			{ title: 'Blog', href: '#' },
-			{ title: 'Careers', href: '#' },
-			{ title: 'Press', href: '#' },
-			{ title: 'Inclusion', href: '#' },
-			{ title: 'Social Impact', href: '#' },
-			{ title: 'Shop', href: '#' },
-		],
-	},
+	}
 ];
 
 const social = [
@@ -59,26 +47,28 @@ const social = [
 ---
 
 <footer class="border-t border-gray-200 dark:border-slate-800">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
 			<div class="col-span-12 lg:col-span-4">
 				<div class="mb-2">
-					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>AstroWind</a>
+					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Subash Chandra Sapkota</a>
 				</div>
 				<div class="text-sm text-gray-600">
 					<a
 						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Terms</a
-					> ·
-					<a
-						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Privacy Policy</a
-					>
+						href="#">Software Engineer | Tech Enthusist </a>
+					
+				</div>
+				<div class="text-sm text-gray-600 dark:text-gray-400 my-4">
+					Kathmandu | Nepal
+				</div>
+				<div class="text-sm text-gray-600 dark:text-gray-400">
+					🙏
 				</div>
 			</div>
 			{
 				links.map(({ title, items }) => (
-					<div class="col-span-6 md:col-span-3 lg:col-span-2">
+					<div class="col-span-8 md:col-span-4 lg:col-span-2">
 						<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">{title}</div>
 						{items && Array.isArray(items) && items.length > 0 && (
 							<ul class="text-sm">
@@ -104,7 +94,7 @@ const social = [
 					social.map(({ label, href, icon }) => (
 						<li>
 							<a
-								class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+								class="text-blue-500 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 								aria-label={label}
 								href={href}
 							>
@@ -116,12 +106,7 @@ const social = [
 			</ul>
 
 			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
-				<span
-					class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"
-				>
-				</span>
-				Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> ·
-				All rights reserved.
+				&copy; subashcs | 2022
 			</div>
 		</div>
 	</div>

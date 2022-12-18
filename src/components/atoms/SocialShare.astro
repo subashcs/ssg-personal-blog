@@ -4,9 +4,9 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
 ---
 
 <div class={className}>
-	<span class="align-super font-bold">Share:</span>
+	<span class="align-super font-bold"> Share: </span>
 	<button class="ml-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
-		><Icon name="logos:twitter" class="w-6 h-6" />
+		><Icon name="logos:twitter" class="w-6 h-6"/>
 	</button>
 	<button class="ml-2" title="Facebook Share" data-aw-social-share="facebook" data-aw-url={url}
 		><Icon name="logos:facebook" class="w-6 h-6" />
@@ -18,6 +18,6 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
 		><Icon name="logos:whatsapp" class="w-6 h-6" />
 	</button>
 	<button class="ml-2" title="Email Share" data-aw-social-share="mail" data-aw-url={url} data-aw-text={text}
-		><Icon name="tabler:mail" class="w-6 h-6" />
+		><Icon name="logos:google-gmail" class="w-6 h-6" />
 	</button>
 </div>

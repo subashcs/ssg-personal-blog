@@ -4,59 +4,62 @@ import { Picture } from '@astrojs/image/components'
 ---
 
 <section>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
-				<h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
-					Your website with
-					<span>Astro</span> +
-					<span
-						class="sm:whitespace-nowrap"
-						>Tailwind CSS</span
-					>
-				</h1>
-				<div class="max-w-3xl mx-auto">
-					<p class="text-xl text-gray-600 mb-8 dark:text-slate-400">
-						<span class="font-semibold underline decoration-wavy decoration-1 decoration-primary-600 underline-offset-2">AstroWind</span> is a production ready template to start your new website using <em>Astro</em> + <em>Tailwind CSS</em>. It has been
-						designed following Best Practices, SEO, Accessibility, <span class="inline sm:hidden">...</span><span
-							class="hidden sm:inline"
-							>Dark Mode, Great Page Speed, image optimization, sitemap generation and more.</span
-						>
-					</p>
-					<div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
-						<div class="flex w-full sm:w-auto">
-							<a
-								class="btn btn-primary sm:mb-0 w-full"
-								href="https://github.com/onwidget/astrowind"
-								target="_blank"
-								rel="noopener"
-							>
-								<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" /> Get template
-							</a>
-						</div>
-						<div class="flex w-full sm:w-auto">
-							<a
-								class="btn w-full"
-								href="#features">Learn more</a
-							>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6">
+		<div class="py-4 md:py-4">
+			<div class="flex-row items-center md:flex">
+				<div class="text-center pb-10 md:pb-16 max-w-2xl mx-2 md:mx-2">
+					<div class="max-w-3xl mx-auto">
+						
+						<p class="text-lg text-gray-600 my-4 dark:text-slate-300 text-justify">
+							This is my personal portfolio where I share content related to information technology and my life experiences. Feel free to read and share. 🙂 <em> Enjoy 📖 ! </em>
+						</p>
+						<div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+							<div class="flex w-full sm:w-auto">
+								<a
+									class="btn btn-primary sm:mb-0 w-full"
+									href="mailto:subashsapkota59@gmail.com"
+									target="_blank"
+									rel="noopener"
+								>
+									<Icon name="ic:outline-mail" class="w-5 h-5 mr-1 -ml-1.5" /> Message
+								</a>
+							</div>
+							<div class="flex w-full sm:w-auto">
+								<a
+									class="btn w-full"
+									href="#features">Learn more</a
+								>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div>
-				<div class="relative m-auto max-w-4xl">
-					<Picture
-						src={import('~/assets/images/hero.jpg')}
-						class="mx-auto rounded-md w-full"
-						widths={[400, 768, 1480]}
-						sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-						alt="Hero Image"
-						aspectRatio={1480/833}
-						loading="eager"
-						width={1480}
-						height={833}
-					/>
+				<div class="max-w-4xl block mb-2">
+					<div class="bg-clip-content m-10 p-10 bg-gray-500 border-4 border-slate-300 border-ridge">
+					<div class="relative m-auto">
+						<Picture
+							src={import('~/assets/images/bg.png')}
+							class="mx-auto rounded-md w-full"
+							widths={[400, 768]}
+							sizes="(max-width: 767px) 400px, (max-width: 1479px) 700px"
+							alt="Hero Image"
+							aspectRatio={768/600}
+							loading="eager"
+							width={768}
+							height={600}
+						/>
+					</div>
+					</div>
+					<div class="text-center mx-2 md:mx-2 mt-2">
+						<h1 class="text-md  md:text-[1rem] font-bold">
+							<span class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">
+								<p class="animated-text">
+									Hello there👋 I am Subash Chandra Sapkota
+								</p>
+							</span>
+						</h1>
+					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

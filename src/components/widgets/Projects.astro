@@ -3,37 +3,43 @@ import { Icon } from 'astro-icon';
 
 const items = [
 	{
-		title: 'Headers',
+		title: 'Infrainit',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+		pls: ['php', 'html', 'jquery', 'css'],
 		icon: 'flat-color-icons:home',
 	},
 	{
-		title: 'Footers',
+		title: 'ChatAp',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+		pls: ['php', 'html', 'jquery', 'css'],
 		icon: 'flat-color-icons:faq',
 	},
 	{
-		title: 'Features',
+		title: 'PersonalBlogAPI',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-		icon: 'flat-color-icons:video-projector',
+		pls: ['php', 'html', 'jquery', 'css'],
+		icon: 'flat-color-icons:home',
 	},
 	{
 		title: 'Call-to-Action',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
 		icon: 'flat-color-icons:video-projector',
+		pls: ['php', 'html', 'jquery', 'css'],
 	},
 	{
-		title: 'Pricing',
+		title: 'Baaghchal',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
 		icon: 'flat-color-icons:calculator',
+		pls: ['php', 'html', 'jquery', 'css'],
 	},
 	{
-		title: 'Testimonial',
+		title: 'SalesTracker',
+		pls: ['php', 'html', 'jquery', 'css'],
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
 		icon: 'flat-color-icons:voice-presentation',
@@ -42,21 +48,21 @@ const items = [
 ---
 
 <section class="relative">
-	<div class="absolute inset-0 bg-primary-50 dark:bg-zinc-800 pointer-events-none mb-32" aria-hidden="true"></div>
-	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+	<div class="absolute inset-0 bg-primary-50 dark:bg-zinc-900 pointer-events-none mb-32" aria-hidden="true"></div>
+	<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
-				<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">Components</p>
-				<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-					Most used widgets
+				<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">Projects</p>
+				<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					Take a look into these cool softwares !
 				</h2>
 				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400">
-					Provides frequently used components for building websites using Tailwind CSS
+					Web, Mobile and Desktop applications
 				</p>
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
 				{
-					items.map(({ title, description, icon }) => (
+					items.map(({ title, description, icon, pls }) => (
 						<div class="relative flex flex-col p-6 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
 							<div class="flex items-center mb-4">
 								<Icon name={icon} class="w-12 h-12" />
@@ -64,6 +70,10 @@ const items = [
 								<div class="ml-4 text-xl font-bold">{title}</div>
 							</div>
 							<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
+							<ul class="list-none flex gap-2 text-gray-500 dark:text-gray-400 text-md">{pls?.map((tag)=>(
+								<li class="bg-slate-500 px-1 rounded ">{tag}</li>
+							))}
+							</ul>
 						</div>
 					))
 				}
