@@ -9,7 +9,7 @@ const { post } = Astro.props;
 const image = await findImage(post.image);
 ---
 
-<article class="mb-6 rounded transition ease-in-out duration-200 hover:bg-slate-100 hover:bg-gray-800">
+<article class="mb-6 rounded transition ease-in-out duration-200 hover:bg-slate-100 dark:hover:bg-gray-800">
 	<a
 		href={getPermalink(post.slug, 'post')}
 		class="decoration-none transition"
