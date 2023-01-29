@@ -9,30 +9,34 @@ const { post } = Astro.props;
 const image = await findImage(post.image);
 ---
 
-<article class="mb-6 transition">
+<article class="mb-6 transition bg-gray-100 dark:bg-gray-800 rounded">
+	<a
+		href={getPermalink(post.slug, 'post')}
+		class=" decoration-none transition"
+	>
 		<div class="flex flex-col md:flex-row">
 			{
 				image && (
 					<Picture
 						src={image}
 						class="object-cover rounded shadow-lg bg-gray-400 dark:bg-zinc-700"
-						widths={[200, 500]}
-						sizes="(max-width: 500px) 200px, 500px"
+						widths={[200, 400]}
+						sizes="(max-width: 400px) 200px, 400px"
 						alt={post.title}
-						aspectRatio={"5:3"}
+						aspectRatio={"4:2	"}
 					/>
 				)
 			}
 			<div class="w-full md:w-3/4 md:pl-3">
 				<h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
-					<a
-						href={getPermalink(post.slug, 'post')}
+					<span
 						class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
 					>
 						{post.title}
-					</a>
+				</span>
 				</h3>
 				<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
 			</div>
 		</div>	
+	</a>
 </article>

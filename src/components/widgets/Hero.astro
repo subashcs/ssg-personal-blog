@@ -1,19 +1,52 @@
 ---
 import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components'
+import { Picture } from '@astrojs/image/components';
+
 ---
 
-<section>
+<section class="bg-image">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="py-4 md:py-4">
-			<div class="flex-row items-center md:flex">
-				<div class="text-center pb-10 md:pb-16 max-w-2xl mx-2 md:mx-2">
-					<div class="max-w-3xl mx-auto">
+			<div class="flex-row items-end md:flex">
+				<div class="max-w-4xl block mb-2">
+					<div class="m-10 border-ridge">
+					<div class="relative m-auto rounder-7xl">
+						<Picture
+							src={import('~/assets/images/cropped.png')}
+							class="mr-50 rounded-md w-full bg-gradient-to-r from-slate-100 to-white-100 dark:bg-gradient-to-r dark:from-gray-900 dark:to-zinc-900"
+							widths={[200, 400]}
+							sizes="(max-width: 767px) 200px, (max-width: 1479px) 400px"
+							alt="Hero Image"
+							loading="eager"
+							aspectRatio={7/8}
+						/>
+					</div>
+					</div>
+				
+				</div>
+				<div class="text-left pb-10 my-10 md:pb-16 max-w-2xl mx-2 md:mx-2">
+					<h1 class="mb-2 font-mono text-xl text-gray-900 dark:text-gray-100 md:text-3xl">
+						hi, I&apos;m <br class="block md:hidden" />
+						<span class="relative">
+						  <span class="h-20 pt-2 overflow-x-hidden whitespace-nowrap text-brand-accent">
+							Subash Chandra Sapkota <span class="text-2xl md:text-3xl">👋</span>
+						  </span>
+						  <span
+							class="cursor absolute -bottom-0 left-0 -top-1 inline-block bg-white dark:bg-zinc-900 w-full animate-type will-change"
+						  ></span>
+						</span>
+					  </h1>
+					<div class="max-w-3xl">
 						
-						<p class="text-lg text-gray-600 my-4 dark:text-slate-300 text-justify">
-							This is my personal portfolio where I share content related to information technology and my life experiences. Feel free to read and share. 🙂 <em> Enjoy 📖 ! </em>
+						<p class="text-3xl text-gray-600 my-4 dark:text-slate-300 text-start">
+							This is my personal portfolio where I share content related to information technology and my life experiences. 
 						</p>
-						<div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+						<p class="text-lg pt-2">
+							Be curious, empathize and learn, experience intution and strengthen conviction !
+						</p> 
+
+						<p class="text-sm">Feel free to read and share. 🙂 <em> Enjoy 📖 ! </em></p>
+						<div class="max-w-xs sm:max-w-md flex flex-nowrap flex-col sm:flex-row sm:justify-start mt-8 gap-4">
 							<div class="flex w-full sm:w-auto">
 								<a
 									class="btn btn-primary sm:mb-0 w-full"
@@ -27,40 +60,17 @@ import { Picture } from '@astrojs/image/components'
 							<div class="flex w-full sm:w-auto">
 								<a
 									class="btn w-full"
-									href="#features">Learn more</a
-								>
+									href="#">
+									Learn more
+								</a>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="max-w-4xl block mb-2">
-					<div class="bg-clip-content m-10 p-10 bg-gray-500 border-4 border-slate-300 border-ridge">
-					<div class="relative m-auto">
-						<Picture
-							src={import('~/assets/images/bg.png')}
-							class="mx-auto rounded-md w-full"
-							widths={[400, 768]}
-							sizes="(max-width: 767px) 400px, (max-width: 1479px) 700px"
-							alt="Hero Image"
-							aspectRatio={768/600}
-							loading="eager"
-							width={768}
-							height={600}
-						/>
-					</div>
-					</div>
-					<div class="text-center mx-2 md:mx-2 mt-2">
-						<h1 class="text-md  md:text-[1rem] font-bold">
-							<span class="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">
-								<p class="animated-text">
-									Hello there👋 I am Subash Chandra Sapkota
-								</p>
-							</span>
-						</h1>
+						
 					</div>
 				</div>
 				
 			</div>
 		</div>
+
 	</div>
 </section>

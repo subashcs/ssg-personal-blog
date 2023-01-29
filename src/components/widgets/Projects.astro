@@ -5,49 +5,59 @@ const items = [
 	{
 		title: 'Infrainit',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+			'Infranit is a construction material buy and sell website where supplier can sell products and buyers and buy. Additionaly it allows users to choose materials based on house architecture and estimate pricing as well',
 		pls: ['php', 'html', 'jquery', 'css'],
+		link: 'https://github.com/subashcs/infrainit',
 		icon: 'flat-color-icons:home',
 	},
 	{
-		title: 'ChatAp',
+		title: 'ChatApp',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-		pls: ['php', 'html', 'jquery', 'css'],
+			'Socket based chat application in node js',
+		pls: ['js', 'html', 'css'],
 		icon: 'flat-color-icons:faq',
+		link: 'https://github.com/subashcs/infrainit',
+
 	},
 	{
 		title: 'PersonalBlogAPI',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-		pls: ['php', 'html', 'jquery', 'css'],
+			'API for personal portfolio and blog with CMS',
+		pls: ['GraphQL', 'node js', 'mongo DB'],
 		icon: 'flat-color-icons:home',
+		link: 'https://github.com/subashcs/infrainit',
+
 	},
 	{
 		title: 'Call-to-Action',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+			'Call for help application.',
 		icon: 'flat-color-icons:video-projector',
-		pls: ['php', 'html', 'jquery', 'css'],
+		pls: ['React Native', 'Firebase'],
+		link: '#',
+
 	},
 	{
 		title: 'Baaghchal',
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+			'Cross platform game application of Nepali popular game baaghchal',
 		icon: 'flat-color-icons:calculator',
 		pls: ['php', 'html', 'jquery', 'css'],
+		link: 'https://github.com/subashcs/baaghchal',
+
 	},
 	{
-		title: 'SalesTracker',
+		title: 'VisitorEntrySystem',
 		pls: ['php', 'html', 'jquery', 'css'],
 		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+			'Daily visitor entry tracking system',
 		icon: 'flat-color-icons:voice-presentation',
+		link: 'https://github.com/subashcs/infrainit',
 	},
 ];
 ---
 
-<section class="relative">
+<section class="relative" id="projects">
 	<div class="absolute inset-0 bg-primary-50 dark:bg-zinc-900 pointer-events-none mb-32" aria-hidden="true"></div>
 	<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
@@ -62,16 +72,18 @@ const items = [
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
 				{
-					items.map(({ title, description, icon, pls }) => (
+					items.map(({ title, description, icon, pls, link }) => (
 						<div class="relative flex flex-col p-6 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
-							<div class="flex items-center mb-4">
-								<Icon name={icon} class="w-12 h-12" />
-
-								<div class="ml-4 text-xl font-bold">{title}</div>
-							</div>
-							<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
-							<ul class="list-none flex gap-2 text-gray-500 dark:text-gray-400 text-md">{pls?.map((tag)=>(
-								<li class="bg-slate-500 px-1 rounded ">{tag}</li>
+							<a href={link} target="_blank">
+								<div class="flex items-center mb-4">
+									<Icon name={icon} class="w-12 h-12" />
+		
+									<div class="ml-4 text-xl font-bold">{title}</div>
+								</div>
+							</a>
+							<p class="text-gray-500 dark:text-gray-400 text-md h-24 overflow-scroll">{description}</p>
+							<ul class="list-none flex gap-2 text-gray-500 dark:text-gray-400 text-md mt-2">{pls?.map((tag)=>(
+								<li class="bg-gray-200 dark:bg-slate-700 px-1 rounded ">{tag}</li>
 							))}
 							</ul>
 						</div>

@@ -4,7 +4,7 @@ import Logo from '~/components/atoms/Logo.astro';
 import ToggleTheme from '~/components/core/ToggleTheme.astro';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
-import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } from '~/utils/permalinks';
+import { getHomePermalink, getBlogPermalink, getRelativeLink } from '~/utils/permalinks';
 ---
 
 <header
@@ -26,7 +26,7 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } fro
 			aria-label="Main navigation"
 		>
 			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
-				<li class="dropdown">
+				<!-- <li class="dropdown">
 					<button
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
 						>Pages</button
@@ -49,12 +49,12 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } fro
 								href="#">Pricing</a>
 						</li>
 					</ul>
-				</li>
+				</li> -->
 				<li>
 					<a
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href={getPermalink('useful-resources-to-create-websites', 'post')}
-						>Resources
+						href="/#projects"
+						>Projects
 					</a>
 				</li>
 				<li>
@@ -67,6 +67,7 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } fro
 					<a
 						class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
 						href="https://github.com/onwidget/astrowind"
+						target="_blank"
 						>Github
 					</a>
 				</li>
@@ -78,11 +79,13 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } fro
 						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="RSS Feed"
 						href={getRelativeLink('/rss.xml')}
+						target="_blank"
 					>
 						<Icon name="tabler:rss" class="w-5 h-5" />
 					</a>
 					<a
-						href="https://github.com/onwidget/astrowind"
+						href="https://github.com/subashcs"
+						target="_blank"
 						class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
 						aria-label="Astrowind Github"
 					>
