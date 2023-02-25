@@ -2,6 +2,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+
 
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
@@ -35,6 +37,7 @@ export default defineConfig({
 			serviceEntryPoint: '@astrojs/image/sharp',
 		}),
 		mdx(),
+		react(),
 
 		...whenExternalScripts(() =>
 			partytown({
