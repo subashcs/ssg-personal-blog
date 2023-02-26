@@ -21,16 +21,15 @@ After we had eaten delicious Nepali food (Dal/Bhat) we headed towards Jiri-Dolak
 
 We reached Jiri bazaar at around 1:30 pm where we took some junk food. We immediately started searching for a jeep for reservation, and luckily found one. Again the journey began for the ultimate destination Kuri Village, Kalinchowk. It was a thrilling journey (a lot of chills on the way 😁). One hour had just lapsed and my friends rave, ”See !! the snow, wow!! “. We got out of the Jeep took some photos and then started walking down to Kuri Village. The road was slippery in some places because of snow and mud, it was difficult for vehicles to go through.
 
-![Lets take a shot](../../src/assets/images/a-tour-to-kalinchowk/startfriend.jpg)
+![Lets take a shot](/src/assets/images/a-tour-to-kalinchowk/startfriend.jpg)
 *Let’s take a shot*
 ￼
-![Cool pictures](../../src/assets/images/a-tour-to-kalinchowk/friends1.jpg)
+![Cool pictures](/src/assets/images/a-tour-to-kalinchowk/friends1.jpg)
 *More cool pictures*
 
 We arrived at Kuri after a 1 hour 3o minutes Jeep ride. I still remember I could not stop myself from staring at the stunning beauty of Kuri Village. The diversity in its vegetation and landform was amusing with Rhododendron trees, Pine trees, Steep Hills and the Snow covered plateaus having added grandiosity to the beauty of the place. Picking up the snow, playing with it, and sightseeing, while moving on to find a shelter was all we did in the time left.
 ￼
-￼
-![Kalinchowk Kuri view](../../src/assets/images/a-tour-to-kalinchowk/kalinchowk1.jpg)
+![Kalinchowk Kuri view](/src/assets/images/a-tour-to-kalinchowk/kalinchowk1.jpg)
 *Kalinchowk and snow fun begins*
 
 We started searching for hotels by inquiring the locals since we had not pre-booked one. Luckily, we met a hotel owner whom we had contacted earlier that day just to ask for the rooms. Though he had already told us that there were no rooms left at Kuri Village that day, we insisted on for help, after some calls he managed our rooms at one HomeStay situated some distance uphill of Kuri village. 
@@ -42,16 +41,15 @@ People were kind and generous at the Homestay. We had a warm meal, and a campfir
 ### Day 2 - Kalinchowk sightseeing
 The next morning after getting ready to worship the Goddess Kalinchowk Bhagawati, we visited the Kalinchowk temple situated on the hilltop.That day, we had a lot of fun exploring the Kuri village and Kalinchowk temple area. We stayed that night at “Hotel Highland and Guest House” run by Mr. Yam Pakhrin ( 9861216392, *contact for pre-booking*).
 ￼
-![Clouds down the hill](../../src/assets/images/a-tour-to-kalinchowk/abovethecloud.jpg)
+![Clouds down the hill](/src/assets/images/a-tour-to-kalinchowk/abovethecloud.jpg)
 *Clouds down the hill*
 
-![Me at Kalinchowk](../../src/assets/images/a-tour-to-kalinchowk/playingwithsnowme.jpg)
+![Me at Kalinchowk](/src/assets/images/a-tour-to-kalinchowk/playingwithsnowme.jpg)
 *Playing with snow*
 
-![Friends at Top](../../src/assets/images/a-tour-to-kalinchowk/friendsattop1.jpg)
+![Friends at Top](/src/assets/images/a-tour-to-kalinchowk/friendsattop1.jpg)
 
-![Kalinchowk](../../src/assets/images/a-tour-to-kalinchowk/scene.jpg)
-
+![Kalinchowk](/src/assets/images/a-tour-to-kalinchowk/scene.jpg)
 
 ￼
 ### Day 3 - Leaving from Kalinchowk
