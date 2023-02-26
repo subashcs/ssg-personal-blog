@@ -8,7 +8,7 @@ tags: [kalinchowk, dolakha, tourism, nepal, trekking]
 ---
 
 
-Some moments we experience while traveling end up completely blowing us away, in ways we’d never have expected. They stay with us forever, and years later we still smile at the fond memories. For me, a 2-days trip to Kalinchowk, Dolakha, provided astonishing moments of pure joy.
+Some moments we experience while traveling end up completely blowing us away in ways we’d never have expected. They stay with us forever and years later we still smile at the fond memories. For me, a 3-days trip to Kalinchowk-Dolakha provided astonishing moments of pure joy.
 
 The Kalinchowk tour is in high traffic especially in the Jan-March So it’s best to book hotels well in advance, but last-minute travelers need not despair as standby hotel rooms are often available but it's a matter of luck. Also, you need to take a bus ride to Jiri which in my case was Kathmandu to Jiri to reach Kalinchowk, or if you have reserved a Jeep then it's best for 8-10 people. The bike ride is also fun if you are a good rider and fond of biking.
 
