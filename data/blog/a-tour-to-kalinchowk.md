@@ -49,7 +49,7 @@ The next morning after getting ready to worship the Goddess Kalinchowk Bhagawati
 
 ![Friends at Top](/src/assets/images/a-tour-to-kalinchowk/friendsattop1.jpg)
 
-![Kalinchowk](/src/assets/images/a-tour-to-kalinchowk/scene.jpg)
+![Kalinchowki](/assets/images/a-tour-to-kalinchowk/scene.jpg)
 
 ￼
 ### Day 3 - Leaving from Kalinchowk
