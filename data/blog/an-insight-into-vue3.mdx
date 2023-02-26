@@ -7,6 +7,11 @@ dependency injection features'
 image: '~/assets/images/an-insight-into-vue3/vue3.webp'
 tags: [front-end, tools, resources, vuejs]
 ---
+import { Image } from '@astrojs/image/components';
+
+import image1 from '~/assets/images/an-insight-into-vue3/image1.png'
+import image2 from '~/assets/images/an-insight-into-vue3/image2.png'
+
 
 Vue 3 was launched recently in 2020. Having worked with React, Angular, and Ember js, I
 always preferred to react for frontend projects as it is pretty straightforward to start with
@@ -36,10 +41,10 @@ the framework that encompasses many sub-projects:
 
 Not just me, the following statistics show the popularity of Vue 3.
 
-![Not so big](../../src/assets/images/an-insight-into-vue3/image2.png)
+<Image src={image2} alt="Stackoverflow survey"/>
 *Figure 1: Stackoverflow survey 2020: Most wanted frontend framework*
 
-![Not so big](../../src/assets/images/an-insight-into-vue3/image1.png)
+<Image src={image1} alt="Stackoverflow survey"/>
 *Figure 2: Stackoverflow survey 2020: Most loved frontend framework*
 
 Trends show that Vue has received a lot of love more than any other framework or library
