@@ -1,7 +1,7 @@
 ---
 publishDate: 'Feb 02 2021'
 title: 'A tour to Kalinchowk Dolakha'
-description: 'Some moments we experience while travelling end up completely blowing us away, in ways we’d never have expected.
+description: 'Some moments we experience while travelling end up completely blowing us away in ways we’d never have expected.
 The Kalinchowk tour is at high traffic specially in the Jan-March so it’s best to book hotels well in advance...'
 image: '~/assets/images/a-tour-to-kalinchowk/kalinchowk1.jpg'
 tags: [kalinchowk, dolakha, tourism, nepal, trekking]
