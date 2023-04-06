@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingAnimation = ({ text = "I'm Subash !" }) => {
+const TypingAnimation = ({ text = "Subash Chandra Sapkota!" }) => {
 	const [typedText, setTypedText] = useState('');
 	const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
@@ -15,7 +15,7 @@ const TypingAnimation = ({ text = "I'm Subash !" }) => {
 
 	return (
 		<span className='animate-text'>
-			<span>Hello, {typedText}</span>
+			<span>Hi I'm, {typedText}</span>
 			<span className="cursor" />
 		</span>
 	);
