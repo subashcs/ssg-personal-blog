@@ -1,6 +1,6 @@
 ---
 publishDate: 'May 14 2023'
-title: 'The HTML Dialog Element'
+title: 'The Dialog Element in HTML'
 description: 'The Dialog element is a new HTML element to create dialogs such as pop-ups, modals, and more. Though this is no new feature for the Javascript users who could have done this with a simple UI library'
 image: '~/assets/images/the-new-html-dialog-element/poster.png'
 tags: [frontend, web, html, dom, dialog, element]
@@ -10,13 +10,15 @@ Dialog boxes have been used by almost all websites for showing confirmation mess
 
 The Dialog element is a new HTML5 element to create dialogs such as pop-ups, modals, alerts, and more. This may be no new feature for the Javascript users who could have done this with a simple UI library. But keep in mind that it comes out of the box with Browser native support i.e. no hassle for extra add-ons.
 
-Though the &lt;dialog&gt; element was introduced a long ago, it was not fully supported by major browsers such as Chrome. Recently, In May 2023 Google announced support for the HTML5 dialog element in Chrome-97 including all web platforms. 
+Though the &lt;dialog&gt; element was introduced a long ago, it was not fully supported by major browsers such as Chrome. Recently, In May 2023 Google announced support for the HTML5 dialog element in Chrome-97 including all web platforms. This is a good sign for developers that the browser support is rising for this portent feature.
 
-The HTML5 dialog element provides the following built-in features.
+The HTML5 dialog element provides the following built-in features. They are:
 
 - Focus management for dialog
 - Tab tracking
-- Keeping pop-ups stacking context
+- Keeping stacking context
+
+## Usage
 
 We can define the Dialog element on our HTML simply using the **dialog** keyword. Here is a sample code for defining a dialog element.
 
