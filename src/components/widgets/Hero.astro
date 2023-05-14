@@ -11,14 +11,14 @@ import TypingAnimation from './Typing';
 				<div class="block">
 					<div class="relative m-auto max-w-xs">
 						<Picture
-							src={import('~/assets/images/mehero.png')}
+							src={import('~/assets/images/profile.jpg')}
 							class="mr-50 rounded-full w-full bg-gradient-to-r from-slate-100 to-white-100 dark:bg-gradient-to-r dark:from-gray-900 dark:to-zinc-900"
 							widths={[200, 400]}
 							sizes="(max-width: 767px) 200px, (max-width: 1479px) 200px"
 							alt="Hero Image"
 							loading="eager"
 							position="top"
-							aspectRatio={100 / 100}
+							aspectRatio={10 / 10}
 							title=""
 						/>
 					</div>
@@ -28,25 +28,28 @@ import TypingAnimation from './Typing';
 						<TypingAnimation client:load />
 					</h1>
 					<div>
-						<p class="text-md pt-2 text-justify">
-							As a software engineer, I am driven by my curiosity and desire to push the boundaries of what is possible
-							with technology. With over four years of experience working in the industry, I have gained a deep
-							understanding of software design and development principles, as well as expertise in various programming
-							languages and frameworks.
-							<br />
-							<br/>
-							Throughout my career, I have worked on a variety of projects that have challenged me to think creatively and
-							develop innovative solutions to complex problems. I am familiar with collaboratively working in teams, communicate
-							technical concepts to non-technical stakeholders, and deliver high-quality solutions that exceed expectations.
-							What sets me apart as a software engineer is my passion for using technology to make a positive impact on the
-							world. Whether it's through developing tools that streamline business processes or creating applications that
-							improve people's lives, I am always looking for ways to use my skills to make a difference.
-							<br />
-							<br />
-							I believe that diversity is essential to creating truly innovative solutions, and I am committed to bringing
-							my unique background and perspective to every project I work on.
-						</p>
-						<p class="text-sm">Feel free to read and share. 🙂 <em> Enjoy 📖 !</em></p>
+						<div class="flex">
+							<p class="text-md pt-2 text-justify">
+								As a software engineer, I am driven by my curiosity and desire to push the boundaries of what is possible
+								with technology. With over four years of experience working in the industry, I have gained a deep
+								understanding of software design and development principles, as well as expertise in various programming
+								languages and frameworks.
+								<br />
+								<br/>
+								Throughout my career, I have worked on a variety of projects that have challenged me to think creatively and
+								develop innovative solutions to complex problems.What sets me apart as a software engineer is my passion for using technology to make a positive impact on the
+								world. Whether it's through developing tools that streamline business processes or creating applications that
+								improve people's lives, I am always looking for ways to use my skills to make a difference.
+								<br />
+								<br />
+								I believe that diversity is essential to creating truly innovative solutions, and I am committed to bringing
+								my unique background and perspective to every project I work on.
+								<br/>
+								
+								<span class="text-sm">Feel free to read and share. 🙂 <em> Enjoy 📖 !</em></span>
+							</p>
+						</div>
+						
 						<div class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
 							<div class="flex w-full sm:w-auto">
 								<a
