@@ -1,6 +1,105 @@
 ---
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components'
+
+const badges = ["red","green","blue","yellow","indigo","purple"];
+
+const workExperiences = [
+	{
+	fromDate: "2019 July",
+	toDate: "2019 Dec",
+	title: "React and Node Developer",
+	employer: "ITGlance Pvt. Ltd",
+	type: "Internship",
+	description: "I received training on react, react-native, electron, node-js database concepts git workflow etc. Worked on creating a Point Of Sale Application and on other inhouse projects.",
+	toolsUsed: ["JavaScript", "ReactJS", "JIRA", "Git"],
+	accomplishments: [
+		"Learned React and Node js",
+		"Worked on React Frontend to create seamless user experience under the guidance of seniors"
+	],
+	projects: [
+		{
+			title: "meatPOS",
+			description: "Point of Sale System customized for a meat shop.",
+			toolsUsed: ["React JS", "Pouch/Couch DB", "Electron", "Node Js", "Docker"]
+		}
+	]},
+	{
+	fromDate: "2020 June",
+	toDate: "2020 Oct",
+	title: "Associate Software Developer",
+	employer: "Nepal Mind Factory Pvt. Ltd.",
+	type: "Full Time",
+	description: "As an Associate software developer, I worked on creating both the User Interface and the backend. I planned for features development and assisted in implementing architecture and even finding solutions to problems while implementing the proposed solution. ",
+	tools: ["JavaScript", "ReactJS", "Git", "Docker", "Netlify", "Trello"],
+	accomplishments: [
+		"Worked on React and Node js",
+		"Worked on reactive programming with RxJS, and knew the concept of observables.",
+		"Worked on React Frontend to create seamless user experience under the guidance of seniors"
+	],
+	projects: [
+		{
+			title: "Sankalpa",
+			description: "At Nepal Mind Factory, I developed a frontend of the application named Sankalpa designed for uses in municipalities that contained maps to track households, boundaries and resources. I developed Permission based Login System. I developed multiple Forms using react-json-schema-form. I dockerized the application and helped on hosting the frontend on the nginx server.",
+			tools: ["JavaScript", "React JS", "Postgres SQL", "Springboot", "Redux", "Epic Middleware", "RxJS", "Docker"]
+		},
+		{
+			title: "Nepal Mind Factory Portfolio Website with CMS",
+			description: "I also worked on a portfolio project for the company. I worked on creating both backend using node.js, express and mongo db as well as frontend using React , Redux etc. The websited consited many features to support a full fledge CMS system with company portfolio.",
+			tools: ["Node JS", "React JS", "Redux", "Redux Thunk", "Docker"]
+		}
+	]},
+	{
+	fromDate: "2020 Nov",
+	toDate: "2021 Aug",
+	title: "Frontend Developer",
+	employer: "Ekbana Software Solution Pte.",
+	type: "Full Time",
+	description: "I worked on the frontend to develop a data visualization and analytics application. I translated the Figma UI designs to Vue-3.",
+	tools: ["JavaScript", "VueJS", "Vuex", "Docker", "Netlify", "Git"],
+	accomplishments: [
+		"Learned React and Node js",
+		"Worked on React Frontend to create seamless user experience under the guidance of seniors"
+	],
+	projects: [
+		{
+			title: "DataViz",
+			description: "At Ekbana, I worked on this DataViz application frontend to develop a data visualization and analytics application. I translated the Figma UI designs to Vue-3.We used Vuex for store management, vue-router and internationalization as well.",
+			tools: ["JavaScript", "Vue3 JS", "Vuex", "Docker"]
+		},
+		{
+			title: "Simple Insurance Application Fraud Detection",
+			description: "I worked developing secured authentication mechanisms for the users, managing access control on the frontend.",
+			tools: ["React JS", "React Native", "JavaScript"]
+		}
+	]},
+	{
+	fromDate: "2021 Sep",
+	toDate: "Present",
+	title: "Software Engineer",
+	employer: "Logpoint Nepal Pvt. Ltd.",
+	type: "Full Time",
+	description: "I worked on a Ext JS legacy system adding new features and fixing newly identified bugs on the frontend. I developed new micro-frontends with react and customized our micro-frontend framework. I designed multiple UI and UX items for the software product Logpoint Search Master.",
+	tools: ["JavaScript", "ExtJS", "Python", "MongoDB", "Celery", "RabbitMQ", "Redis"],
+	accomplishments: [
+		"Worked closely with other developers, QA, Product Owner for fixing legacy bugs and adding new feature.",
+		"Worked on Extjs Frontend to create seamless user experience",
+		"Guided new developer to work on the system",
+		"Designed and developed architecture for supporting new features in the existing system"
+	],
+	projects: [
+		{
+			title: "Logpoint Search Master",
+			description: " ------",
+			tools: ["JavaScript", "Vue3 JS", "Vuex", "Docker"]
+		},
+		{
+			title: "Director Console",
+			description: "I worked on fixing legacy bugs.",
+			tools: ["React JS", "React Native", "JavaScript"]
+		}
+	]},
+]
 ---
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-7xl">
@@ -10,94 +109,31 @@ import { Picture } from '@astrojs/image/components'
 			  Professional Work Experience Highlights
 			</h2>
 			<div class="pl-10">
-				<div class="flex">
-					<div class="flex flex-col items-center mr-4">
-						<div>
-							<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-								<Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
+				{
+					workExperiences.map(job =>{
+						return (
+						<div class="flex">
+							<div class="flex flex-col items-center mr-4">
+								<div>
+									<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
+										<Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
+									</div>
+								</div>
+								<div class="w-px h-full bg-gray-300 dark:bg-zinc-500"></div>
+							</div>
+							<div class="pt-1 pb-8">
+								<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">{job.fromDate} - {job.toDate}</p>
+								<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">{job.title}</p>
+								<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">{job.employer}</p>
+								<p class="text-gray-600 dark:text-slate-400">
+									{job.description}
+								</p>
 							</div>
 						</div>
-						<div class="w-px h-full bg-gray-300 dark:bg-zinc-500"></div>
-					</div>
-					<div class="pt-1 pb-8">
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">2019 July - 2019 Dev</p>
-						<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">React and Node Developer Intern</p>
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">ITGlance Pvt. Ltd.</p>
-						<p class="text-gray-600 dark:text-slate-400">
-							I received training on react, react-native, electron, node-js database concepts git workflow etc. Worked on creating a Point Of Sale Application, Other inhouse projects.
-							I worked with databases like Pouch DB, Couch DB, PostgreSQL, Mongo DB, Express JS, etc  on the backend. I worked on a frontend Point of sale project for a meat shop.
-						</p>
-					</div>
-				</div>
-				<div class="flex">
-					<div class="flex flex-col items-center mr-4">
-						<div>
-							<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-								<Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
-							</div>
-						</div>
-						<div class="w-px h-full bg-gray-300 dark:bg-zinc-500"></div>
-					</div>
-					<div class="pt-1 pb-8">
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">2020 Jan - 2020 Oct</p>
-						<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Associate Software Developer</p>
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">Nepal Mind Factory Pvt. Ltd.</p>
-						<p class="text-gray-600 dark:text-slate-400">
-							At Nepal Mind Factory, I developed a frontend of the application named Sankalpa designed for uses in municipalities that contained maps to track 
-							households, boundaries and resources. I developed Permission based Login System. I developed multiple Forms using react-json-schema-form. 
-							I dockerized the application and helped on hosting the frontend on the nginx server.
-							I also worked on a portfolio project for the company. I worked on creating both backend using node.js, express and mongo db as well as frontend 
-							using React , Redux etc. The websited consited many features to support a full fledge CMS system with company portfolio.
-						</p>
-					</div>
-				</div>
-				
-				<div class="flex">
-					<div class="flex flex-col items-center mr-4">
-						<div>
-							<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-								<Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
-							</div>
-						</div>
-						<div class="w-px h-full bg-gray-300 dark:bg-zinc-500"></div>
-					</div>
-					<div class="pt-1 pb-8">
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">2020 Nov - 2021 Aug</p>
-						<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Cloud/Frontend Developer</p>
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">Ekbana Solutions Pvt. Ltd.</p>
-						<p class="text-gray-600 dark:text-slate-400">
-							I worked on the frontend to develop a data visualization and analytics application. I translated the Figma UI designs to Vue 3 
-							. We used Vuex for store management, vue-router and internationalization as well. I also worked on fixing bugs on 
-							chart components as well as developing new charts specially using apex-charts chart JS, d3 JS etc.
-							I worked developing secured authentication mechanisms for the users, managing access control on the frontend.
-						</p>
-					</div>
-				</div>
+						)
+					})
+				}
 
-				<div class="flex">
-					<div class="flex flex-col items-center mr-4">
-						<div>
-							<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-								<Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
-							</div>
-						</div>
-						<div class="w-px h-full bg-gray-300 dark:bg-zinc-500"></div>
-					</div>
-					<div class="pt-1 pb-8">
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">Sep 2021 - Present</p>
-						<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Software Engineer</p>
-						<p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">LogPoint Nepal Pvt. Ltd.</p>
-						<p class="text-gray-600 dark:text-slate-400">
-							I worked on a Ext JS legacy system adding new features and fixing newly identified bugs on the frontend. I developed new 
-							micro-frontends with react and customized our micro-frontend framework. I designed multiple UI and UX items for the software 
-							product Logpoint Search Master. I worked on the backend Flask web app to add new website endpoints. I added cron jobs, services 
-							to assist to main web server, modified routing config on the main nginx server. Added scripts to run compute and I/O intensive tasks
-							on background. I worked on Redis caching, Celery and RabitMQ task queuing, Mongo DB, bash scripting to run different services, planning 
-							for new features etc.
-
-						</p>
-					</div>
-				</div>
 
 				<div class="flex">
 					<div class="flex flex-col items-center mr-4">
