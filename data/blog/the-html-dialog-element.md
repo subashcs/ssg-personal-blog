@@ -1,16 +1,18 @@
 ---
 publishDate: 'May 14 2023'
-title: 'The New HTML Dialog Element'
+title: 'The HTML Dialog Element'
 description: 'The Dialog element is a new HTML element to create dialogs such as pop-ups, modals, and more. Though this is no new feature for the Javascript users who could have done this with a simple UI library'
 image: '~/assets/images/the-new-html-dialog-element/poster.png'
 tags: [frontend, web, html, dom, dialog, element]
 ---
 
-Google announced support for a new HTML feature i.e. the Dialog HTML element recently in May 2023 Google IO event. It is something that almost all websites have been using for showing confirmation messages, error messages, alerts, and many more; the native support for these features is really exciting.
+Dialog boxes have been used by almost all websites for showing confirmation messages, error messages, alerts, and many more; the native support for these features in the browser is really exciting.
 
-The Dialog element is a new HTML element to create dialogs such as pop-ups, modals, and more. Though this is no new feature for the Javascript users who could have done this with a simple UI library. But keep in mind that it comes out of the box with Browser native support i.e. no hassle for extra add-ons.
+The Dialog element is a new HTML5 element to create dialogs such as pop-ups, modals, alerts, and more. This may be no new feature for the Javascript users who could have done this with a simple UI library. But keep in mind that it comes out of the box with Browser native support i.e. no hassle for extra add-ons.
 
-The new dialog element provides the following built-in features.
+Though the &lt;dialog&gt; element was introduced a long ago, it was not fully supported by major browsers such as Chrome. Recently, In May 2023 Google announced support for the HTML5 dialog element in Chrome-97 including all web platforms. 
+
+The HTML5 dialog element provides the following built-in features.
 
 - Focus management for dialog
 - Tab tracking
