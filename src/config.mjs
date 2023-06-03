@@ -8,7 +8,7 @@ export const SITE = {
 	title: 'SubashCS — Subash Chandra Sapkota`s Blog',
 	description: 'Hi I am Subash Chandra Sapkota. SubashCS is my personal portfolio where I share programming as well as personal experience.',
 
-	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
+	googleAnalyticsId: "G-5QRXZK0DW8", // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
 };
 
