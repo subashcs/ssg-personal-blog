@@ -15,7 +15,7 @@ One of the key features of Hugging Face Transformer is its Transformer architect
 
 Hugging Face Transformer provides pre-trained models for a wide range of NLP tasks, including BERT, GPT-2, RoBERTa, and more. These models have achieved state-of-the-art performance on many benchmark datasets, and they can be fine-tuned for specific tasks with just a few lines of code.
 
-In addition to pre-trained models, Hugging Face Transformer also provides a community-driven model hub, where developers can share and download pre-trained models for specific tasks. This model hub has become a popular resource for the NLP community, and it has helped to accelerate research and development in the field.
+In addition to pre-trained models, Hugging Face Transformer also provides a [community-driven model hub](https://huggingface.co/models), where developers can share and download pre-trained models for specific tasks. This model hub has become a popular resource for the NLP community, and it has helped to accelerate research and development in the field.
 
 Overall, Hugging Face Transformer is a powerful and easy-to-use library for NLP tasks, and it has become a popular choice for developers and researchers in the field.
 
