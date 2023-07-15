@@ -14,7 +14,7 @@ If your application's requirements are not huge and want to develop a greatly pe
 
 The FAST API is a modern, fast (hence the name), and asynchronous web framework for building APIs. FastAPI is based on Pydantic and type hints to validate, serialize, and deserialize data. It is designed to be easy to use and to provide high performance, making it a popular choice for building APIs.
 
-An notable characterstics of FastAPI is it can handle multiple requests concurrently without blocking the execution of other requests through the use of asynchronous programming and can leverage multiple threads or processes for handling requests concurrently. Another asynchronous web framework, **Node.js**, on the other hand, achieves concurrency through its single-threaded event loop, utilizing non-blocking I/O operations and callbacks to handle concurrent requests.
+A notable characterstic of FastAPI is that it can handle multiple requests concurrently without blocking the execution of other requests through the use of asynchronous programming and can leverage multiple threads or processes for handling requests concurrently. Another asynchronous web framework, **Node.js**, on the other hand, achieves concurrency through it's single-threaded event loop, utilizing non-blocking I/O operations and callbacks to handle concurrent requests.
 
 Many existing Python web frameworks are built on top of WSGI (Web Server Gateway Interface) example: Flask, Django, Pyramid, etc, whereas FastAPI uses ASGI (Asynchronous Server Gateway Interface) and its implementation is growing in new frameworks such as Starlette, Quart, etc but not all frameworks, have full ASGI compatibility.
 
