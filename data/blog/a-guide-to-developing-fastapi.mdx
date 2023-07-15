@@ -1,0 +1,548 @@
+---
+publishDate: 'July 15 2023'
+title: "A Comprehensive Beginner's Guide to API Development with FastAPI"
+description: 'The FAST API is a modern, fast (hence the name), and asynchronous web framework for building APIs. In this article, I’ll be sharing a guide to developing an API using the FastAPI micro-framework.First, we need to install PostgreSQL for setting up our database..'
+image: '~/assets/images/a-guide-to-developing-fastapi/hero.png'
+tags: [fastapi, python, postgres, sql, pytest, swagger, asgi, wsgi, web, API]
+---
+
+The Web technology industry is profound as it is continuously evolving; thousands of web application development tools are available to build any application of your choice. Considering the numerous options available, its difficult for anyone to make prudent choices. However, with clear requirements in mind, one can accomplish the tedious task of choosing a framework.
+
+If your application's requirements are not huge and want to develop a greatly performant application with built-in validation support, great documentation as well as remarkable concurrency, you should definitely choose FAST API.
+
+## Preface
+
+The FAST API is a modern, fast (hence the name), and asynchronous web framework for building APIs. FastAPI is based on Pydantic and type hints to validate, serialize, and deserialize data. It is designed to be easy to use and to provide high performance, making it a popular choice for building APIs.
+
+By utilizing asynchronous programming, FastAPI can handle multiple requests concurrently without blocking the execution of other requests. This makes it well-suited for building high-performance and scalable web APIs.
+
+Many existing Python web frameworks are built on top of WSGI (Web Server Gateway Interface) example: Flask, Django, Pyramid, etc, whereas FastAPI uses ASGI (Asynchronous Server Gateway Interface) and its implementation is growing in new frameworks such as Starlette, Quart, etc but not all frameworks, have full ASGI compatibility.
+
+ASGI and WSGI are both specifications that define how web servers and web applications communicate with each other in Python. WSGI is a synchronous protocol, meaning that the server waits for the response from the application before moving on to the next request. On the other hand, ASGI supports both synchronous and asynchronous frameworks, allowing developers to choose the best approach for their application's requirements.
+
+In this article, I’ll be sharing a guide to developing an API using the FastAPI micro-framework. The starter project is available in my [GitHub repository](https://github.com/subashcs/FastAPIStarter). Although, It is highly recommended to follow this guide for novices while creating your own version.
+
+## Setting up development environment
+
+First of all, make sure Python3.6+ is installed on the system. Then, we will create a new folder, inside it a new virtual environment to install all our dependencies in isolation and activate our virtual environment before installing the required packages. For this, we need to run the following command in the root directory of our project folder.
+
+```bash
+
+python3 -m venv env
+source env/bin/activate
+```
+
+We’ll need to install our main dependency i.e **fastapi** by running the following command:
+
+```bash
+pip install fastapi
+```
+
+Once we have installed the FAST API, we can start building our API. We’ll create a new Python file `main.py` and import the `FastAPI` class from the `fastapi` module as shown below.
+
+```python
+from fastapi import FastAPI
+app = FastAPI()
+```
+
+This creates a new instance of the `FastAPI` class **app** instance, which we can use to define our API endpoints. To create a new endpoint, we’ll use the `@app.route()` decorator and specify the HTTP method and URL path:
+
+```python
+@app.get("/hello/{name}")
+async def hello(name: str):
+    return {"message": f"Hello, {name}!"}
+```
+
+This creates a new endpoint that responds to GET requests to the `/hello/{name}` URL path. The endpoint returns a JSON response with a `message` key that contains a personalized greeting.
+
+Now to run our simple API server, we can use the `uvicorn` command-line tool. First we will install the **uvicorn** python package, run:
+
+```bash
+pip install uvicorn
+```
+
+Then run the following command to start the server:
+
+```bash
+uvicorn main:app --reload
+```
+
+This starts the server on `http://localhost:8000` and automatically reloads the server when you make changes to the code.
+
+That's it! We’ve now created a simple API endpoint using the FAST API in Python.
+
+## Database Setup
+
+First, we need to install PostgreSQL for setting up our database. Refer to the [PostgreSQL-installation](https://www.postgresql.org/download/) document for installing PostgreSQL on other systems of choice. We can use the following command on MacOS.
+
+```bash
+brew install postgresql
+```
+
+Start PostgreSQL server
+
+```bash
+brew services start postgresql
+```
+
+Check Postgres version
+
+```bash
+postgres - V;
+```
+
+We need to create a new PostgreSQL user and Database. To create a new PostgreSQL user Role ‘subash’, we can use the following commands.
+
+```sql
+CREATE ROLE subash WITH LOGIN PASSWORD ‘subash’;
+
+ALTER ROLE subash CREATEDB;
+
+//alternative
+createuser subash
+createuser subash —createdb
+```
+
+Now, we can log in with the new user to the PostgreSQL console and create a database with access to the new user ‘subash’.
+
+```bash
+psql postgres -U subash
+
+```
+
+```sql
+CREATE DATABASE mypostgresdb;
+
+GRANT ALL PRIVILEGES ON DATABASE mypostgresdb TO subash;
+```
+
+## Configure an ORM (Object Relational Mapping)
+
+To dive into Relational database integration with an ORM, we will be using the **PostgreSQL** database with **SQLalchemy** ORM. To integrate Postgres with our FastAPI application, we can use an ORM library such as SQLAlchemy.
+
+First, we need to install the `sqlalchemy` python package:
+
+```bash
+pip install sqlalchemy
+```
+
+> 🛠 Apple Silicon M1 chip Users may encounter an error during “psycopg2” package installation which is an adapter for Postgres in MacOS. To resolve the issue, separately install the binary using the following command.
+
+```bash
+pip uninstall psycopg2
+pip install psycopg2-binary
+```
+
+Then, create an SQLAlchemy `engine` object to connect to the Postgres database:
+
+```python
+from sqlalchemy import create_engine
+
+DATABASE_URL = "postgresql://user:password@localhost/dbname"
+engine = create_engine(DATABASE_URL)
+```
+
+Replace `user`, `password`, and `dbname` with the PostgreSQL credentials.
+
+Next, we need to create a SQLAlchemy `SessionLocal` class to manage database sessions:
+
+```python
+from sqlalchemy.orm import sessionmaker
+
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+
+```
+
+We can use this class to create a new database session whenever we need to interact with the database:
+
+```python
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+```
+
+Finally, we can use the `get_db` function to inject a database session into our FastAPI endpoints using the `Depends` function.
+
+## Database Schema
+
+Before starting, CRUD operations we need to define our database schema. We will be creating a simple Application that stores users’ information. The database will have two tables the **user** table for storing user info and the **phone_number** table for storing multiple phone numbers of a user. These two tables will have a ONE-TO-MANY relationship respectively. Let’s create both User and Phone ORM.
+
+```python
+from typing import List
+from typing import Optional
+from sqlalchemy import ForeignKey
+from sqlalchemy import String
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
+from .base import Base
+
+class User(Base):
+    __tablename__ = "user_account"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(30))
+    fullname: Mapped[Optional[str]]
+
+    phone_numbers: Mapped[List["Phone"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
+
+    def __repr__(self) -> str:
+        return f"User(id={self.id!r}, name={self.name!r}, fullname={self.fullname!r})"
+
+class Phone(Base):
+    __tablename__ = "phone_number"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    phone_number: Mapped[str]
+    user_id: Mapped[int] = mapped_column(ForeignKey("user_account.id"))
+
+    user: Mapped["User"] = relationship(back_populates="phone_numbers")
+
+    def __repr__(self) -> str:
+        return f"Phone(id={self.id!r}, phone_number={self.phone_number!r})"
+```
+
+## CRUD Operations
+
+### Create User
+
+We will define a Pydantic model `UserCreate` with three fields: `name`, `fullname`, and `phone_numbers`. The `name`, `fullname` and `phone_numbers` fields are required. This model is used to validate incoming user data in the `create_user` endpoint.
+
+```python
+from fastapi import FastAPI, Depends
+from typing import Union
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
+from app.orm.user import User
+from app.database.dbengine import get_db
+
+app = FastAPI()
+
+# define a pydantic type definition
+class UserCreate(BaseModel):
+    name: str
+    fullname: str
+    phone_numbers: Optional[List[str]] = None
+
+@app.post("/users/")
+async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = User(**user.dict())
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return {"id": db_user.id, "name": db_user.name}
+
+```
+
+Here, the `UserCreate` class and `User` model must be defined first.
+
+### Read User
+
+We can read a user from the database using a GET request with a unique user ID in the request parameters as shown below. In this example, the `read_user` endpoint uses the `get_db` function to inject a database session into the `db` argument. The `User` model is defined using SQLAlchemy's declarative syntax.
+
+```python
+
+@app.get("/users/{user_id}")
+async def read_user(user_id: int, db: Session = Depends(get_db)):
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        return {"id": user.id, "name": user.name, "fullname": user.fullname, "phone_numbers": user.phone_numbers}
+    except BaseException as e:
+        print(e)
+        return {"message": "Not found"}
+```
+
+### List Users
+
+To create an endpoint to list all users from the database, you can define a new endpoint using the `@app.get()` decorator. This endpoint queries all `User` objects from the database and returns them as a JSON response with a `users` key containing a list of objects with `id` and `name` keys.
+
+```python
+@app.get("/users/")
+async def list_users(db: Session = Depends(get_db)):
+    users = db.query(User).all()
+    return {"users": [{"id": user.id, "name": user.name} for user in users]}
+```
+
+### Update User
+
+To update an existing user document in the database we can create an update endpoint as follows. The following function accepts
+
+```python
+@app.put("/users/{user_id}")
+async def update_user(user_id: int, user: dict, db: Session = Depends(get_db)):
+    # Retrieve the user from the database
+    db_user = db.query(User).filter(User.id == user_id).first()
+    if not db_user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with ID {user_id} not found.",
+        )
+
+   # Update the user's properties
+    for key in user.keys():
+        if key == 'phone_numbers':
+            for phone_number in user.get("phone_numbers"):
+                new_phone = Phone(phone_number=phone_number)
+                db_user.phone_numbers.append(new_phone)
+            continue
+        db_user.__setattr__(key, user[key])
+
+    # Commit the changes to the database
+    db.commit()
+    db.refresh(db_user)
+    return {"id": db_user.id, "name": db_user.name, "fullname": db_user.fullname, "phone_numbers": db_user.phone_numbers}
+```
+
+With this `PUT` request we can now update existing entries in DB for an user.
+
+### Delete User
+
+Let’s create a delete API request to delete a user entry with associated phone number entries.
+
+```python
+@app.delete("/users/{user_id}")
+async def delete_user(user_id: int, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.id == user_id).first()
+
+    if db_user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    db.delete(db_user)
+    db.commit()
+
+    return {"message": "User deleted successfully"}
+```
+
+That's it! We’ve now integrated PostgreSQL with our FastAPI application using SQLAlchemy. From here, we can continue to build more complex database-driven APIs to suit our needs.
+
+## Setup Database Migration
+
+Database Migration is crucial for large-scale products that require constant updates and adding a proper mechanism to insert data and update data in the database in advance would be beneficial.
+
+**Alembic** is a migration tool for SQLAlchemy. Alembic complements SQLAlchemy by providing a comprehensive solution for managing database schema changes and version control. It simplifies the process of evolving your database schema.
+
+Here, is a sample database migration script using Alembic to create the necessary tables and populate them with sample data on application startup.
+
+First, install Alembic python package:
+
+```bash
+pip install alembic
+```
+
+Then, create a new directory called `alembic` in your project directory. Inside this directory, create a new file called `alembic.ini` with the following contents:
+
+```ini
+[alembic]
+script_location = alembic
+```
+
+This tells Alembic where to find the migration scripts.
+
+Next, create a new file called `env.py` in the `alembic` directory with the following contents:
+
+```python
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
+
+from alembic import context
+from fastapi import FastAPI
+
+from app.models import Base
+from app.database import engine, get_db
+from app import models
+
+# This is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
+config = context.config
+
+# Add your model's MetaData object here for 'autogenerate' support.
+# This should be a string name, not the actual object.
+# For example:
+# target_metadata = None
+target_metadata = Base.metadata
+
+# other values from the ini file, defined by the needs of env.py,
+# can be acquired:
+# my_important_option = config.get_main_option("my_important_option")
+# ... etc.
+
+# Interpret the config file for Python logging.
+# This line sets up loggers basically.
+from logging.config import fileConfig
+
+fileConfig(config.config_file_name)
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+# target_metadata = mymodel.Base.metadata
+
+def run_migrations_offline():
+    """Run migrations in 'offline' mode.
+
+    This configures the context with just a URL
+    and not an Engine, though an Engine is acceptable
+    here as well.  By skipping the Engine creation
+    we don't even need a DBAPI to be available.
+    Calls to context.execute() here emit the given string to the
+    script output.
+    """
+    url = config.get_main_option("sqlalchemy.url")
+    context.configure(url=url)
+
+    with context.begin_transaction():
+        context.run_migrations()
+
+def run_migrations_online():
+    """Run migrations in 'online' mode.
+
+    In this scenario we need to create an Engine
+    and associate a connection with the context.
+    """
+    # this callback is used to prevent an error caused by SQLAlchemy 1.4
+    # see <https://github.com/sqlalchemy/sqlalchemy/issues/6141>
+    def process_revision_directives(context, revision, directives):
+        if config.cmd_opts.autogenerate:
+            script = directives[0]
+            if script.upgrade_ops.is_empty():
+                directives[:] = []
+                return
+
+        for directive in directives:
+            if directive.upgrade_ops.is_empty():
+                directives.remove(directive)
+
+    connectable = engine
+
+    # access to the app object from the context
+    context.app = FastAPI()
+    context.app.dependency_overrides[get_db] = lambda: SessionLocal()
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata,
+            process_revision_directives=process_revision_directives,
+        )
+
+        with context.begin_transaction():
+            context.run_migrations()
+
+if context.is_offline_mode():
+    run_migrations_offline()
+else:
+    run_migrations_online()
+
+```
+
+This script imports the necessary modules, including the `FastAPI` application, SQLAlchemy models, and the `get_db` function. It also defines two functions, `run_migrations_offline()` and `run_migrations_online()`, that will be used to run the migrations.
+
+### Writing migration scripts
+
+Next, create a new directory called `alembic/versions` and create a new migration script in this directory called `1_initial.py` with the following contents:
+
+```python
+"""create user table
+
+Revision ID: 1
+Revises:
+Create Date: 2023-11-20 19:17:01.434529
+
+"""
+
+import sys
+import os
+
+SCRIPT_DIR = os.path.dirname(os.path.relpath('../'))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from sqlalchemy.orm import Session
+from app.orm import Base
+from app.database.dbengine import engine
+from app.orm import User, Phone
+
+# revision identifiers, used by Alembic.
+revision = '1'
+down_revision = None
+branch_labels = None
+depends_on = None
+
+def upgrade():
+    Base.metadata.create_all(bind=engine)
+    db = Session(bind=engine)
+
+    # sample user with phone number
+    user1 = User(id=1, name="Alice", fullname="Alice Sharma")
+    db.add(user1)
+
+    phone1 = Phone(id=1, phone_number="9832412736", user_id=1)
+    db.add(phone1)
+
+    # sample use without phone number
+    user2 = User(id=2, name="Bob", fullname="Bob Sharma")
+    db.add(user2)
+
+    db.commit()
+
+def downgrade():
+    Base.metadata.drop_all(bind=engine)
+
+```
+
+This script creates the necessary tables using SQLAlchemy's `Base.metadata.create_all()` method and then creates some sample data to populate the database.
+
+Finally, we can run the migrations using the following command:
+
+```bash
+alembic upgrade head
+```
+
+This will run all of the migrations in the `alembic/versions` directory, including the `1_initial.py` script that we’ve just created.
+
+That's it! We’ve now created a database migration script to create the necessary tables and populate them with sample data on application startup.
+
+## Test Setup
+
+It is always prudent to test your changes to ensure that they function as intended. We can write a simple FastAPI test case as follows for testing our API endpoint.
+
+We will create a tests folder at the root directory of our project where we will be keeping all our tests.
+
+```bash
+from fastapi.testclient import TestClient
+from ..app.main import app;
+
+client = TestClient(app)
+
+def test_read_main():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"msg": "Hello World"}
+```
+
+To run unit tests locally:
+
+1. Install additional dependencies for your test environment listed on `test_requirements.txt` file
+
+```bash
+pip install -r test_requirements.txt
+```
+
+1. Activate test environment
+
+```bash
+source ./testenv/bin/activate
+```
+
+1. Run the following command
+
+```bash
+python3 -m pytest
+```
+
+This was a very basic guide to creating a starter project. If you have ideas to add additional configurations, feel free to contribute to the [GitHub repository](https://github.com/subashcs/FastAPIStarter) by following the _contributing_ guide.
+
+Please provide any suggestions or feedback on the article as well. Thank you 🙂 !!
