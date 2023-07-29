@@ -54,10 +54,14 @@ export const getHomePermalink = () => {
 	return permalink !== '/' ? permalink + '/' : permalink;
 };
 
+export const getDissertionsPermaLink = () => {
+	return '/dissertions';
+};
+
 /** */
-export const getRelativeLink = (link = "") => {
+export const getRelativeLink = (link = '') => {
 	return createPath(basePathname, trimSlash(link));
-}
+};
 
 /** */
 export const getBlogPermalink = () => getPermalink(BLOG_BASE);

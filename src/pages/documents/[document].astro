@@ -1,0 +1,33 @@
+---
+import { SITE } from '~/config.mjs';
+import documents from '~/utils/documents.js';
+import Layout from '~/layouts/BlogLayout.astro';
+import { getCanonical, getPermalink } from '~/utils/permalinks';
+
+export function getStaticPaths() {
+  return Object.keys(documents).map((key) => {
+    return {
+      params: {
+        document: key,
+      },
+    };
+  });
+}
+
+let { document } = Astro.params;
+document = document ?? '';
+
+const meta = {
+  title: `Document '${documents[document]}' — ${SITE.name}`,
+  description: SITE.description,
+  canonical: getCanonical(getPermalink(document, 'document')),
+  noindex: true,
+};
+---
+
+<Layout meta={meta}>
+  <Fragment slot="title">
+    {documents[document].title}
+  </Fragment>
+  <iframe src={documents[document].url} width="100%" height="1000px"></iframe>
+</Layout>
