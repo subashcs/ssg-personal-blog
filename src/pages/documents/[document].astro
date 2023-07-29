@@ -18,7 +18,7 @@ let { document } = Astro.params;
 document = document ?? '';
 
 const meta = {
-  title: `Document '${documents[document]}' — ${SITE.name}`,
+  title: `Document '${documents[document].title}' — ${SITE.name}`,
   description: SITE.description,
   canonical: getCanonical(getPermalink(document, 'document')),
   noindex: true,
