@@ -19,20 +19,15 @@ Quoted from one of his articles:
 > 
 
 `Uncle Bob` adds that these principles are gathered from empirical evidence and are applicable to designing a simple module or larger architectures while developing software. In this article, We are going to discuss the SOLID principles and demonstrate examples of good and bad designs in JavaScript. The five design principles (i.e. acronym for SOLID) are:
-
 ## 1) Single Responsibility Principle
-
 A class should have only one responsibility which means ‘reason to change’ or say a single role to play. The single responsibility principle states that:
 
 <aside>
 💡 THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE.
-
 </aside>
 
 If you can think of more than one motive for modifying a class or that class has to be changed for multiple actors or groups, then that class has more than one responsibility and must be decomposed.
-
 ### Example
-
 When designing a User class, we may have the temptation to store all the user-related operations in a single class that returns the name, sends an email to a user, and saves the user on the database as shown below.
 
 ```jsx
@@ -55,7 +50,6 @@ class User {
   }
 }
 ```
-
 However, this is a bad design since any new change in the email logic or database persistence logic may affect the user class read or write operations. Therefore, it violates the SRP. Therefore, responsibility-based separation rather than keeping different functionalities together that users perform would be cleaner and loosely coupled approach i.e. `EmailHandler` class for sending email and the DBHandler class for persisting data.
 
 ```jsx
@@ -70,7 +64,6 @@ class User {
     return this.name;
   }
 }
-
 class EmailHandler {
     email_config = "";
 
@@ -81,48 +74,36 @@ class EmailHandler {
         // logic to send email
     }
 }
-
 class DBHandler {
     saveUser(){
 			// save user to Databaser
     }
 }
 ```
-
 ## 2) Open Closed Principle
-
 If changing one part of a program results in multiple changes in other parts, it indicates poor design and can lead to issues like fragility, inflexibility, unpredictability, and difficulty in reusing code. To avoid this, the open-closed principle suggests designing modules that remain unchanged and adding new code to expand their functionality instead of modifying existing code when requirements change.
 
 The Open Closed principle originally devised by Bertrand Meyer in the 1980s appeared in his book Object-Oriented Software Construction. It states that:
-
 <aside>
 💡 SOFTWARE ENTITIES (CLASSES, MODULES, FUNCTIONS, ETC.) SHOULD BE OPEN FOR EXTENSION, BUT CLOSED FOR MODIFICATION.
-
 </aside>
 
 This principle assists us in creating designs that are stable in the face of change and that will last longer. The primary mechanisms behind the Open-Closed principle are abstraction and polymorphism.
 
 Here, the two primary attributes to keep in mind are:
-
 1. Open for Extension
-    
     This means that we can make the module behave in new and extended ways as the requirement of the application changes.
     
 2. Closed for Modification
-    
     This means that the source of such a module cannot be changed directly. No significant program can be 100% closed. Since closure cannot be complete, it must be strategic. That is, the designer must choose the kinds of changes against which to close his design. This takes a certain amount of prescience derived from experience. 
     
-
 The following heuristics and conventions are significant while we follow the OCP:
-
 1. Member variables of a class should be private
 2. No Global Variables unless the convenience offered is worth the cost
 3. Use run time type identifications cautiously
 
 Also, In order to make a program more adaptable to changes, the designer must be dedicated to abstracting certain parts of it based on requirements.
-
 ### Example
-
 We will use the famous `Shape` class example to demonstrate OCP. A common tendency while calculating the area of multiple shapes is to create a `Shape` class that returns the area of the type of shape with dimensions passed.
 
 ```jsx
@@ -147,12 +128,10 @@ class Shape {
     }
   }
 }
-
 //client code
 const rectangle = new Shape("rectangle", 10, 5);
 rectangle.getArea();
 ```
-
 This approach is alright unless you want to add a new shape, let’s say a Triangle type. You would have to modify the original getArea function to support the logic for calculating its area. This approach makes the system vulnerable to side effects when new code is introduced and thus violates the OCP. However, by refactoring our Shape class using polymorphism we can make the code open for extension but closed for modification.
 
 ```js
@@ -187,7 +166,6 @@ class Circle extends Shape {
     return this.#PIE * this.radius ** 2;
   }
 }
-
 // client code
 const rectangle = new Rectangle(10, 5);
 rectangle.getArea();
@@ -196,7 +174,6 @@ const circle = new Circle(10);
 circle.getArea();
 
 ```
-
 Now, if we need to add area calculation support for Triangle, we would simply do as follows.
 
 ```js
@@ -217,7 +194,6 @@ class Triangle extends Shape {
 const triangle = new Triangle(4,5);
 triangle.getArea();
 ```
-
 ## 3) Liskov Substitution Principle
 
 `Barbara Liskov` first wrote the LSP as follows - nearly 8 years ago:
@@ -227,12 +203,9 @@ for each object o1 of type S there is an object o2 of type T such that for all
 programs P defined in terms of T, the behavior of P is unchanged when o1 is
 substituted for o2 then S is a subtype of T.
 > 
-
 This rule can be paraphrased as:
-
 <aside>
 💡 FUNCTIONS THAT USE POINTERS OR REFERENCES TO BASE CLASSES MUST BE ABLE TO USE OBJECTS OF DERIVED CLASSES WITHOUT KNOWING IT.
-
 </aside>
 
 The LSP bears a certain resemblance to [Bertrand Meyer](https://en.wikipedia.org/wiki/Bertrand_Meyer)'s [design by contract](https://en.wikipedia.org/wiki/Design_by_contract).
@@ -245,11 +218,8 @@ The Liskov Substitution Principle (A.K.A Design by Contract) is an essential fea
 programs that conform to the Open-Closed principle. It is only when derived types are
 completely substitutable for their base types that functions that use those base types can
 be reused with impunity, and the derived types can be changed with impunity.
-
 ### Example
-
 Consider the following example. We have a `Bird` class, and what we would want is to extend this class when defining every new `Bird`.
-
 ```js
 
 class Bird {
@@ -275,7 +245,6 @@ class Ostrich extends Bird {
   //can not fly
 }
 ```
-
 Here, the derived classes `Eagle` and `Ostrich` are not substitutable for their base class. Thus, it violates the LSP. Consider we have a function that takes an Array of `Bird` as an argument and flies them to return each bird's flight distance.
 
 ```js
@@ -288,9 +257,7 @@ function flyer(b) {
   return b.map((bird) => bird.fly());
 }
 ```
-
 Since our `Ostrich` bird does not implement the fly() function this implementation will fail for the derived class `Ostrich` but will succeed for the `Eagle` class.
-
 Thus, in such a case, a nice approach would be as shown.
 
 ```js
@@ -317,10 +284,10 @@ class Eagle extends FlyingBirds {
 }
 
 class Ostrich extends Bird {
-  //
+  // class body
 }
 
-//implementation
+//client code
 
 /**
  * Flies the birds and stores the flight distance of each
@@ -332,15 +299,12 @@ function flyer(b) {
 ```
 
 ## 4) Interface Segregation Principle
-
 <aside>
 💡 CLIENTS SHOULD NOT BE FORCED TO DEPEND UPON INTERFACES THAT THEY DO NOT USE.
 </aside>
 
 When clients are obligated to rely on interfaces irrelevant to their usage, they become vulnerable to alterations made to those interfaces. This unintentionally links all clients together. Put differently, if a client is reliant on a class housing interface that the client itself doesn't utilize, but that other clients depend on, then any modifications those other clients impose on the base class will impact the first client. The interface Segregation Principle aims to minimize these associations whenever feasible, aiming to segregate interfaces when it makes sense to do so.
-
 ### Example
-
 We can use Separation through the delegation method or Separation through multiple inheritance to segregate interfaces.
 
 Presenting this demonstration in JavaScript is slightly more challenging due to the absence of formal interfaces. Nonetheless, we can illustrate it effectively by employing the concept of composition.
@@ -354,14 +318,14 @@ class Shape {
 }
 
 class Cuboid extends Shape{
-
+  //
 }
 
 // class circle is forced to use the volume calculation functionality
 // any changes on volume function might affect Circle Class which is 
 // undesired
 class Circle extends Shape {
-
+  //
 }
 ```
 
@@ -406,29 +370,19 @@ console.log(cuboid.volume());
 ```
 
 ## 5) Dependency Inversion Principle
-
 The dependency inversion principle takes into consideration the rigidity(hard to reuse), fragility(small change breaks other parts of the code), and Immobility(hard to reuse) of a bad design.
-
 The dependency inversion principle states that:
 
 <aside>
 💡 HIGH LEVEL MODULES SHOULD NOT DEPEND UPON LOW LEVEL MODULES. BOTH SHOULD DEPEND UPON ABSTRACTIONS (interfaces or abstract classes).
-
 </aside>
-
 <aside>
 💡 ABSTRACTIONS SHOULD NOT DEPEND UPON DETAILS. DETAILS SHOULD DEPEND UPON ABSTRACTIONS.
-
 </aside>
 
-Consider the implications of high-level modules that depend upon low-level modules.
-It is the high-level modules that contain the identity, important policy decisions, and business models of an application.  Yet, when these modules depend upon the lower level modules, then changes to the lower level modules can have direct effects on them; and can force them to change. This predicament is absurd! It is the high-level modules that ought to be forcing the
-low-level modules to change. When high-level modules depend upon low-level modules, it becomes very difficult to reuse those high-level modules in different contexts.
-
+Consider the implications of high-level modules that depend upon low-level modules. It is the high-level modules that contain the identity, important policy decisions, and business models of an application.  Yet, when these modules depend upon the lower level modules, then changes to the lower level modules can have direct effects on them; and can force them to change. This predicament is absurd! It is the high-level modules that ought to be forcing the low-level modules to change. When high-level modules depend upon low-level modules, it becomes very difficult to reuse those high-level modules in different contexts.
 ### Example
-
-Dependency Inversion can be applied wherever one class sends a message to another. For
-example, consider the case of the `Button` class sending on and off signals to the `Lamp` class. `Button` should not need to know about the concrete implementation about which device it turns on or off, it just sends its message to some `ButtonClient`. Devices using the button implementation (i.e. `Lamp`) could implement the `ButtonClient`. In this way, the Button and Lamp are not dependent on concrete implementations.
+Dependency Inversion can be applied wherever one class sends a message to another. For example, consider the case of the `Button` class sending on and off signals to the `Lamp` class. `Button` should not need to know about the concrete implementation about which device it turns on or off, it just sends its message to some `ButtonClient`. Devices using the button implementation (i.e. `Lamp`) could implement the `ButtonClient`. In this way, the Button and Lamp are not dependent on concrete implementations.
 
 Or, Consider the case of a `Copy Handler` that reads a character from the `Keyboard` or any device and writes it to some other device say a `Printer`.
 
@@ -483,9 +437,7 @@ $(function main (){
     copy();
 })()
 ```
-
 Following the DIP principle, after abstraction on our classes we get,
-
 ```jsx
 // Reader class (equivalent of abstract class)
 class Reader {
@@ -537,11 +489,9 @@ $(function main() {
 
 })();
 ```
-
 ## Tips
 
 **What’s the problem with conventions?** 
-
 The conventions to use something in some specific way are often violated in several parts of the application by engineers who do not understand its necessity. That is the problem
 with conventions, they have to be continually re-sold to each engineer. If the engineer does
 not agree, then the convention will be violated. And one violation ruins the whole structure.
@@ -549,7 +499,6 @@ not agree, then the convention will be violated. And one violation ruins the who
 This blog encapsulates my understanding of SOLID design principles. Would you like to explore deeper? Then, check out the references. Also, please let me know if you have any misgivings or you found any mistakes in my blog. 
 
 Thank you !! Until next time !!! 🕰️ 
-
 ## References
 
 [https://web.archive.org/web/20130917122741/https://sites.google.com/site/unclebobconsultingllc/getting-a-solid-start](https://web.archive.org/web/20130917122741/https://sites.google.com/site/unclebobconsultingllc/getting-a-solid-start) 
