@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Picture, Image } from '@astrojs/image/components'
 import PostTags from '~/components/atoms/Tags.astro';
 import SocialShare from '~/components/atoms/SocialShare.astro';
 
@@ -22,14 +22,12 @@ const { post, url } = Astro.props;
 			</h1>
 			{
 				post.image ? (
-					<Picture
+					<Image
 						src={post.image}
 						class="max-w-full lg:max-w-7xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-zinc-700"
-						widths={[400, 900]}
 						sizes="(max-width: 900px) 400px, 900px"
 						alt={post.description}
 						loading="eager"
-						aspectRatio={16/9}
 						width={900}
 						height={506}
 					/>

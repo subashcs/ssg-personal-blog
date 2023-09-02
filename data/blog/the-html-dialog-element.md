@@ -24,37 +24,33 @@ We can define the Dialog element on our HTML simply using the **dialog** keyword
 
 ```html
 <dialog id="mydialog">
-        <form method="dialog">
-            <p>Hi, This is a dialog box</p>
-            <button>Ok</button>
-        </form>
- </dialog>
+  <form method="dialog">
+    <p>Hi, This is a dialog box</p>
+    <button>Ok</button>
+  </form>
+</dialog>
 ```
 
-Once we have defined our dialog element now we can simply trigger the dialog by referencing the dialog **element ID** and using the **showModal** method provided by the dialog element. 
+Once we have defined our dialog element now we can simply trigger the dialog by referencing the dialog **element ID** and using the **showModal** method provided by the dialog element.
 
 ```html
-<button onclick="mydialog.showModal()">
-        Open Dialog Box
-</button>
+<button onclick="mydialog.showModal()">Open Dialog Box</button>
 ```
 
 We can also close the dialog using the close method of the dialog element.
 
 ```html
-<button onclick="mydialog.close()">
-            Close
- </button>
+<button onclick="mydialog.close()">Close</button>
 ```
 
 We can also define a dialog that opens by default when a page loads using the **open** attribute of the dialog element.
 
 ```html
 <dialog open>
-<p>Welcome, User!</p>
-<form method="dialog">
-	<button>OK</button>
-</form>
+  <p>Welcome, User!</p>
+  <form method="dialog">
+    <button>OK</button>
+  </form>
 </dialog>
 ```
 
