@@ -1,0 +1,371 @@
+---
+publishDate: 'Nov 07 2023'
+title: 'GRPC and Protocol buffers for communication between services'
+description: 'Protocol Buffer, or Protobuf, is a language-neutral, platform-neutral, extensible way of serializing structured data for use in communications protocols and data storage. Protobuf is to gRPC as JSON to REST API, except it’s smaller and faster.
+Google Remote Procedure Call (gRPC) is a high-performance, open-source universal RPC framework, that uses Protobuf ...
+'
+image: '~/assets/images/grpc-and-protocol-buffers/cover.png'
+tags: [grpc, protobuf, protocol buffers, rpc, micro services]
+---
+
+import grpc from '~/assets/images/grpc-and-protocol-buffers/grpc1.png';
+import proto from '~/assets/images/grpc-and-protocol-buffers/proto1.png';
+import { Image } from '@astrojs/image/components';
+
+<p>
+Hello readers !! In this article, we are going to explore communication between services using Protocol buffers and GRPC. While XML and JSON are prominently used for serializing data for communication between services using SOAP and REST API standards, another new method of serialization i.e. Protocol Buffer offers an efficient way to communicate in a Remote Procedure Call framework like gRPC.
+</p>
+
+## What are Protocol Buffers?
+
+Protocol Buffers, or Protobuf, is a language-neutral, platform-neutral, extensible way of serializing structured data for use in communications protocols and data storage. It was developed by Google and is used extensively in their internal services. Protobuf is to gRPC as JSON to REST API, except it’s smaller and faster, and it generates native language bindings. Using Protobuf, binary data is transmitted which improves the speed of transmission compared to JSON’s or XML’s string format.
+
+<Image src={proto} alt="Protocol buffer" />
+*Figure 1: Data serialization with Protocol buffers*
+
+## **When/Why to use Protocol Buffers?**
+
+Protocol buffers are ideal for any situation in which you need to serialize structured, record-like, typed data in a language-neutral, platform-neutral, extensible manner. They are most often used for defining communications protocols (together with gRPC) and for data storage.
+
+Some of the advantages include:
+
+- Compact data storage
+- Fast parsing
+- Availability in many programming languages
+- Optimized functionality through automatically generated classes
+- Protobuf messages are defined using a schema, which provides a clear contract between services
+- Protobuf messages contain version information, allowing you to evolve your data models over time
+- Protocol Buffers support backward and forward compatibility. You can add new fields to your message schemas without breaking existing clients that might not be aware of these new fields.
+
+**Protocol buffers do not fit all data. In particular, some disadvantages are as follows:**
+
+- Protocol buffers tend to assume that entire messages can be loaded into memory at once and are not larger than an object graph. For data that exceeds a few megabytes, consider a different solution; when working with larger data, you may effectively end up with several copies of the data due to serialized copies, which can cause surprising spikes in memory usage.
+- When protocol buffers are serialized, the same data can have many different binary serializations. You cannot compare two messages for equality without fully parsing them.
+- Messages are not compressed. While messages can be zipped or gzipped like any other file, special-purpose compression algorithms like the ones used by JPEG and PNG will produce much smaller files for data of the appropriate type.
+- Protocol buffer messages are less than maximally efficient in both size and speed for many scientific and engineering uses that involve large, multi-dimensional arrays of floating point numbers. For these applications, [FITS](https://en.wikipedia.org/wiki/FITS) and similar formats have less overhead.
+- Protocol buffers are not well supported in non-object-oriented languages popular in scientific computing, such as Fortran and IDL.
+- We cannot fully, inherently interpret Protocol buffer messages without access to their corresponding `.proto` file.
+
+## What is GRPC?
+
+Google Remote Procedure Call (gRPC) is a high-performance, open-source universal Remote Procedure Call framework developed by Google in 2016. gRPC uses Protobuf by default for its interface definition language and provides features such as authentication, load balancing, and bidirectional streaming among others. For understanding, we can compare gRPC with REST or SOAP.
+
+GRPC uses HTTP/2 protocol; the various features of HTTP/2 like the binary framing layer allow the division and framing of messages into small binary format, multiplexing feature allows streaming requests between client and server.
+
+Together, Protocol Buffers and gRPC provide a powerful, efficient, and robust method for creating distributed applications and services. They offer a way to define services in a language-neutral way and generate client and server code in numerous languages, which can help reduce the complexity of distributed system development. gRPC uses a .proto file to define API contracts.
+
+<Image src={grpc} alt="GRPC communication" />
+*Figure 2: GRPC client server communication*
+
+As shown in the figure above, a gRPC communication involves multiple entities i.e. the gRPC
+server, the gRPC client or stub, and proto request and response messages defined in a `.proto` file. Now, We will look at
+a real-life example of this communication by actually creating a gRPC services communication system.
+
+## Pros
+
+GRPC brings advantages offered by protocol buffers message format. Additionally, the gRPC framework has other notable benefits:
+
+1. GRPC using HTTP/2 on top of TLS encrypted session offers secure communication.
+2. GRPC is a complete RPC system that operates on a wide range of systems.
+3. Code generation is an important feature of GRPC. By defining data formats and application endpoints, gRPC streamlines the development process. It generates client-side network stubs and server-side skeletons, which saves significant time and effort when designing diverse services.
+
+## Cons
+
+The drawbacks of gRPC come from the complexity of the Protobuf specification. Moreover, there are a few drawbacks of the gRPC framework. They are:
+
+1. Lack of maturity
+2. Limited browsers support
+3. Steep learning curve
+
+## Creating GRPC Clients and Server in Node
+
+GRPC supports multiple languages like C, C++, Java, Go, Dart, Python, Node, etc; In this demo, we will be using Node.js as it is a widely used language.
+
+We will be demonstrating how gRPC can be used in different ways. We'll create a simple service for the weather forecast system where clients can regularly update weather data, and get weather details from the server. Also, we will create a chat app to demonstrate bidirectional communication in real time.
+
+Let’s proceed with an example for each type of RPC call based on the type of GRPC request and response.
+
+First, let’s create a proto file definition (contract) containing all RPC calls. Both the client and the server for communication share this contract.
+
+```jsx
+syntax = "proto3";
+
+package weather;
+
+service Weather {
+  rpc getWeatherDetails (WeatherRequest) returns (WeatherResponse) {} // unary call
+  rpc updateTemperature (stream TemperatureUpdateRequest) returns (WeatherResponse) {} // client streaming
+  rpc getTemperatureUpdates (WeatherRequest) returns (stream WeatherResponse) {} //server streaming
+  rpc weatherChat(stream ChatMessage) returns (stream ChatResponse) {} // bidirectional streaming
+}
+
+message TemperatureUpdateRequest {
+  int32 temperature = 1;
+  string region = 2;
+}
+
+message WeatherRequest {
+  string region = 1;
+}
+
+message WeatherResponse{
+  WeatherDetails message = 1;
+}
+
+message WeatherDetails {
+  int32 id = 1;
+  string region = 2;
+  int32 temperature = 3;
+}
+
+message ChatMessage {
+  string message = 1;
+}
+
+message ChatResponse {
+  string message = 1;
+}
+```
+
+## Unary RPC
+
+The unary RPC is a simple gRPC call with a single request and a single response. Here, any gRPC client requests with some parameters and receives a unit response from the server: just like in a normal function call.
+
+Here’s an example client RPC call “getWeatherDetails” with parameter `region`, and upon successful request, the server sends the temperature information to the client.
+
+### Client
+
+```jsx
+function getWeatherDetails() {
+	console.log('Requesting weather data of Baglung district...');
+	client.getWeatherDetails({ region: 'Baglung' }, (err, result) => {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		console.log('Got weather result:', result);
+	});
+}
+```
+
+### Server
+
+```jsx
+function getWeatherDetails(call, res) {
+	console.log('Processing weather data for region - ', call.request.region);
+	const { temperature, id } = { temperature: Math.random() * 100, id: Math.random() * 10 };
+	res(null, {
+		message: { region: call.request.region, temperature, id },
+	});
+}
+```
+
+## Client Streaming
+
+In Client Streaming RPC calls the client updates the data stream to the server regularly. Here, is a case of a weather updater client that regularly sends the temperature of different regions to the server by calling the`updateTemperature` - Client Streaming RPC.
+
+**Client**
+
+```jsx
+function clientTemperatureUpdateStreamer() {
+	const clientTemperatureUpdateStream = client.updateTemperature((err, result) => {
+		if (err) {
+			console.log('Error:', err);
+		}
+		console.log('Final data after updates:', result);
+	});
+
+	clientTemperatureUpdateStream.write({
+		region: 'Kathmandu',
+		temperature: 30,
+	});
+
+	clientTemperatureUpdateStream.write({
+		region: 'NewYork',
+		temperature: 35,
+	});
+
+	clientTemperatureUpdateStream.write({
+		region: 'Kathmandu',
+		temperature: 28,
+	});
+	clientTemperatureUpdateStream.end();
+}
+```
+
+**Server**
+
+```jsx
+/**
+ * Client streaming example: client sending multiple updates
+ */
+function updateTemperature(call: any, callback: any) {
+	const weatherData: any[] = [];
+	let id = 0;
+	call.on('data', (request: any) => {
+		// Process each incoming request
+		id++;
+		console.log(`Updating for ${request.region} with new temperature ${request.temperature}`);
+		weatherData.push({
+			id,
+			region: request.region,
+			temperature: request.temperature,
+		});
+	});
+
+	call.on('end', () => {
+		// Save all the received data, and send acknowledgement to client
+		const response = {
+			message: weatherData,
+		};
+		callback(null, response);
+	});
+}
+```
+
+## Server Streaming
+
+A server-streaming gRPC request is one in which the server sends data stream updates to the client after the client calls the remote procedure. For example: the server may continuously send the latest temperature updates on the server to the clients that want to read the latest temperature updates of a particular region.
+
+The following is a sample gRPC server function:
+
+```jsx
+/**
+ * Server streaming example: server sending multiple updates response
+ * @param call
+ */
+function getTemperatureUpdates(call: any) {
+	const request = call.request;
+	// Streaming new temperature data mock updates
+	for (let i = 1; i <= 5; i++) {
+		const response = {
+			message: {
+				region: request.region,
+				temperature: Number(Math.random() * 100 + i),
+				humidity: i,
+			},
+		};
+		call.write(response);
+	}
+
+	call.end(); // Signal the end of the streaming
+}
+```
+
+Here is the sample client code making the server streaming call:
+
+```jsx
+/**
+ * Fetches the latest temperature updates from the server
+ * for the requested location (region)
+ */
+function serverTemperatureStreamer() {
+	const serverTemperatureStream = client.getTemperatureUpdates({
+		region: 'Baglung',
+	});
+	serverTemperatureStream.on('data', (data: any) => {
+		console.log('Received weather update:', data);
+	});
+	serverTemperatureStream.on('end', () => {
+		console.log('Server finished sending weather updates');
+	});
+}
+```
+
+## Bidirectional Streaming
+
+In gRPC, bidirectional streaming is a way for a client and a server to send a stream of messages to each other at the same time. Unlike traditional request-response communication, where the client sends a request and waits for the server to respond, bidirectional streaming allows both the client and the server to send multiple messages back and forth without waiting for the other party to finish.
+
+Consider a real-world example of a chat application using gRPC bidirectional streaming. We will call this service Weather Chat. This will be a broadcast chat service where every client connecting to the chat service can communicate with all the other participants in the room.
+
+**Server**
+
+```jsx
+const users = new Map<string, any>();
+/**
+ * Chat room service for weather data subscribers
+ */
+function weatherChat(call: any) {
+  // listen for messages from clients
+  call.on("data", (req: any) => {
+    const username = call.metadata.get("username")[0] as string;
+    const message = req.message;
+    console.log(`Received message from ${username}: ${message}`);
+    // brodcast message to all users
+    for (let [user, userCall] of users) {
+      if (username !== user) {
+        userCall.write({
+          username,
+          message,
+        });
+      }
+    }
+
+    if (users.get("username") === undefined) {
+      users.set(username, call);
+    }
+  });
+  // when any client ends the connection send a good bye response
+  call.on("end", () => {
+    const username = call.metadata.get("username")[0] as string;
+    users.delete(username);
+    call.write({
+      username: "Server",
+      message: `See you later ${username}`,
+    });
+  });
+}
+```
+
+**Client**
+
+```jsx
+function clientChatService() {
+    const metadata = new grpcLibrary.Metadata();
+    try {
+      reader.question("Enter your username:\n", (name) => {
+        console.log(`Hello ${name}, Write your message:`);
+        metadata.set("username", name);
+        const call = client.weatherChat(metadata);
+        call.write({ message: "register" });
+
+        call.on("data", (data) => {
+          console.log(`${data.username}:`, data.message);
+        });
+
+        reader.on("line", (line) => {
+          if (line == "quit") {
+            call.end();
+          } else {
+            call.write({ message: line });
+          }
+        });
+      });
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  }
+```
+
+## Uses of GRPC
+
+In modern distributed systems, gRPC is used for various purposes due to its efficiency, versatility, and language-agnostic nature. The following are some common uses of gRPC.
+
+- GRPC is mainly used for efficiently connecting micro-services created using different programming languages.
+- It is also used for connecting mobile frontends and web frontends to backend services.
+- GRPC’s bidirectional streaming is used in real-time communication systems like chat services.
+- GRPC is used in data streaming services and IOT devices because of its lightweight nature.
+
+## GRPC and the Web Browser
+
+gRPC is primarily designed for communication between microservices in a networked environment. While gRPC itself does not directly support web browsers, there are methods to use gRPC in web applications such as using a `grpc-web` library with gRPC proxy servers like envoy. Nevertheless, client-side streaming and bidirectional streaming are not adequately supported in the browser. We can create different services, for example: [a chat service using GRPC](https://daily.dev/blog/build-a-chat-app-using-grpc-and-reactjs).
+
+## SOCKETS VS GRPC VS REST API
+
+Sockets and gRPC are both methods of communication between different systems, but they have significant differences. Sockets provide a low-level API for network communication, and developers need to handle many details manually, like managing connections and parsing data. On the other hand, gRPC is a high-level framework that uses Protocol Buffers as its interface definition language. It handles many details automatically, like connection management and data serialization/deserialization, making it easier and more efficient to build distributed systems and services.
+
+## Key takeaways
+
+- We can use Sockets when Real-time, bidirectional communication is critical, and Low latency is required.
+- We can use REST API when Interacting with web applications or mobile apps where simple and standard communication is sufficient, and while broad compatibility and ease of integration are necessary.
+- When microservices communication is needed, where strong typing and code generation are desired, or when performance and efficiency are priorities, it’s better to choose gRPC.

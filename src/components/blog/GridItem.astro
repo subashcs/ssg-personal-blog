@@ -17,19 +17,19 @@ const image = await findImage(post.image);
 					<Picture
 						src={image}
 						class="object-cover rounded shadow-l"
-						widths={[200, 400]}
-						sizes="(max-width: 400px) 200px, 500px"
+						widths={[200, 550]}
+						height={500}
+						sizes="(max-width: 550px) 200px, 550px"
 						alt={post.title}
-						aspectRatio={'16:9'}
+						aspectRatio={'16:10'}
 					/>
 				)
 			}
-			<div class="w-full md:w-3/4 md:pl-3">
-				<h3 class="mb-2 mt-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
-					<span class="hover:text-primary-600 transition ease-in duration-200">
+			<div class="w-full md:w-3/4 md:pl-3 md:ml-2 px-2">
+				<h3 class="mt-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
 						{post.title}
-					</span>
 				</h3>
+				<div class="mb-2"><span class="text-sm text-slate-200 dark: bg-gray-600 rounded px-1 ">Published Date: {post.publishDate}</span></div>
 				<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
 			</div>
 		</div>
