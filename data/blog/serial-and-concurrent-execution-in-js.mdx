@@ -1,0 +1,219 @@
+---
+publishDate: 'Feb 17 2024'
+title: 'Serial and Concurrent Executions with Promises in JavaScript'
+description: 'In serial execution code gets executed line by line, one task after another. Picture a juggler, keeping multiple balls in the air with impressive dexterity. That is the essence of concurrent execution'
+image: '~/assets/images/serial-and-concurrent-execution-in-js/cover.png'
+tags: [js, web, nodejs, promises, bluebird]
+---
+import eventloopimage from '~/assets/images/serial-and-concurrent-execution-in-js/eventloop.png'
+import { Image } from '@astrojs/image/components';
+
+
+In the fast-paced world of web development, speed and efficiency are paramount. But when it comes to executing code, should you take a serial approach, one step at a time, or embrace the thrill of concurrency, letting multiple tasks run seemingly simultaneously? 
+
+Buckle up, fellow coders, as we explore **concurrent vs. serial executions in JavaScript**!
+
+## How does JavaScript execute code?
+
+JavaScript employs an event-driven, non-blocking model to execute tasks by using the Event Loop. It utilizes the Event Loop to manage multiple tasks "at the same time" by delegating non-critical blocking operations to the workers/web APIs while the main thread continues working. Think of it as delegating tasks to helpers while the main thread continues working.
+
+The following diagram represents the code execution process with the event loop in JavaScript. Asynchronous operations, such as callbacks, promises, and async/await for handling tasks such as fetching data from a server, reading files, or dealing with user input are delegated to workers by the event loop. This allows handling tasks without blocking the main execution thread. 
+
+Execution happens once the tasks are pushed at the call stack. If the task is a blocking one it is pushed to the workers. After completion, the callback is pushed back to the MacroTask queue or MicroTask queue depending on the type of operation. When the call stack is empty tasks are pushed from the Queue to the Call Stack for execution.
+
+<Image width={1000} loading="lazy" densities={[2, 2]} src={eventloopimage} alt="Protocol buffer" />
+*Figure 1: Event loop in javascript*
+
+## **When to use Serial Execution: The Ordered Champion?**
+
+Think of a marathon runner – steady, focused, completing each mile before moving on. That's **serial execution**, where code gets executed line by line, one task after another. While simple and predictable, it can become a bottleneck for applications dealing with long-running tasks. Imagine waiting for a large image to download before any other code can run – not ideal for user experience!
+
+**Serial execution shines for:**
+
+- Simple tasks with minimal processing needs.
+- Maintaining predictability and code clarity.
+- Avoiding potential race conditions, where execution order might impact results.
+
+```jsx
+// Function to simulate an asynchronous task
+const simulateAsyncTask = (taskNumber, delay) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Task ${taskNumber} completed after ${delay} milliseconds`);
+      resolve();
+    }, delay);
+  });
+};
+
+// Sample tasks
+const tasks = [
+  () => simulateAsyncTask(1, 1000),
+  () => simulateAsyncTask(2, 2000),
+  () => simulateAsyncTask(3, 1500),
+];
+// Serial Execution normally
+const normalSerialExecution = async () => {
+  console.time('Serial Execution');
+  // Simulating multiple asynchronous tasks running serially
+  for (i = 0; i < tasks.length; i++) {
+    console.log(`Starting Task ${i + 1}`);
+    await tasks[i]();
+    console.log(`Finished Task ${i + 1}`);
+  }
+
+  console.timeEnd('Serial Execution');
+};
+
+// Serial execution
+normalSerialExecution();
+
+/**
+### Sample Output ####
+
+Starting Task 1
+Task 1 completed after 1000 milliseconds
+Finished Task 1
+Starting Task 2
+Task 2 completed after 2000 milliseconds
+Finished Task 2
+Starting Task 3
+Task 3 completed after 1500 milliseconds
+Finished Task 3
+Serial Execution: 4.513s
+*/
+```
+
+## **When to use Concurrent Execution: The Multitasking Marvel**
+
+> Don’t put shitty slow code on the stack that blocks the event loop, instead queue it asynchronously.
+> 
+
+Now, picture a juggler, keeping multiple balls in the air with impressive dexterity. That's the essence of **concurrent execution**. 
+
+This juggling act unlocks performance gains, especially for user-facing interactions, as the application remains responsive even during heavy processing.
+
+We can employ patterns like the Observer pattern for efficient event handling or the Publish-Subscribe pattern for real-time data updates.
+
+**Concurrent execution thrives in:**
+
+- Handling user interactions and keeping the UI responsive.
+- Fetching data or performing I/O operations without blocking the main thread.
+- Building scalable and performant applications for multiple users.
+
+```jsx
+// Using Promise.all to execute tasks concurrently
+const executeTasksConcurrently = async () => {
+  console.time('Promise: taskConcurrent');
+
+  await Promise.all(
+    tasks.map(async (task, index) => {
+      console.log(`Starting Task ${index + 1}`);
+      await task();
+      console.log(`Finished Task ${index + 1}`);
+    })
+  );
+
+  console.timeEnd('Promise: taskConcurrent');
+};
+
+// Execute tasks concurrently
+executeTasksConcurrently(); 
+
+/**
+### Sample Output ###
+
+Starting Task 1
+Starting Task 2
+Starting Task 3
+Task 1 completed after 1000 milliseconds
+Finished Task 1
+Task 3 completed after 1500 milliseconds
+Finished Task 3
+Task 2 completed after 2000 milliseconds
+Finished Task 2
+Promise: taskConcurrent: 2.005s
+**/
+```
+
+## **JavaScript's Toolbox for Concurrency:**
+
+The key to unlocking concurrency lies in asynchronous programming. Like a well-equipped toolbox, JavaScript offers various tools for concurrent execution:
+
+- **Callbacks:** The classic approach, but can lead to "callback hell" with nested functions.
+- **Promises:** Offer a cleaner way to handle asynchronous operations with chaining and error handling.
+- **Async/await:** Syntactic sugar over promises, making asynchronous code look more synchronous.
+- **Async generators:** Powerful for handling asynchronous streams of data.
+
+## Tools to handle concurrent and serial executions
+
+While executing multiple tasks concurrently it is not always feasible to call one by one. Instead, tools like `[Bluebird](http://bluebirdjs.com/docs/getting-started.html)` become handy in the process. Bluebird provides multiple utilities to perform operations with promises and control over handling concurrency. 
+
+Below is a simple program to demonstrate speed with concurrent execution and serial execution of multiple promises using Bluebird.
+
+```jsx
+const Bluebird = require('bluebird');
+
+// Using Bluebird.each to execute tasks serially
+const executeTasksSerially = async () => {
+  console.time('Bluebird Promise: task serial');
+
+  await Bluebird.each(tasks, async (task, index) => {
+    console.log(`Starting Task ${index + 1}`);
+    await task();
+    console.log(`Finished Task ${index + 1}`);
+  });
+
+  console.timeEnd('Bluebird Promise: task serial');
+};
+
+// Using Bluebird.mapSeries to execute tasks serially and maintain order
+const executeTasksInOrder = async () => {
+  console.time('Bluebird Promise: taskInOrder');
+  await Bluebird.mapSeries(tasks, async (task, index) => {
+    console.log(`Starting Task ${index + 1}`);
+    const result = await task();
+    console.log(`Finished Task ${index + 1}`);
+    return result;
+  });
+  console.timeEnd('Bluebird Promise: taskInOrder');
+};
+
+// Blubird map function to batch concurrent execution
+const executeConcurrentBatchWithBluebird = async () => {
+  console.time('Bluebird Concurrent Promise');
+  await Bluebird.map(
+    tasks,
+    async (task, index) => {
+      console.log(`Starting Task ${index + 1}`);
+      const result = await task();
+      console.log(`Finished Task ${index + 1}`);
+      return result;
+    },
+    {
+      concurrency: 2, // max 2 at a time , change this to 3 and observe performance
+    }
+  );
+  console.timeEnd('Bluebird Concurrent Promise');
+};
+
+// Toggle each to examine the execution
+// Uncomment one of the following lines to see the behavior
+executeTasksSerially();  // Takes 4 secs
+
+// Execute tasks in order
+executeTasksInOrder();   // Takes 4 secs
+
+// Execute concurrent by batching
+executeConcurrentBatchWithBluebird();
+
+```
+
+## **Beyond the Basics:**
+
+While concurrency offers great performance improvements, sometimes we require more while performing multiple tasks at the same time. 
+
+For ambitious developers, the journey continues:
+
+- **Parallelism:** Execute tasks truly simultaneously using Web Workers or Node.js threads, ideal for computationally intensive operations. Explore Clusters and Web Workers in Node Js to know more.
+
+Stay tuned for the next blog on parallelism in Node JS. Thank you and feedbacks are much appreciated.
