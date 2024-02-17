@@ -1,6 +1,6 @@
 # 🚀 SubashCS - Personal Blog
 
-[![License](https://img.shields.io/github/license/subashcs/ssg-personal-blog?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/subashcs/ssg-personal-blog/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/subashcs)
 [![Stars](https://img.shields.io/github/stars/subashcs/subashcs.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/subashcs/subashcs)
 [![Forks](https://img.shields.io/github/forks/subashcs/subashcs.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/subashcs/subashcs)
