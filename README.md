@@ -1,51 +1,21 @@
-# 🚀 SubashCS
+# 🚀 SubashCS - Personal Blog
 
-<img src="lighthouse-score.png" align="right"
-     alt="SubashCs Lighthouse Score" width="100" height="358">
-
-
-
-## Features
-
-- ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode**.
-- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed** ([@astrojs/rss](https://docs.astro.build/en/guides/rss/)), [**MDX** support](https://docs.astro.build/en/guides/integrations-guide/mdx/), **Categories & Tags**, **Social Share** buttons, ...
-- ✅ **Image optimization** ([@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/)) and **Font optimization**.
-- ✅ Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
-- ✅ **Open Graph tags** for social media sharing.
-- ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
-
-<br>
-
-<img src="./screenshot.jpg" alt="SubashCS Theme Screenshot">
-
-[![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
-[![License](https://img.shields.io/github/license/onwidget/SubashCS?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/SubashCS/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/SubashCS#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/SubashCS/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/SubashCS)
-[![Stars](https://img.shields.io/github/stars/onwidget/SubashCS.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/onwidget/SubashCS)
-[![Forks](https://img.shields.io/github/forks/onwidget/SubashCS.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/onwidget/SubashCS)
-
-<br>
+[![License](https://img.shields.io/github/license/subashcs/ssg-personal-blog?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/subashcs/ssg-personal-blog/LICENSE.md)
+[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/subashcs)
+[![Stars](https://img.shields.io/github/stars/subashcs/subashcs.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/subashcs/subashcs)
+[![Forks](https://img.shields.io/github/forks/subashcs/subashcs.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/subashcs/subashcs)
 
 <details open>
 <summary>Table of Contents</summary>
 
-- [🚀 SubashCS](#-subashcs)
-  - [Features](#features)
+- [🚀 SubashCS - Personal Blog](#-subashcs---personal-blog)
   - [Demo](#demo)
   - [Getting started](#getting-started)
     - [Project structure](#project-structure)
-    - [Commands](#commands)
+    - [Available Commands](#available-commands)
     - [Configuration](#configuration)
     - [Deploy](#deploy)
       - [Deploy to production (manual)](#deploy-to-production-manual)
-      - [Deploy to Netlify](#deploy-to-netlify)
-      - [Deploy to Vercel](#deploy-to-vercel)
-  - [Roadmap](#roadmap)
-  - [Frequently Asked Questions](#frequently-asked-questions)
-  - [Contributing](#contributing)
   - [Acknowledgements](#acknowledgements)
   - [License](#license)
 
@@ -61,13 +31,12 @@
 
 ## Getting started
 
-**SubashCS** tries to give you quick access to creating a website using [Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
+**SubashCS** is a clone of AstroWind template that uses [Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/).
 
-Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals..
 
 ### Project structure
 
-Inside SubashCS template, you'll see the following folders and files:
+Inside this repo, you'll see the following folders and files:
 
 ```
 /
@@ -120,13 +89,9 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit SubashCS on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/SubashCS/tree/main)
+[![Edit original template AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/AstroWind/tree/main)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Update `config.mjs` and contents. Have fun!
-
-<br>
-
-### Commands
+### Available Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -203,51 +168,11 @@ Now, your website is ready to be deployed. All generated files are located at
 `dist` folder, which you can deploy the folder to any hosting service you
 prefer.
 
-#### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/SubashCS)
-
-#### Deploy to Vercel
-
-Clone this repository on own GitHub account and deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2FSubashCS)
-
-<br>
-
-## Roadmap
-
-- _Project_:
-  - Create simple and clear strategy to get template updates
-- _Blog_:
-  - Improve blog design
-  - Create component or utilities for related posts
-  - Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg video, tweet...)
-- _More widgets_:
-  - Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
-  - Create external library or place with useful Tailwind components
-- _More Examples_: Add commonly used example pages (Ex: About, Terms, Services...)
-- _Documentation_: Create detailed documentation with best practices and redesign tips
-
-<br>
-
-## Frequently Asked Questions
-
-- Why?
-
-<br>
-
-## Contributing
-
-If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
-That would be very useful for all of us and we would be happy to listen and take action.
 
 ## Acknowledgements
 
-Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/SubashCS/graphs/contributors).
+Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/AstroWind/graphs/contributors).
 
 ## License
 
-**SubashCS** is licensed under the Unlicense license — see the [LICENSE](https://github.com/onwidget/SubashCS/blob/main/LICENSE.md) file for details.
+**SubashCS** is licensed under the MIT license — see the [LICENSE](https://github.com/subashcs/ssg-personal-blog/LICENSE.md) file for details.
