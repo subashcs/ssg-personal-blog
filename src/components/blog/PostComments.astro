@@ -1,0 +1,46 @@
+<div>
+	<section class="giscus px-4 py-16 mx-auto max-w-7xl lg:py-20"></section>
+	<!--
+		NOTE: keeping it for reference
+		<script
+		src="https://giscus.app/client.js"
+		data-repo="subashcs/ssg-personal-blog"
+		data-repo-id="R_kgDOIiDSFA"
+		data-category="Blog Post Comments"
+		data-category-id="DIC_kwDOIiDSFM4CeVsd"
+		data-mapping="url"
+		data-strict="0"
+		data-reactions-enabled="1"
+		data-emit-metadata="0"
+		data-input-position="bottom"
+		data-theme="dark"
+		data-lang="en"
+		data-loading="lazy"
+		crossorigin="anonymous"
+		async
+	></script> -->
+
+	<script>
+		let giscusTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+		let giscusAttributes = {
+			src: 'https://giscus.app/client.js',
+			'data-repo': 'subashcs/ssg-personal-blog',
+			'data-repo-id': 'R_kgDOIiDSFA',
+			'data-category': 'Blog Post Comments',
+			'data-category-id': 'DIC_kwDOIiDSFM4CeVsd',
+			'data-mapping': 'url',
+			'data-strict': '0',
+			'data-reactions-enabled': '1',
+			'data-emit-metadata': '0',
+			'data-input-position': 'bottom',
+			'data-theme': giscusTheme,
+			'data-lang': 'en',
+			crossorigin: 'anonymous',
+			async: '',
+		};
+
+		let giscusScript = document.createElement('script');
+		Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+		document.getElementById('blog-section').appendChild(giscusScript);
+	</script>
+</div>
