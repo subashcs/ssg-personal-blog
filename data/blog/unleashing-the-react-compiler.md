@@ -10,20 +10,20 @@ Facebook has recently open-sourced the React Compiler with the public release of
 
 Many of us are curious about how this React compiler works and integrates with the React ecosystem. In this blog, we will discuss what the React Compiler is and how it functions.
 
-# What is React Compiler
+## What is React Compiler
 
 The React Compiler is a new build-time tool in the React ecosystem that automatically optimizes your React app to improve its performance, especially on updates (re-renders). It works with existing JavaScript (and TypeScript) and understands the [Rules of React](https://react.dev/reference/rules). If your app adheres to these rules, you generally won't need to modify any extra code to use it after configuring the React compiler.
 
 Don’t worry, the React compiler is built with Rust. Having an efficient and performant compiler built with Rust has added more power to React.
 
-# How does the Compiler optimize your React app?
+## How does the Compiler optimize your React app?
 
 The React compiler replaces the useMemo, useCallback, and React.memo functions by offering out-of-the-box optimization. Primarily, the React compiler does the following:
 
 1. Automatically memoizes your code where needed for expensive calculations and unnecessary re-renders.
 2. When compiling for performance, if the compiler detects a violation of the Rules of React, it omits that part of the code and proceeds.
 
-# How does the Rust-based React Compiler integrate with React?
+## How does the Rust-based React Compiler integrate with React?
 
 The introduction of Rust to compile React, marks an important milestone with the native support of Rust’s powerful performance for React. 
 
@@ -31,13 +31,13 @@ Like Babel, which React uses to transpile JSX code, the React compiler is a Babe
 
 For static analysis of our code, we can use the `eslint-plugin-react-compiler` package, which helps analyze React Compiler-specific rules.
 
-# How can I access the React Compiler?
+## How can I access the React Compiler?
 
 Refer to the [official guide](https://react.dev/learn/react-compiler#usage-with-babel) for getting started with the React Compiler in different bundler settings.
 
 As of now, it is only supported with React `19-rc-***` versions.
 
-# How it works
+## How it works
 
 Let's have a hands on with a [demo project](https://github.com/subashcs/react-compiler-demo). This project is setup with Vite + React. 
 
