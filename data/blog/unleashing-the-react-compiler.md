@@ -139,11 +139,12 @@ export default function TodoList({ todos, theme, tab }) {
 
 This is just scratching the surface. You can visit the React Compiler playground to really see how its working or compiling your code. 
 
-We can expect even more enhancements to the compiler in the future as we continue to prioritize preserving the declarative nature of React coding.
+We can expect even more enhancements to the compiler in the future as we continue to prioritize preserving the declarative nature of React coding. Such as: re-render optimizations on context values updates and many more. 
 
 Thanks for sticking around until the end! Stay tuned for more updates by keeping in sync. Your support and feedback means a lot. Until next time! 😁
 
 ## References
 
-1. React Compiler Discussions: [https://github.com/reactwg/react-compiler/discussions](https://github.com/reactwg/react-compiler/discussions/5)
-2. React Compiler Playground: [https://playground.react.dev](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAgHgBwjALgAgBMEAzAQygBsCSoA7OXASwjvwFkBPAQU0wAoAlPmAAdNvhgJcsNgB5CTAG4A+ABIJKlCPgDqOSoTkB6RaoDc4gL7iQVoA)
+1. [React Compiler Discussions] (https://github.com/reactwg/react-compiler/discussions/)
+2. [React Compiler Playground] (https://playground.react.dev)
+3. [React Conf 2024] (https://www.youtube.com/watch?v=T8TZQ6k4SLE) 
