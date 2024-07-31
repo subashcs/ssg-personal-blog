@@ -135,7 +135,7 @@ export default function TodoList({ todos, theme, tab }) {
 
 ```
 
-*This might be a because of the violation of the Rules of React or a lacking in the compiler itself.  your feedback on this is much appreciated.*
+*This might be because of the violation of the Rules of React or a lacking in the compiler itself. Your feedback on this is much appreciated.*
 
 This is just scratching the surface. You can visit the React Compiler playground to really see how its working or compiling your code. 
 
