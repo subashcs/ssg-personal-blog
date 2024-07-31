@@ -86,3 +86,9 @@ common utils
 .inset {
 	border-style: inset;
 }
+
+
+.post-container a {
+	white-space: normal; 
+	word-break: break-word; 
+}
