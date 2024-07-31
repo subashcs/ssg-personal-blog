@@ -8,7 +8,7 @@ const TypingAnimation = ({ text = "Subash Chandra Sapkota!" }) => {
 		const timerId = setTimeout(() => {
 			setTypedText(text.substring(0, currentTextIndex + 1));
 			setCurrentTextIndex((currentIndex) => (currentIndex === text.length - 1 ? 0 : currentIndex + 1));
-		}, 900);
+		}, 400);
 
 		return () => clearTimeout(timerId);
 	}, [currentTextIndex, text]);
