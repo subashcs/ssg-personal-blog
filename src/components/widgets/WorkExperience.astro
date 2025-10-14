@@ -1,4 +1,4 @@
----
+--- 
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 
@@ -6,24 +6,105 @@ const badges = ['red', 'green', 'blue', 'yellow', 'indigo', 'purple'];
 
 const workExperiences = [
   {
-    fromDate: '2019 July',
-    toDate: '2019 Dec',
-    title: 'React and Node Developer',
-    employer: 'ITGlance Pvt. Ltd',
-    type: 'Internship',
-    description: `At ITGlance, I received training in UI/UX development using HTML, CSS, Bootstrap, and React.js. I worked under the mentorship of senior developers to create a Point of Sales System. I worked on developing frontend with React interacting with CouchDB/PouchDB and used other tools like Redux, and Redux-saga for store management.
-I also got hands-on experience with other projects in API development for a school management system using Node.js and Express.
-Furthermore, I learned about Agile development practices, and Version control systems eg: Git, Bitbucket etc.`,
-    toolsUsed: ['JavaScript', 'ReactJS', 'JIRA', 'Git'],
+    fromDate: 'May 2025',
+    toDate: 'Present',
+    title: 'Senior Software Engineer',
+    employer: 'Rippey AI',
+    type: 'Full-time',
+    description: 'Spearheaded code quality enhancement initiatives, resulting in significant cost reductions and an improved user experience. Engineered a sophisticated prompt engine, empowering prompt engineers to streamline their workflow and efficiently manage a comprehensive prompt knowledge base.',
+    toolsUsed: ['Software Design', 'Systems Engineering'],
+    accomplishments: [
+      'Code quality enhancement initiatives to cut costs and for better UX',
+      'Created prompt engine for prompt engineers for easier prompting and maintaining prompt knowledge base',
+    ],
+    projects: [],
+  },
+  {
+    fromDate: 'Nov 2024',
+    toDate: 'Apr 2025',
+    title: 'Senior Software Engineer',
+    employer: 'Cashback Holdings Pvt. Ltd.',
+    type: 'Part-time',
+    description: 'Architected and developed dynamic Multi-Level Marketing (MLM) dashboards to visualize complex data structures. Led front-end development on key projects, including the creation of cutting-edge Web3 dashboards. Successfully developed and launched a Telegram Mini App token, securing significant funding on PinkSale.',
+    toolsUsed: ['Lit JS', 'React.js'],
+    accomplishments: [
+        'Worked on building Multi Level Marketing Dashboards',
+        'Led frontend Projects',
+        'Built web3 Dashboards',
+        'Developed Telegram Mini App token securing significant funds on pinksale'
+    ],
+    projects: [],
+  },
+  {
+    fromDate: 'Nov 2024',
+    toDate: 'Mar 2025',
+    title: 'Senior Software Engineer',
+    employer: 'A2Z LLC',
+    type: 'Part-time',
+    description: 'Led the front-end development of diverse projects, including sophisticated restaurant and product portfolio websites. Delivered high-quality, responsive, and user-friendly interfaces, driving user engagement and showcasing brand excellence.',
+    toolsUsed: ['React.js', 'Next.js'],
+    accomplishments: [
+        'Working on building frontends - restaurant and product portfolios',
+        'Lead frontend development'
+    ],
+    projects: [],
+  },
+  {
+    fromDate: 'Sep 2021',
+    toDate: 'Nov 2024',
+    title: 'Software Engineer',
+    employer: 'LogPoint',
+    type: 'Full-time',
+    description: 'Played a pivotal role in the development of two flagship products, LogPoint Search Master (LPSM) and Director Console, and enhanced the core SIEM application with critical APIs. As a feature lead, I orchestrated the entire development lifecycle, from writing design documents and defining requirements to task division and strategic planning. Championed engineering excellence by leading initiatives to enforce stringent code standards with GitHub hooks and establish comprehensive code organization guidelines.',
+    tools: ['TypeScript', 'React.JS', 'Python', 'Flask', 'MongoDB', 'RabbitMQ', 'Jenkins', 'Hadoop'],
+    accomplishments: [
+      'Worked as a feature lead writing design documents, task divisions, requirements finalizing, and planning.',
+      'Collaborated with different teams across the organization.',
+      'Led many engineering initiatives like enforcing code standards using GitHub hooks, code organization guidelines, etc.',
+    ],
+    projects: [
+      {
+        title: 'LogPoint Search Master (LPSM)',
+        description: 'A software to perform analytics on multiple Logpoints. Design and develop a new micro-frontend framework with React. Worked on updating patch installation feature using bash script and Python, Multiple alert notifications, UEBA features etc.',
+        tools: ['Lerna', 'Webpack', 'TypeScript', 'React.JS', 'MobX', 'Ext.JS', 'SASS', 'Antd', 'CSS', 'Python', 'Flask', 'Redis', 'MongoDB', 'RabbitMQ', 'Jenkins', 'ZooKeeper', 'Hadoop', 'Kerberos'],
+      },
+      {
+        title: 'Director Console',
+        description: 'A software to manage configurations on multiple Logpoints. Worked on adding shell features, visualization dashboards, python and database upgrades, product license implementation and fixing legacy issues.',
+        tools: ['NX', 'React.JS', 'Webpack', 'TypeScript', 'SASS', 'Antd', 'Node.JS', 'Hapi.JS', 'Arango DB', 'Jenkins', 'ZooKeeper', 'Hadoop', 'Kerberos'],
+      },
+      {
+        title: 'Logpoint - SIEM application',
+        description: 'Worked on adding APIs specific to LPSM and Director Console on the Logpoint.',
+        tools: ['Python', 'Flask', 'Ext.JS', 'React.JS', 'bash'],
+      }
+    ],
+  },
+  {
+    fromDate: '2020 Nov',
+    toDate: '2021 Aug',
+    title: 'Frontend Developer',
+    employer: 'Ekbana Software Solution Pte.',
+    type: 'Full Time',
+    description:
+      'Developed and maintained a suite of applications, focusing on creating intuitive data visualization and multi-step data analysis interfaces. Implemented robust role-based access control and contributed to an insurance fraud detection application. Excelled in identifying and resolving bugs in legacy systems, ensuring seamless application performance.',
+    tools: ['JavaScript', 'Vue.js', 'Vuex', 'Docker'],
     accomplishments: [
       'Learned React and Node js',
       'Worked on React Frontend to create seamless user experience under the guidance of seniors',
     ],
     projects: [
       {
-        title: 'meatPOS',
-        description: 'Point of Sale System customized for a meat shop.',
-        toolsUsed: ['React JS', 'Pouch/Couch DB', 'Electron', 'Node Js', 'Docker'],
+        title: 'DataViz',
+        description:
+          'At Ekbana, I worked on this DataViz application frontend to develop a data visualization and analytics application. I translated the Figma UI designs to Vue-3.We used Vuex for store management, vue-router and internationalization as well.',
+        tools: ['JavaScript', 'Vue3 JS', 'Vuex', 'Docker'],
+      },
+      {
+        title: 'Simple Insurance Application Fraud Detection',
+        description:
+          'I worked developing secured authentication mechanisms for the users, managing access control on the frontend.',
+        tools: ['React JS', 'React Native', 'JavaScript'],
       },
     ],
   },
@@ -33,14 +114,8 @@ Furthermore, I learned about Agile development practices, and Version control sy
     title: 'Associate Software Developer',
     employer: 'Nepal Mind Factory Pvt. Ltd.',
     type: 'Full Time',
-    description: `I worked primarily on two major products: Sankalpa - the municipal data management software and CMS website - a portfolio for Nepal Mind Factory itself.
-For project Sankalpa, I got the opportunity to revamp the old system as I reconfigured the project's front-end with React and Webpack and developed the User Interface with my peers. I worked on creating schema-based forms, and data visualization charts using Chart.js and interactive maps using Leaflet.js. 
-The backend for this project was developed using Springboot and Postgresql database with JWT-based authentication mechanism.
-
-In the CMS website, I worked on setting up the backend with Node.js, Express.js, and MongoDB database. I also worked on the Next.js front-end for creating our server-rendered application with my peers. I containerized our application using Docker and deployed the front-end on Vercel. The project has support for role-based access control, a JWT-based authentication mechanism, and most of the features required for a Content Management System. 
-
-Besides the aforementioned development tools, we used Trello with kanban board for managing development workflow and Bitbucket as our version control system.`,
-    tools: ['JavaScript', 'ReactJS', 'Git', 'Docker', 'Netlify', 'Trello'],
+    description: 'Contributed to two flagship products: "Sankalpa," a municipal data management solution, and the company\'s CMS-powered portfolio website. Revitalized the "Sankalpa" front-end using React and Webpack, implementing schema-based forms, dynamic data visualizations with Chart.js, and interactive maps with Leaflet.js. For the CMS website, I engineered the back-end with Node.js, Express, and MongoDB, and co-developed the server-rendered front-end with Next.js. Containerized the application with Docker for streamlined deployment on Vercel.',
+    tools: ['JavaScript', 'React.js', 'Node.js', 'Docker', 'Springboot'],
     accomplishments: [
       'Worked on React and Node js',
       'Worked on reactive programming with RxJS, and knew the concept of observables.',
@@ -62,71 +137,36 @@ Besides the aforementioned development tools, we used Trello with kanban board f
     ],
   },
   {
-    fromDate: '2020 Nov',
-    toDate: '2021 Aug',
-    title: 'Frontend Developer',
-    employer: 'Ekbana Software Solution Pte.',
-    type: 'Full Time',
-    description:
-      'Worked primarily on creating multiple applications involving data visualization, multi-step data analysis User interface, role-based control, a small application for insurance fraud detection, and fixing bugs on other legacy systems.',
-    tools: ['JavaScript', 'VueJS', 'Vuex', 'Docker', 'Netlify', 'Git'],
+    fromDate: '2019 July',
+    toDate: '2019 Dec',
+    title: 'React and Node Developer',
+    employer: 'ITGlance Pvt. Ltd',
+    type: 'Internship',
+    description: 'Completed intensive training in modern UI/UX development, mastering HTML, CSS, Bootstrap, and React.js. Collaborated with senior developers to build a full-featured Point of Sale (POS) system, developing the front-end with React and integrating it with CouchDB/PouchDB. Gained hands-on experience in back-end API development for a school management system using Node.js and Express. Proficient in Agile methodologies and version control systems like Git and Bitbucket.',
+    toolsUsed: ['JavaScript', 'React.js', 'Node.js', 'Electron'],
     accomplishments: [
       'Learned React and Node js',
       'Worked on React Frontend to create seamless user experience under the guidance of seniors',
     ],
     projects: [
       {
-        title: 'DataViz',
-        description:
-          'At Ekbana, I worked on this DataViz application frontend to develop a data visualization and analytics application. I translated the Figma UI designs to Vue-3.We used Vuex for store management, vue-router and internationalization as well.',
-        tools: ['JavaScript', 'Vue3 JS', 'Vuex', 'Docker'],
-      },
-      {
-        title: 'Simple Insurance Application Fraud Detection',
-        description:
-          'I worked developing secured authentication mechanisms for the users, managing access control on the frontend.',
-        tools: ['React JS', 'React Native', 'JavaScript'],
+        title: 'meatPOS',
+        description: 'Point of Sale System customized for a meat shop.',
+        toolsUsed: ['React JS', 'Pouch/Couch DB', 'Electron', 'Node Js', 'Docker'],
       },
     ],
-  },
-  {
-    fromDate: '2021 Sep',
-    toDate: 'Present',
-    title: 'Software Engineer',
-    employer: 'Logpoint Nepal Pvt. Ltd.',
-    type: 'Full Time',
-    description:
-      'I worked on a legacy system adding new features and fixing newly identified bugs on the front end. I developed new micro-frontends with React and help design a new micro-frontend framework. I designed multiple UI and UX features as a lead and with guidance from seniors.',
-    tools: ['JavaScript', 'ExtJS', 'Python', 'MongoDB', 'Celery', 'RabbitMQ', 'Redis'],
-    accomplishments: [
-      'Worked closely with other developers, QA, Product Owner for fixing legacy bugs and adding new feature.',
-      'Worked on Extjs Frontend to create seamless user experience',
-      'Guided new developer to work on the system',
-      'Designed and developed architecture for supporting new features in the existing system',
-    ],
-    projects: [
-      {
-        title: 'Logpoint Search Master',
-        description: ' ------',
-        tools: ['JavaScript', 'Vue3 JS', 'Vuex', 'Docker'],
-      },
-      {
-        title: 'Director Console',
-        description: 'I worked on fixing legacy bugs.',
-        tools: ['React JS', 'React Native', 'JavaScript'],
-      },
-    ],
-  },
+  }
 ];
 ---
 
-<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-7xl">
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-7xl bg-white dark:bg-gray-900">
   <div class="grid gap-6 row-gap-10 md:grid-cols-1">
     <div class="md:pb-6 md:pr-16">
-      <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading">Professional Work Experience Highlights</h2>
+      <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience Highlights</h2>
       <div class="pl-10">
         {
-          workExperiences.map((job) => {
+          workExperiences.map((job, index) => {
+            const jobBadges = job.toolsUsed || job.tools || [];
             return (
               <div class="flex">
                 <div class="flex flex-col items-center mr-4">
@@ -141,9 +181,56 @@ Besides the aforementioned development tools, we used Trello with kanban board f
                   <p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">
                     {job.fromDate} - {job.toDate}
                   </p>
-                  <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">{job.title}</p>
+                  <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">
+                    {job.title} <span class="text-sm font-normal">({job.type})</span>
+                  </p>
                   <p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">{job.employer}</p>
                   <p class="text-gray-600 dark:text-slate-400">{job.description}</p>
+
+                  {job.accomplishments && job.accomplishments.length > 0 && (
+                    <div class="mt-4">
+                      <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">Key Accomplishments:</h3>
+                      <ul class="list-disc list-inside mt-2 text-gray-600 dark:text-slate-400">
+                        {job.accomplishments.map((accomplishment) => (
+                          <li>{accomplishment}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {job.projects && job.projects.length > 0 && (
+                    <div class="mt-4">
+                      <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">Projects:</h3>
+                      {job.projects.map((project) => (
+                        <div class="mt-2 p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                          <h4 class="font-bold text-gray-800 dark:text-slate-200">{project.title}</h4>
+                          <p class="text-gray-600 dark:text-slate-400 mt-1">{project.description}</p>
+                          {project.tools && project.tools.length > 0 && (
+                            <div class="mt-2 flex flex-wrap gap-2">
+                              {project.tools.map((tool, i) => (
+                                <span class={`inline-block px-2 py-1 text-xs font-semibold text-${badges[i % badges.length]}-800 bg-${badges[i % badges.length]}-100 dark:bg-${badges[i % badges.length]}-500 dark:text-white rounded-full`}>
+                                  {tool}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {jobBadges.length > 0 && (
+                    <div class="mt-4">
+                      <h3 class="text-lg font-semibold text-gray-800 dark:text-slate-200">Tools & Technologies:</h3>
+                      <div class="flex flex-wrap gap-2 mt-2">
+                        {jobBadges.map((tool, i) => (
+                          <span class={`inline-block px-2 py-1 text-xs font-semibold text-${badges[i % badges.length]}-800 bg-${badges[i % badges.length]}-100 dark:bg-${badges[i % badges.length]}-500 dark:text-white rounded-full`}>
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
