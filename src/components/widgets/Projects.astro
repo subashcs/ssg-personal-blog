@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import restrokitIcon from '~/assets/images/restro.webp';
 
 const items = [
 	{
@@ -29,13 +31,12 @@ const items = [
 
 	},
 	{
-		title: 'Call-to-Action',
+		title: 'Restrokit',
 		description:
-			'Call for help application.',
-		icon: 'flat-color-icons:video-projector',
-		pls: ['React Native', 'Firebase'],
-		link: '#',
-
+			'A comprehensive restaurant management system with features for order management, table booking, and restaurant rating and search.',
+		pls: ['React.js', 'Node.js', 'Next.JS', 'Supabase', 'ShadcnUI'],
+		link: 'https://restrokit.com',
+		img: restrokitIcon,
 	},
 	{
 		title: 'Baaghchal',
@@ -72,11 +73,12 @@ const items = [
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
 				{
-					items.map(({ title, description, icon, pls, link }) => (
+					items.map(({ title, description, icon, img, pls, link }) => (
 						<div class="relative flex flex-col p-6 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
 							<a href={link} target="_blank">
 								<div class="flex items-center mb-4">
-									<Icon name={icon} class="w-12 h-12" />
+									{icon && <Icon name={icon} class="w-12 h-12" />}
+									{img && <Picture src={img} class="w-12 h-12" alt={title} widths={[48, 96]} aspectRatio="1:1" />}
 		
 									<div class="ml-4 text-xl font-bold">{title}</div>
 								</div>
