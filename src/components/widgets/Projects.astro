@@ -34,7 +34,7 @@ const items = [
 		title: 'Restrokit',
 		description:
 			'A comprehensive restaurant management system with features for order management, table booking, and restaurant rating and search.',
-		pls: ['React.js', 'Node.js', 'Next.JS', 'Supabase', 'ShadcnUI'],
+		pls: ['Node.js', 'Next.JS', 'Supabase', 'ShadcnUI'],
 		link: 'https://restrokit.com',
 		img: restrokitIcon,
 	},
@@ -49,7 +49,7 @@ const items = [
 	},
 	{
 		title: 'VisitorEntrySystem',
-		pls: ['php', 'html', 'jquery', 'css'],
+		pls: ['Node JS', 'Angular JS', 'MongoDB'],
 		description:
 			'Daily visitor entry tracking system',
 		icon: 'flat-color-icons:voice-presentation',
@@ -78,14 +78,14 @@ const items = [
 							<a href={link} target="_blank">
 								<div class="flex items-center mb-4">
 									{icon && <Icon name={icon} class="w-12 h-12" />}
-									{img && <Picture src={img} class="w-12 h-12" alt={title} widths={[48, 96]} aspectRatio="1:1" />}
+									{img && <Picture src={img} class="w-12 h-12" alt={title} widths={[48, 96]} aspectRatio="1:1" sizes="48px" />}
 		
 									<div class="ml-4 text-xl font-bold">{title}</div>
 								</div>
 							</a>
 							<p class="text-gray-500 dark:text-gray-400 text-md h-24 overflow-scroll">{description}</p>
-							<ul class="list-none flex gap-2 text-gray-500 dark:text-gray-400 text-md mt-2">{pls?.map((tag)=>(
-								<li class="bg-gray-200 dark:bg-slate-700 px-1 rounded ">{tag}</li>
+							<ul class="list-none block gap-2 text-gray-500 dark:text-gray-400 text-md mt-2">{pls?.map((tag)=>(
+								<li class="bg-gray-200 dark:bg-slate-700 w-auto m-1 px-1 rounded inline-block">{tag}</li>
 							))}
 							</ul>
 						</div>
