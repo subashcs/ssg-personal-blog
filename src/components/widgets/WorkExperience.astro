@@ -157,10 +157,10 @@ const workExperiences = [
 ];
 ---
 
-<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-7xl bg-white dark:bg-gray-900">
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
   <div class="grid gap-6 row-gap-10 md:grid-cols-1">
     <div class="md:pb-6 md:pr-16">
-      <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience Highlights</h2>
+      <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience</h2>
       <div class="pl-10">
         {
           workExperiences.map((job, index) => {
@@ -180,7 +180,7 @@ const workExperiences = [
                     {job.fromDate} - {job.toDate}
                   </p>
                   <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">
-                    {job.title} <span class="text-sm font-normal">({job.type})</span>
+                    {job.title} <span class="text-md font-normal">({job.type})</span>
                   </p>
                   <p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">{job.employer}</p>
                   

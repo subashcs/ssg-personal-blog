@@ -12,7 +12,7 @@ const { post, url } = Astro.props;
 <section class="py-8 sm:py-16 lg:py-20 mx-auto" id="blog-section">
 	<article>
 		<header class={post.image ? 'text-center' : ''}>
-			<p class="px-4 sm:px-6 max-w-5xl mx-auto">
+			<p class="px-4 sm:px-6 max-w-6xl mx-auto">
 				<time datetime={post.publishDate}>{getFormattedDate(post.publishDate)}</time> ~ {Math.ceil(post.readingTime)} min
 				read
 			</p>
@@ -25,7 +25,7 @@ const { post, url } = Astro.props;
 				post.image ? (
 					<Image
 						src={post.image}
-						class="max-w-full lg:max-w-7xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-zinc-700"
+						class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-zinc-700"
 						sizes="(max-width: 900px) 400px, 900px"
 						alt={post.description}
 						loading="eager"

@@ -4,50 +4,103 @@ import { Picture } from '@astrojs/image/components';
 import TypingAnimation from './Typing';
 ---
 
+<style>
+	@keyframes swing {
+		0% {
+			transform: rotate(0deg);
+		}
+		25% {
+			transform: rotate(-8deg);
+		}
+		75% {
+			transform: rotate(8deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+
+	.roll-in {
+		animation: roll-in 2.5s ease-out;
+	}
+
+	.hanging-thread {
+		position: relative;
+		width: fit-content;
+		margin: 0 auto;
+		padding-top: 20px;
+	}
+
+	/* Thread line at the top */
+	.hanging-thread::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 3px;
+		height: 20px;
+		background: linear-gradient(to bottom, #d4a574, #a0826d);
+		transform: translateX(-50%);
+		box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.image-container {
+		animation: swing 4s ease-in-out infinite;
+		transform-origin: top center;
+	}
+</style>
+
 <section class="bg-image">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 md:py-4">
 			<div class="flex-row items-center content-center justify-content-center">
 				<div class="block">
-					<div class="relative m-auto max-w-xs">
-						<Picture
-							src={import('~/assets/images/profile.jpg')}
-							class="mr-50 rounded-full w-full border-8 inset shadow-inner bg-gradient-to-r from-slate-100 to-white-100 dark:bg-gradient-to-r dark:from-gray-900 dark:to-zinc-900"
-							widths={[200, 400]}
-							sizes="(max-width: 767px) 200px, (max-width: 1479px) 200px"
-							alt="Hero Image"
-							loading="eager"
-							position="top"
-							aspectRatio={10 / 10}
-							title=""
-						/>
+					<div class="hanging-thread">
+						<div class="image-container relative m-auto max-w-xs">
+							<div
+								class="roll-in mr-50 rounded-full w-full border-8 inset shadow-inner bg-gradient-to-r from-slate-100 to-white-100 dark:bg-gradient-to-r dark:from-gray-900 dark:to-zinc-900"
+							>
+								<Picture
+									src={import('~/assets/images/profile.jpg')}
+									class="rounded-full w-full"
+									widths={[200, 400]}
+									sizes="(max-width: 767px) 200px, (max-width: 1479px) 200px"
+									alt="Hero Image"
+									loading="eager"
+									position="top"
+									aspectRatio={10 / 10}
+									title=""
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="text-left pb-10 my-10 mx-2">
-					<h1 class="mb-2 text-xl text-gray-900 dark:text-gray-100 md:text-3xl sm:text-xl">
-						<TypingAnimation client:load />
-					</h1>
-					<div>
-						<div class="flex">
-							<p class="text-md pt-2 text-justify">
-								<span class="text-lg">
-									A software engineer driven by curiosity and desire to push the boundaries of what is possible with
-									technology.
-								</span>
+			<div class="text-left pb-10 my-10 mx-2">
+				<h1 class="mb-4 text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl md:text-4xl font-bold leading-tight">
+					<TypingAnimation client:load />
+				</h1>
+				<div>
+					<div class="flex">
+						<p class="text-base sm:text-lg md:text-lg pt-2 text-justify leading-relaxed">
+								A software engineer driven by curiosity and desire to push the boundaries.
 								<br />
-								With over four years of experience working in the IT industry, I have gained a deep understanding of software
-								design and development principles, as well as expertise in various programming languages and frameworks.
+								<br />
+								I bring 7+ years of experience working in the Software Development industry with a deep understanding of software
+								design and development principles, as well as expertise in various programming languages and frameworks. 
 								<br />
 								<br />
 								I believe that diversity is essential to creating truly innovative solutions, and I am committed to bringing
 								my unique background and perspective to every project I work on.
 								<br />
-
 							</p>
 						</div>
 
 						<div class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
-							<span class="text-xl flex-1">Feel free to read, comment and share. 🙂 <span class="text-sm"><em> Enjoy reading 📖 !</em></span></span>
+							<span class="text-base sm:text-lg flex-1"
+								>Feel free to read, comment and share. 🙂 <span class="text-sm"
+									><em> Enjoy reading 📖 !</em></span
+								></span
+							>
 
 							<div class="flex w-full sm:w-auto">
 								<a

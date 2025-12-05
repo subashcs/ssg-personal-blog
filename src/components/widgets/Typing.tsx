@@ -8,14 +8,14 @@ const TypingAnimation = ({ text = "Subash Chandra Sapkota!" }) => {
 		const timerId = setTimeout(() => {
 			setTypedText(text.substring(0, currentTextIndex + 1));
 			setCurrentTextIndex((currentIndex) => (currentIndex === text.length - 1 ? 0 : currentIndex + 1));
-		}, 400);
+		}, 100);
 
 		return () => clearTimeout(timerId);
 	}, [currentTextIndex, text]);
 
 	return (
 		<span className='animate-text'>
-			<span>Hi I'm, {typedText}</span>
+			<span>Hey I'm, {typedText}</span>
 			<span className="cursor" />
 		</span>
 	);

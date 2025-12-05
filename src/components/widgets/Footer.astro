@@ -42,27 +42,27 @@ const social = [
 ---
 
 <footer class="border-t border-gray-200 dark:border-slate-800">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
 			<div class="col-span-12 lg:col-span-4">
 				<div class="mb-2">
 					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Subash Chandra Sapkota</a>
 				</div>
-				<div class="text-sm text-gray-600">
+				<div class="text-md text-gray-600">
 					<a
 						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
 						href="#"
 						>Software Engineer | Tech Enthusiast
 					</a>
 				</div>
-				<div class="text-sm text-gray-600 dark:text-gray-400 my-4">Kathmandu | Nepal</div>
+				<div class="text-md text-gray-600 dark:text-gray-400 my-4">Kathmandu | Nepal</div>
 			</div>
 			{
 				links.map(({ title, items }) => (
 					<div class="col-span-8 md:col-span-4 lg:col-span-2">
 						<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">{title}</div>
 						{items && Array.isArray(items) && items.length > 0 && (
-							<ul class="text-sm">
+							<ul class="text-md">
 								{items.map(({ title, href }) => (
 									<li class="mb-2">
 										<a
@@ -85,7 +85,7 @@ const social = [
 					social.map(({ label, href, icon }) => (
 						<li>
 							<a
-								class="text-blue-500 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+								class="text-blue-500 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-md p-2.5 inline-flex items-center"
 								aria-label={label}
 								href={href}
 							>
@@ -96,7 +96,7 @@ const social = [
 				}
 			</ul>
 
-			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">&copy; subashcs | 2023</div>
+			<div class="text-md text-gray-700 mr-4 dark:text-slate-400">&copy; subashcs | 2023</div>
 		</div>
 	</div>
 </footer>

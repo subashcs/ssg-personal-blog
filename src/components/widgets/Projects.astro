@@ -7,33 +7,15 @@ const items = [
 	{
 		title: 'Infrainit',
 		description:
-			'Infranit is a construction material buy and sell website where supplier can sell products and buyers can buy. Additionaly, it allows users to choose materials based on house architecture and estimate pricing as well',
+			'A B2C ecommerce web app to buy and sell construction material. Browse house architectures and estimate materials and pricing.',
 		pls: ['php', 'html', 'jquery', 'css'],
 		link: 'https://github.com/subashcs/infrainit',
 		icon: 'flat-color-icons:home',
 	},
 	{
-		title: 'ChatApp',
-		description:
-			'Socket based chat application in node js',
-		pls: ['js', 'html', 'css'],
-		icon: 'flat-color-icons:faq',
-		link: 'https://github.com/subashcs/infrainit',
-
-	},
-	{
-		title: 'PersonalBlogAPI',
-		description:
-			'API for personal portfolio and blog with Content Management System. Dockerized for easier deployment node-alpine base image.',
-		pls: ['GraphQL', 'node js', 'mongoDB'],
-		icon: 'flat-color-icons:address-book',
-		link: 'https://gitlab.com/subashsapkota59/subashcsAPI',
-
-	},
-	{
 		title: 'Restrokit',
 		description:
-			'A comprehensive restaurant management system with features for order management, table booking, and restaurant rating and search.',
+			'Restaurant management system with order management, table booking, and restaurant search and review.',
 		pls: ['Node.js', 'Next.JS', 'Supabase', 'ShadcnUI'],
 		link: 'https://restrokit.com',
 		img: restrokitIcon,
@@ -43,8 +25,17 @@ const items = [
 		description:
 			'Cross platform game application of Nepali popular game baaghchal',
 		icon: 'flat-color-icons:grid',
-		pls: ['php', 'html', 'jquery', 'css'],
-		link: 'https://github.com/subashcs/baaghchal',
+		pls: ['React JS', 'React Native', 'Firebase'],
+		link: 'https://baghchal.onrender.com',
+		github: "https://github.com/subashcs/baaghchal",
+	},
+	{
+		title: 'PersonalBlogAPI',
+		description:
+			'Open Source GraphQL API for personal portfolio with admin panel features. Dockerized for easier deployment node-alpine base image.',
+		pls: ['GraphQL', 'node js', 'mongoDB'],
+		icon: 'flat-color-icons:address-book',
+		link: 'https://gitlab.com/subashsapkota59/subashcsAPI',
 
 	},
 	{
@@ -60,7 +51,7 @@ const items = [
 
 <section class="relative" id="projects">
 	<div class="absolute inset-0 bg-primary-50 dark:bg-zinc-900 pointer-events-none mb-32" aria-hidden="true"></div>
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
 				<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">Projects</p>
@@ -71,10 +62,10 @@ const items = [
 					Web, Mobile and Desktop applications
 				</p>
 			</div>
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
+			<div class="grid gap-6 md:grid-cols-2 items-start my-12 dark:text-white">
 				{
 					items.map(({ title, description, icon, img, pls, link }) => (
-						<div class="relative flex flex-col p-6 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
+						<div class="relative flex flex-col p-4 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
 							<a href={link} target="_blank">
 								<div class="flex items-center mb-4">
 									{icon && <Icon name={icon} class="w-12 h-12" />}
@@ -83,8 +74,8 @@ const items = [
 									<div class="ml-4 text-xl font-bold">{title}</div>
 								</div>
 							</a>
-							<p class="text-gray-500 dark:text-gray-400 text-md h-24 overflow-scroll">{description}</p>
-							<ul class="list-none block gap-2 text-gray-500 dark:text-gray-400 text-md mt-2">{pls?.map((tag)=>(
+							<p class="text-gray-500 dark:text-gray-400 text-lg h-24 overflow-scroll">{description}</p>
+							<ul class="list-none block gap-2 text-gray-500 dark:text-gray-400 text-sm mt-2">{pls?.map((tag)=>(
 								<li class="bg-gray-200 dark:bg-slate-700 w-auto m-1 px-1 rounded inline-block">{tag}</li>
 							))}
 							</ul>
