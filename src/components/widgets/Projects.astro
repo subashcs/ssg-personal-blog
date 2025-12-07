@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import restrokitIcon from '~/assets/images/restro.webp';
 
 const items = [
@@ -67,11 +67,9 @@ const items = [
 					items.map(({ title, description, icon, img, pls, link }) => (
 						<div class="relative flex flex-col p-4 bg-white dark:bg-zinc-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
 							<a href={link} target="_blank">
-								<div class="flex items-center mb-4">
-									{icon && <Icon name={icon} class="w-12 h-12" />}
-									{img && <Picture src={img} class="w-12 h-12" alt={title} widths={[48, 96]} aspectRatio="1:1" sizes="48px" />}
-		
-									<div class="ml-4 text-xl font-bold">{title}</div>
+							<div class="flex items-center mb-4">
+								{icon && <Icon name={icon} class="w-12 h-12" />}
+								{img && <Image src={img} class="w-12 h-12" alt={title} />}									<div class="ml-4 text-xl font-bold">{title}</div>
 								</div>
 							</a>
 							<p class="text-gray-500 dark:text-gray-400 text-lg h-24 overflow-scroll">{description}</p>

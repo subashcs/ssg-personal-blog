@@ -1,7 +1,6 @@
 ---
 import { AstroSeo } from '@astrolib/seo';
 import { GoogleAnalytics } from '@astrolib/analytics';
-import { getImage } from '@astrojs/image';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import defaultImageSrc from '~/assets/images/default.png';
@@ -11,12 +10,7 @@ import Fonts from '../atoms/Fonts.astro';
 import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
-const { src: defaultImage } = await getImage({
-  src: defaultImageSrc,
-  alt: 'subashcs',
-  width: 1200,
-  height: 628,
-});
+const defaultImage = new URL(getRelativeUrlByFilePath(defaultImageSrc.src), Astro.site);
 
 const {
   title = SITE.name,

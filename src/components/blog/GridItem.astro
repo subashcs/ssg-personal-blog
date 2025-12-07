@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
@@ -14,14 +14,10 @@ const image = await findImage(post.image);
 		<div class="flex flex-col md:flex-row">
 			{
 				image && (
-					<Picture
+					<Image
 						src={image}
 						class="object-cover w-full lg:w-[500px] rounded shadow-l"
-						widths={[200, 550]}
-						height={500}
-						sizes="(max-width: 550px) 200px, 550px"
 						alt={post.title}
-						aspectRatio={'16:10'}
 					/>
 				)
 			}

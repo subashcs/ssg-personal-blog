@@ -1,7 +1,8 @@
 ---
-import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import TypingAnimation from './Typing';
+import profileImage from '~/assets/images/profile.jpg';
 ---
 
 <style>
@@ -53,30 +54,28 @@ import TypingAnimation from './Typing';
 <section class="bg-image">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 md:py-4">
-			<div class="flex-row items-center content-center justify-content-center">
-				<div class="block">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+				<div class="flex justify-center">
 					<div class="hanging-thread">
-						<div class="image-container relative m-auto max-w-xs">
+						<div class="image-container relative m-auto max-w-xs ">
 							<div
-								class="roll-in mr-50 rounded-full w-full border-8 inset shadow-inner bg-gradient-to-r from-slate-100 to-white-100 dark:bg-gradient-to-r dark:from-gray-900 dark:to-zinc-900"
+								class="roll-in rounded-full w-full border-8 shadow-lg bg-gradient-to-r from-slate-100 to-slate-50 dark:from-gray-900 dark:to-zinc-800"
 							>
-								<Picture
-									src={import('~/assets/images/profile.jpg')}
-									class="rounded-full w-full"
-									widths={[200, 400]}
-									sizes="(max-width: 767px) 200px, (max-width: 1479px) 200px"
+								<Image
+									src={profileImage}
+									class="rounded-full h-64 w-64 object-cover"
+									style={{objectPosition: "top"}}
 									alt="Hero Image"
 									loading="eager"
-									position="top"
-									aspectRatio={10 / 10}
-									title=""
+									quality="high"
+									format="webp"
 								/>
 							</div>
 						</div>
 					</div>
 				</div>
-			<div class="text-left pb-10 my-10 mx-2">
-				<h1 class="mb-4 text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl md:text-4xl font-bold leading-tight">
+				<div class="text-left pb-10 my-10 mx-2">
+				<h1 class="mb-4 text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl font-bold leading-tight">
 					<TypingAnimation client:load />
 				</h1>
 				<div>
@@ -93,14 +92,17 @@ import TypingAnimation from './Typing';
 								my unique background and perspective to every project I work on.
 								<br />
 							</p>
+							
 						</div>
-
-						<div class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
+						<p class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
 							<span class="text-base sm:text-lg flex-1"
 								>Feel free to read, comment and share. 🙂 <span class="text-sm"
 									><em> Enjoy reading 📖 !</em></span
 								></span
 							>
+						</p>
+						<div class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
+							
 
 							<div class="flex w-full sm:w-auto">
 								<a

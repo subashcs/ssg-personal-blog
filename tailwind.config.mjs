@@ -1,7 +1,7 @@
-// const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+import colors from 'tailwindcss/colors';
+import typography from '@tailwindcss/typography';
 
-module.exports = {
+export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
@@ -57,7 +57,7 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [typography],
 	darkMode: 'class',
 };
 
