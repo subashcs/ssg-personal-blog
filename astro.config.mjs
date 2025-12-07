@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
-
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
@@ -35,6 +34,18 @@ export default defineConfig({
 		sitemap(),
 		image({
 			serviceEntryPoint: '@astrojs/image/sharp',
+			sharpOptions: {
+				// Force supported formats only
+				formats: {
+					// disable avif & heif fully
+					avif: false,
+					heif: false,
+					heic: false,
+				},
+
+				// optional recommended fallback
+				defaultOutputFormat: 'webp',
+			},
 		}),
 		mdx(),
 		react(),
