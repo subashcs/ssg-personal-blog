@@ -60,8 +60,6 @@ export const getDissertionsPermaLink = () => {
 
 export const getCvPermalink = () => '/cv';
 
-export const CV_PDF_PATH = '/documents/Subash-Chandra-Sapkota-CV.pdf';
-
 /** */
 export const getRelativeLink = (link = '') => {
 	return createPath(basePathname, trimSlash(link));

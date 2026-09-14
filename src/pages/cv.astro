@@ -1,8 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
-import { CV_PDF_PATH, getCanonical, getCvPermalink } from '~/utils/permalinks';
+import { getCanonical, getCvPermalink } from '~/utils/permalinks';
+import cvPreview from '~/assets/images/cv-preview.webp';
 
 const meta = {
 	title: `Curriculum Vitae — ${SITE.name}`,
@@ -18,7 +20,7 @@ const meta = {
 				Curriculum Vitae
 			</h1>
 			<p class="text-lg text-gray-600 dark:text-slate-400">
-				Preview my latest CV below. If you would like a copy, send a request and I will email it to you.
+				The lower half of this preview is blurred for privacy. Request a copy and I will email you the full CV.
 			</p>
 			<div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
 				<button type="button" class="btn btn-primary" data-aw-open-request-cv>
@@ -29,19 +31,27 @@ const meta = {
 		</header>
 
 		<div
-			class="rounded-lg border border-gray-200 dark:border-zinc-700 overflow-hidden bg-gray-50 dark:bg-zinc-800"
+			class="relative rounded-lg border border-gray-200 dark:border-zinc-700 overflow-hidden bg-gray-50 dark:bg-zinc-800"
 		>
-			<object
-				data={`${CV_PDF_PATH}#toolbar=0&navpanes=0`}
-				type="application/pdf"
-				title="Subash Chandra Sapkota CV preview"
-				class="w-full h-[80vh] min-h-[640px]"
+			<Image
+				src={cvPreview}
+				alt="Partially blurred preview of Subash Chandra Sapkota’s CV"
+				class="w-full h-auto select-none pointer-events-none"
+				loading="eager"
+				quality="high"
+				format="webp"
+			/>
+			<div
+				class="absolute inset-x-0 bottom-0 h-1/2 flex flex-col items-center justify-end px-4 pb-10 sm:pb-14 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-zinc-900 dark:via-zinc-900/80"
 			>
-				<p class="p-8 text-center text-gray-600 dark:text-slate-400">
-					Your browser cannot display this PDF preview.
-					<button type="button" class="underline" data-aw-open-request-cv>Request a copy instead</button>.
+				<p class="mb-4 text-sm sm:text-base text-gray-700 dark:text-slate-300 text-center">
+					The rest of this CV is hidden for privacy.
 				</p>
-			</object>
+				<button type="button" class="btn btn-primary" data-aw-open-request-cv>
+					<Icon name="tabler:mail" class="w-5 h-5 mr-1 -ml-1.5" />
+					Request CV
+				</button>
+			</div>
 		</div>
 	</section>
 </Layout>
