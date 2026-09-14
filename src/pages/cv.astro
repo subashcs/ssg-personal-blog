@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+import { CV_PDF_PATH, getCanonical, getCvPermalink } from '~/utils/permalinks';
+
+const meta = {
+	title: `Curriculum Vitae — ${SITE.name}`,
+	description: 'Preview Subash Chandra Sapkota’s CV and request a copy by email.',
+	canonical: getCanonical(getCvPermalink()),
+};
+---
+
+<Layout {meta}>
+	<section class="px-4 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
+		<header class="max-w-3xl mx-auto text-center mb-10">
+			<h1 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+				Curriculum Vitae
+			</h1>
+			<p class="text-lg text-gray-600 dark:text-slate-400">
+				Preview my latest CV below. If you would like a copy, send a request and I will email it to you.
+			</p>
+			<div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+				<button type="button" class="btn btn-primary" data-aw-open-request-cv>
+					<Icon name="tabler:mail" class="w-5 h-5 mr-1 -ml-1.5" />
+					Request CV
+				</button>
+			</div>
+		</header>
+
+		<div
+			class="rounded-lg border border-gray-200 dark:border-zinc-700 overflow-hidden bg-gray-50 dark:bg-zinc-800"
+		>
+			<object
+				data={`${CV_PDF_PATH}#toolbar=0&navpanes=0`}
+				type="application/pdf"
+				title="Subash Chandra Sapkota CV preview"
+				class="w-full h-[80vh] min-h-[640px]"
+			>
+				<p class="p-8 text-center text-gray-600 dark:text-slate-400">
+					Your browser cannot display this PDF preview.
+					<button type="button" class="underline" data-aw-open-request-cv>Request a copy instead</button>.
+				</p>
+			</object>
+		</div>
+	</section>
+</Layout>

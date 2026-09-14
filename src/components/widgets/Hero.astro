@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import TypingAnimation from './Typing';
 import profileImage from '~/assets/images/profile.jpg';
+import { getCvPermalink } from '~/utils/permalinks';
 ---
 
 <style>
@@ -115,9 +116,15 @@ import profileImage from '~/assets/images/profile.jpg';
 								</a>
 							</div>
 							<div class="flex w-full sm:w-auto">
-								<a class="btn w-full" href="#"> Learn more</a>
+								<button type="button" class="btn w-full" data-aw-open-request-cv>
+									<Icon name="tabler:file-text" class="w-5 h-5 mr-1 -ml-1.5" />
+									Request CV
+								</button>
 							</div>
 						</div>
+						<p class="mt-4 text-sm text-gray-600 dark:text-slate-400">
+							<a class="underline hover:text-gray-900 dark:hover:text-white" href={getCvPermalink()}>Preview CV</a>
+						</p>
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@ import Logo from '~/components/atoms/Logo.astro';
 import ToggleTheme from '~/components/core/ToggleTheme.astro';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
-import { getHomePermalink, getBlogPermalink, getRelativeLink } from '~/utils/permalinks';
+import { getHomePermalink, getBlogPermalink, getCvPermalink, getRelativeLink } from '~/utils/permalinks';
 ---
 
 <header
@@ -57,8 +57,7 @@ import { getHomePermalink, getBlogPermalink, getRelativeLink } from '~/utils/per
             <li class="">
               <li>
                 <a
-                  href="https://docs.google.com/document/d/187YKviq7jnQdDeYwtwrT6CySbqtRhOjJ7WLzPpZOhT8/edit?usp=sharing"
-                  target="_blank"
+                  href={getCvPermalink()}
                   class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Resume
