@@ -3,7 +3,6 @@ import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import TypingAnimation from './Typing';
 import profileImage from '~/assets/images/profile.jpg';
-import { getCvPermalink } from '~/utils/permalinks';
 ---
 
 <style>
@@ -122,9 +121,6 @@ import { getCvPermalink } from '~/utils/permalinks';
 								</button>
 							</div>
 						</div>
-						<p class="mt-4 text-sm text-gray-600 dark:text-slate-400">
-							<a class="underline hover:text-gray-900 dark:hover:text-white" href={getCvPermalink()}>Preview CV</a>
-						</p>
 					</div>
 				</div>
 			</div>
