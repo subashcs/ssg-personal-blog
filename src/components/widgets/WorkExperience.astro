@@ -216,7 +216,7 @@ const companies = workExperiences.reduce<{ employer: string; roles: Job[] }[]>((
 const toolsFor = (job: Job) => ('toolsUsed' in job && job.toolsUsed) || ('tools' in job && job.tools) || [];
 ---
 
-<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
+<section id="experience" class="section-reveal px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
   <div class="grid gap-6 row-gap-10 md:grid-cols-1">
     <div class="md:pb-6 md:pr-16">
       <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience</h2>
