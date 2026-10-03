@@ -2,18 +2,42 @@
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+	--color-primary-50: var(--color-blue-50);
+	--color-primary-100: var(--color-blue-100);
+	--color-primary-200: var(--color-blue-200);
+	--color-primary-300: var(--color-blue-300);
+	--color-primary-400: var(--color-blue-400);
+	--color-primary-500: var(--color-blue-500);
+	--color-primary-600: var(--color-blue-600);
+	--color-primary-700: var(--color-blue-700);
+	--color-primary-800: var(--color-blue-800);
+	--color-primary-900: var(--color-blue-900);
+	--color-primary-950: var(--color-blue-950);
+	--color-secondary-500: var(--color-indigo-500);
+}
+
 @layer base {
 	html {
 		font-family: Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 		scroll-behavior: smooth;
+		color-scheme: light;
+	}
+
+	html.dark {
+		color-scheme: dark;
 	}
 
 	body {
-		@apply bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100;
+		@apply bg-white dark:bg-zinc-900 text-gray-800 dark:text-slate-300;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		@apply font-bold tracking-tight;
+		@apply font-bold tracking-tight text-gray-900 dark:text-slate-100;
+	}
+
+	::selection {
+		@apply bg-blue-200 text-gray-900 dark:bg-blue-500/40 dark:text-white;
 	}
 
 	p {
@@ -49,16 +73,14 @@
 		box-shadow: 0 0 0 2px rgb(59 130 246 / 0.5), inset 0 0 0 2px rgb(191 219 254 / 0.5);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		.btn {
-			color: rgb(203 213 225);
-			border-color: rgb(100 116 139);
-		}
+	.dark .btn {
+		color: rgb(226 232 240);
+		border-color: rgb(82 82 91);
+	}
 
-		.btn:hover {
-			background-color: rgb(24 24 27);
-			border-color: rgb(30 41 59);
-		}
+	.dark .btn:hover {
+		background-color: rgb(39 39 42);
+		border-color: rgb(113 113 122);
 	}
 
 	@media (min-width: 768px) {
@@ -78,14 +100,12 @@
 		color: rgb(17 24 39);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		.btn-ghost {
-			color: rgb(156 163 175);
-		}
+	.dark .btn-ghost {
+		color: rgb(161 161 170);
+	}
 
-		.btn-ghost:hover {
-			color: white;
-		}
+	.dark .btn-ghost:hover {
+		color: white;
 	}
 
 	.btn-primary {
@@ -101,17 +121,15 @@
 		color: white;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		.btn-primary {
-			background-color: rgb(29 78 216);
-			border-color: rgb(29 78 216);
-			color: white;
-		}
+	.dark .btn-primary {
+		background-color: rgb(37 99 235);
+		border-color: rgb(37 99 235);
+		color: white;
+	}
 
-		.btn-primary:hover {
-			background-color: rgb(23 37 84);
-			border-color: rgb(23 37 84);
-		}
+	.dark .btn-primary:hover {
+		background-color: rgb(59 130 246);
+		border-color: rgb(59 130 246);
 	}
 }
 
@@ -144,7 +162,7 @@
 	width: 4px;
 	height: 1em;
 	margin-left: 2px;
-	background-color: #dfdfd8;
+	background-color: rgb(37 99 235);
 	animation: cursor 0.3s linear infinite alternate;
 	will-change: opacity;
 }
@@ -212,9 +230,13 @@ common utils
 	font-weight: 600;
 }
 
+.dark .cursor {
+	background-color: rgb(96 165 250);
+}
+
 .dark .post-container aside {
 	border-left-color: rgb(96 165 250);
-	background-color: rgb(24 24 27);
+	background-color: rgb(39 39 42);
 }
 
 .post-container figcaption,

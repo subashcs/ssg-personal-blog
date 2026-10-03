@@ -36,7 +36,7 @@ const items = [
 <section class="scroll-mt-16" id="features">
 	<div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
 		<div class="mb-10 md:mx-auto sm:text-center md:mb-12 max-w-3xl">
-			<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">Technical Knowledge</p>
+			<p class="text-base text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Technical Knowledge</p>
 			<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
 				<span class="whitespace-nowrap">View my Expertise </span>
 			</h2>
@@ -52,8 +52,8 @@ const items = [
 						{subitems.map(({ title, description, icon }) => (
 							<div class="flex flex-row max-w-md">
 								<div class="mb-4 mr-4">
-									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 dark:bg-primary-700">
-										{icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
+									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 dark:bg-primary-500/20 dark:ring-1 dark:ring-primary-400/30">
+										{icon && <Icon name={icon} class="w-6 h-6 text-white dark:text-primary-300 icon-light" />}
 									</div>
 								</div>
 								<div class="h-32">

@@ -31,7 +31,7 @@ const { post, url } = Astro.props;
 						height={506}
 					/>
 				) : (
-					<div class="border-t dark:border-slate-700" />
+					<div class="border-t border-gray-200 dark:border-zinc-700" />
 				)
 			}
 		</header>
@@ -42,7 +42,7 @@ const { post, url } = Astro.props;
 		</div>
 		<div class="mx-auto px-4 sm:px-6 max-w-4xl mt-10 flex justify-between flex-col sm:flex-row gap-4">
 			<PostTags tags={post.tags} class="mr-5" />
-			<SocialShare url={url} text={post.title} class="sm:mt-1 align-middle text-gray-500" />
+			<SocialShare url={url} text={post.title} class="sm:mt-1 align-middle text-gray-500 dark:text-slate-400" />
 		</div>
 	</article>
 	<PostComments />
