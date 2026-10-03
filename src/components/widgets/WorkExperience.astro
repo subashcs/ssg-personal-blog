@@ -175,21 +175,21 @@ const workExperiences = [
   <div class="grid gap-6 row-gap-10 md:grid-cols-1">
     <div class="md:pb-6 md:pr-16">
       <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience</h2>
-      <div class="pl-10">
+      <div class="sm:pl-10">
         {
           workExperiences.map((job, index) => {
             const jobBadges = job.toolsUsed || job.tools || [];
             return (
               <div class="flex">
-                <div class="flex flex-col items-center mr-4">
+                <div class="flex flex-col items-center mr-3 sm:mr-4">
                   <div>
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-                      <Icon name="tabler:arrow-down" class="w-6 h-6 text-primary-600 dark:text-slate-200" />
+                    <div class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-blue-600 border-2">
+                      <Icon name="tabler:arrow-down" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-slate-200" />
                     </div>
                   </div>
                   <div class="w-px h-full bg-gray-300 dark:bg-zinc-500" />
                 </div>
-                <div class="pt-1 pb-8">
+                <div class="min-w-0 flex-1 pt-1 pb-8">
                   <p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">
                     {job.fromDate} - {job.toDate}
                   </p>
@@ -246,12 +246,12 @@ const workExperiences = [
         }
 
         <div class="flex">
-          <div class="flex flex-col items-center mr-4">
+          <div class="flex flex-col items-center mr-3 sm:mr-4">
             <div>
               <div
-                class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2 bg-primary-600"
+                class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-blue-600 border-2 bg-blue-600"
               >
-                <Icon name="tabler:check" class="w-6 h-6 text-white dark:text-slate-200" />
+                <Icon name="tabler:check" class="w-5 h-5 sm:w-6 sm:h-6 text-white dark:text-slate-200" />
               </div>
             </div>
           </div>
