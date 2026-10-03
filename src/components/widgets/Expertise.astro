@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Card from '~/components/atoms/Card.astro';
+import SectionTitle from '~/components/atoms/SectionTitle.astro';
 
 const items = [
 	[
@@ -36,16 +37,7 @@ const items = [
 
 <section class="section-reveal" id="features">
 	<div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
-		<div class="mb-10 md:mx-auto sm:text-center md:mb-12 max-w-3xl">
-			<p class="text-base text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Technical Knowledge</p>
-			<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-				<span class="whitespace-nowrap">View my Expertise </span>
-			</h2>
-			<!-- <p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400">
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa
-				quae.
-			</p> -->
-		</div>
+		<SectionTitle eyebrow="Technical Knowledge" title="View my Expertise" />
 		<div class="grid gap-5 sm:grid-cols-2">
 			{
 				items.flat().map(({ title, description, icon }) => (

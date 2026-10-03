@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import Card from '~/components/atoms/Card.astro';
+import SectionTitle from '~/components/atoms/SectionTitle.astro';
 import restrokitIcon from '~/assets/images/restro.webp';
 
 const items = [
@@ -50,15 +51,9 @@ const items = [
 <section class="section-reveal relative" id="projects">
 	<div class="absolute inset-0 bg-gray-50 dark:bg-zinc-950/40 pointer-events-none" aria-hidden="true"></div>
 	<div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 lg:py-20">
-		<div class="mb-10 text-center">
-			<p class="text-base text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Projects</p>
-			<h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mt-1 mb-3 font-heading text-gray-900 dark:text-slate-100">
-				Take a look into these cool softwares !
-			</h2>
-			<p class="max-w-2xl mx-auto text-lg text-gray-600 dark:text-slate-400">
-				Web, mobile, and desktop applications
-			</p>
-		</div>
+		<SectionTitle eyebrow="Projects" title="Take a look into these cool softwares !">
+			<p slot="subtitle">Web, mobile, and desktop applications</p>
+		</SectionTitle>
 		<div class="grid gap-5 sm:gap-6 md:grid-cols-2">
 			{
 				items.map(({ title, description, icon, img, pls, link, github }) => (

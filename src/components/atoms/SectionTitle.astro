@@ -1,0 +1,50 @@
+---
+interface Props {
+	eyebrow?: string;
+	title?: string;
+	align?: 'left' | 'center';
+	as?: 'h1' | 'h2';
+	size?: 'hero' | 'section';
+	class?: string;
+}
+
+const { eyebrow, title, align = 'center', as: Tag = 'h2', size = 'section', class: className } = Astro.props;
+
+const hasSubtitle = Astro.slots.has('subtitle');
+---
+
+<header
+	class:list={[
+		size === 'hero' ? 'mb-6' : 'mb-10',
+		align === 'center' && 'text-center mx-auto max-w-3xl',
+		className,
+	]}
+>
+	{
+		eyebrow && (
+			<p class="text-base text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">{eyebrow}</p>
+		)
+	}
+	<Tag
+		class:list={[
+			'font-bold font-heading text-gray-900 dark:text-slate-100',
+			size === 'hero'
+				? 'mt-1 text-2xl leading-tight sm:text-4xl md:text-5xl'
+				: 'mt-1 text-3xl leading-tighter tracking-tighter md:text-4xl',
+		]}
+	>
+		{title ?? <slot />}
+	</Tag>
+	{
+		hasSubtitle && (
+			<div
+				class:list={[
+					'mt-3 text-lg text-gray-600 dark:text-slate-400',
+					align === 'center' && 'mx-auto max-w-2xl',
+				]}
+			>
+				<slot name="subtitle" />
+			</div>
+		)
+	}
+</header>

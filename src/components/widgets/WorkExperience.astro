@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import SectionTitle from '~/components/atoms/SectionTitle.astro';
 import WorkRoleDetails from './WorkRoleDetails.astro';
 
 const workExperiences = [
@@ -219,7 +220,7 @@ const toolsFor = (job: Job) => ('toolsUsed' in job && job.toolsUsed) || ('tools'
 <section id="experience" class="section-reveal px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
   <div class="grid gap-6 row-gap-10 md:grid-cols-1">
     <div class="md:pb-6 md:pr-16">
-      <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience</h2>
+      <SectionTitle align="left" eyebrow="Experience" title="Professional Work Experience" />
       <div class="sm:pl-10">
         <div class="flex">
           <div class="flex flex-col items-center mr-3 sm:mr-4">
