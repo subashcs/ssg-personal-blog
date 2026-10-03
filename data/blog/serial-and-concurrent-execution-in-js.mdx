@@ -21,8 +21,10 @@ The following diagram represents the code execution process with the event loop 
 
 Execution happens once the tasks are pushed at the call stack. If the task is a blocking one it is pushed to the workers. After completion, the callback is pushed back to the MacroTask queue or MicroTask queue depending on the type of operation. When the call stack is empty tasks are pushed from the Queue to the Call Stack for execution.
 
-<Image width={1000} loading="lazy" densities={[2, 2]} src={eventloopimage} alt="Protocol buffer" />
-*Figure 1: Event loop in javascript*
+<figure>
+	<Image class="w-full h-auto rounded-md" src={eventloopimage} alt="Event loop in JavaScript" />
+	<figcaption>Figure 1: Event loop in JavaScript</figcaption>
+</figure>
 
 ## **When to use Serial Execution: The Ordered Champion?**
 

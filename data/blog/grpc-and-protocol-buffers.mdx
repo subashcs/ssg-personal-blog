@@ -12,19 +12,16 @@ import grpc from '~/assets/images/grpc-and-protocol-buffers/grpc1.png';
 import proto from '~/assets/images/grpc-and-protocol-buffers/proto1.png';
 import { Image } from 'astro:assets';
 
-<p>
-	Hello readers !! In this article, we are going to explore communication between services using Protocol buffers and
-	GRPC. While XML and JSON are prominently used for serializing data for communication between services using SOAP and
-	REST API standards, another new method of serialization i.e. Protocol Buffer offers an efficient way to communicate in
-	a Remote Procedure Call framework like gRPC.
-</p>
+Hello readers! In this article, we are going to explore communication between services using Protocol buffers and gRPC. While XML and JSON are prominently used for serializing data for communication between services using SOAP and REST API standards, Protocol Buffers offer an efficient way to communicate in a Remote Procedure Call framework like gRPC.
 
 ## What are Protocol Buffers?
 
 Protocol Buffers, or Protobuf, is a language-neutral, platform-neutral, extensible way of serializing structured data for use in communications protocols and data storage. It was developed by Google and is used extensively in their internal services. Protobuf is to gRPC as JSON to REST API, except it’s smaller and faster, and it generates native language bindings. Using Protobuf, binary data is transmitted which improves the speed of transmission compared to JSON’s or XML’s string format.
 
-<Image src={proto} alt="Protocol buffer" />
-*Figure 1: Data serialization with Protocol buffers*
+<figure>
+	<Image class="w-full h-auto rounded-md" src={proto} alt="Data serialization with Protocol buffers" widths={[400, 800]} sizes="(max-width: 896px) 100vw, 800px" />
+	<figcaption>Figure 1: Data serialization with Protocol buffers</figcaption>
+</figure>
 
 ## **When/Why to use Protocol Buffers?**
 
@@ -57,8 +54,10 @@ GRPC uses HTTP/2 protocol; the various features of HTTP/2 like the binary framin
 
 Together, Protocol Buffers and gRPC provide a powerful, efficient, and robust method for creating distributed applications and services. They offer a way to define services in a language-neutral way and generate client and server code in numerous languages, which can help reduce the complexity of distributed system development. gRPC uses a .proto file to define API contracts.
 
-<Image src={grpc} alt="GRPC communication" />
-*Figure 2: GRPC client server communication*
+<figure>
+	<Image class="w-full h-auto rounded-md" src={grpc} alt="gRPC client server communication" widths={[400, 800]} sizes="(max-width: 896px) 100vw, 800px" />
+	<figcaption>Figure 2: gRPC client server communication</figcaption>
+</figure>
 
 As shown in the figure above, a gRPC communication involves multiple entities i.e. the gRPC
 server, the gRPC client or stub, and proto request and response messages defined in a `.proto` file. Now, We will look at

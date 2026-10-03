@@ -44,6 +44,6 @@
 
 		let giscusScript = document.createElement('script');
 		Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-		document.getElementById('blog-section').appendChild(giscusScript);
+		document.querySelector('#blog-section .giscus')?.appendChild(giscusScript);
 	</script>
 </div>

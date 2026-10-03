@@ -145,6 +145,6 @@ Thanks for sticking around until the end! Stay tuned for more updates by keeping
 
 ## References
 
-1. [React Compiler Discussions] (https://github.com/reactwg/react-compiler/discussions/)
-2. [React Compiler Playground] (https://playground.react.dev)
-3. [React Conf 2024] (https://www.youtube.com/watch?v=T8TZQ6k4SLE) 
+1. [React Compiler Discussions](https://github.com/reactwg/react-compiler/discussions/)
+2. [React Compiler Playground](https://playground.react.dev)
+3. [React Conf 2024](https://www.youtube.com/watch?v=T8TZQ6k4SLE) 
