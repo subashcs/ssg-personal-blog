@@ -29,5 +29,7 @@ const meta = {
   <Fragment slot="title">
     {documents[document].title}
   </Fragment>
-  <iframe src={documents[document].url} width="100%" height="1000px"></iframe>
+  <div class="overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-sm dark:border-zinc-700/70 dark:bg-zinc-800/70">
+    <iframe src={documents[document].url} width="100%" height="1000px" class="block"></iframe>
+  </div>
 </Layout>

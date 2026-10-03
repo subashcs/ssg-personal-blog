@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import Card from '~/components/atoms/Card.astro';
 import PostTags from '~/components/atoms/Tags.astro';
 
 import { getPermalink } from '~/utils/permalinks';
@@ -11,46 +12,37 @@ const { post } = Astro.props;
 const image = await findImage(post.image);
 ---
 
-<article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
-	{
-		image && (
-			<a class="relative block group" href={getPermalink(post.slug, 'post')}>
-				<div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-zinc-700 rounded shadow-lg">
-					{image && (
-						<Image
-							src={image}
-							class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-zinc-700"
-							alt={post.title}
-						/>
-					)}
-				</div>
-			</a>
-		)
-	}
-	<div>
-		<header>
+<article>
+	<Card hover class={`overflow-hidden ${image ? 'md:grid md:grid-cols-2 md:items-start' : ''}`}>
+		{
+			image && (
+				<a class="block bg-gray-50 dark:bg-zinc-800" href={getPermalink(post.slug, 'post')}>
+					<Image src={image} class="w-full h-auto" alt={post.title} />
+				</a>
+			)
+		}
+		<div class="p-5 sm:p-6">
 			<h2 class="text-lg sm:text-xl md:text-2xl font-bold leading-snug mb-3 font-heading">
 				<a
-					class="hover:text-primary-600 dark:hover:text-primary-400 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+					class="text-gray-900 dark:text-slate-100 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
 					href={getPermalink(post.slug, 'post')}
 				>
 					{post.title}
 				</a>
 			</h2>
-		</header>
-		<p class="text-base sm:text-base md:text-lg flex-grow leading-relaxed">
-			{post.excerpt || post.description}
-		</p>
-		<footer class="mt-4">
-			<div>
-				<span class="text-gray-500 dark:text-slate-400">
-					<time datetime={post.publishDate}>{getFormattedDate(post.publishDate)}</time> ~
+			<p class="text-base md:text-lg leading-relaxed text-gray-600 dark:text-slate-400">
+				{post.excerpt || post.description}
+			</p>
+			<footer class="mt-4">
+				<p class="text-sm text-gray-500 dark:text-slate-400">
+					<time datetime={post.publishDate}>{getFormattedDate(post.publishDate)}</time>
+					{' · '}
 					{Math.ceil(post.readingTime)} min read
-				</span>
-			</div>
-			<div class="mt-4">
-				<PostTags tags={post.tags} />
-			</div>
-		</footer>
-	</div>
+				</p>
+				<div class="mt-4">
+					<PostTags tags={post.tags} />
+				</div>
+			</footer>
+		</div>
+	</Card>
 </article>

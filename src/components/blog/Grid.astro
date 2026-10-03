@@ -4,6 +4,6 @@ import Item from '~/components/blog/GridItem.astro';
 const { posts } = Astro.props;
 ---
 
-<div class="grid gap-6 row-gap-5 grid-cols-1">
+<div class="grid gap-5 grid-cols-1">
 	{posts.map((post) => <Item post={post} />)}
 </div>

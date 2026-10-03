@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Card from '~/components/atoms/Card.astro';
 
 const items = [
 	[
@@ -45,24 +46,18 @@ const items = [
 				quae.
 			</p> -->
 		</div>
-		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+		<div class="grid gap-5 sm:grid-cols-2">
 			{
-				items.map((subitems) => (
-					<div class="space-y-8 sm:px-8">
-						{subitems.map(({ title, description, icon }) => (
-							<div class="flex flex-row max-w-md">
-								<div class="mb-4 mr-4">
-									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 dark:bg-primary-500/20 dark:ring-1 dark:ring-primary-400/30">
-										{icon && <Icon name={icon} class="w-6 h-6 text-white dark:text-primary-300 icon-light" />}
-									</div>
-								</div>
-								<div class="h-32">
-									<h3 class="mb-3 text-xl font-bold">{title}</h3>
-									<p class="text-gray-600 dark:text-slate-400">{description}</p>
-								</div>
-							</div>
-						))}
-					</div>
+				items.flat().map(({ title, description, icon }) => (
+					<Card class="flex gap-4 p-5 sm:p-6">
+						<div class="grid place-items-center w-12 h-12 shrink-0 rounded-xl bg-blue-600 dark:bg-blue-500/20">
+							{icon && <Icon name={icon} class="w-6 h-6 text-white dark:text-blue-300 icon-light" />}
+						</div>
+						<div class="min-w-0">
+							<h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-100">{title}</h3>
+							<p class="text-gray-600 dark:text-slate-400">{description}</p>
+						</div>
+					</Card>
 				))
 			}
 		</div>

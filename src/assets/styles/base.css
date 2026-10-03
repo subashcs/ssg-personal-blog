@@ -64,8 +64,8 @@
 	}
 
 	.btn:hover {
-		background-color: rgb(243 244 246);
-		border-color: rgb(75 85 99);
+		background-color: rgb(249 250 251);
+		border-color: rgb(156 163 175);
 	}
 
 	.btn:focus {
@@ -156,19 +156,13 @@
 
 
 .cursor {
-	display: inline;
-	content: '';
-	position: absolute;
-	width: 4px;
-	height: 1em;
-	margin-left: 2px;
+	display: inline-block;
+	width: 3px;
+	height: 0.85em;
+	margin-left: 3px;
+	vertical-align: -0.05em;
 	background-color: rgb(37 99 235);
 	animation: cursor 0.3s linear infinite alternate;
-	will-change: opacity;
-}
-
-.animate-type {
-	position: relative;
 }
 
 

@@ -1,62 +1,54 @@
 ---
 import { Icon } from 'astro-icon/components';
+import Card from '~/components/atoms/Card.astro';
 import PageLayout from '~/layouts/PageLayout.astro';
 import { SITE } from '~/config.mjs';
 import documents from '~/utils/documents.js';
-import { getCanonical, getDissertionsPermaLink } from '~/utils/permalinks';
+import { getCanonical, getDissertionsPermaLink, getRelativeLink } from '~/utils/permalinks';
 
 const meta = {
-  title: `${SITE.title} - List of Dissertations`,
-  description: SITE.description,
-  canonical: getCanonical(getDissertionsPermaLink()),
+	title: `${SITE.title} - List of Dissertations`,
+	description: SITE.description,
+	canonical: getCanonical(getDissertionsPermaLink()),
 };
 ---
 
-<astro:template>
-  <PageLayout {meta}>
-    <div class="px-2 sm:px-2 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
-      <div class="m-4">
-        <h1 class="text-xl font-bold text-center">Academic and Professional Papers</h1>
-      </div>
-      <div class="flex justify-center items-center">
-        {
-          Object.keys(documents).map((key) => (
-            <div class="flex flex-nowrap">
-              <div class="p-8">
-                <Icon name="zondicons:news-paper" class="w-40 h-40" />
-              </div>
-              <div class="3/4">
-                <a href={`/documents/${key}`}>
-                  <table>
-                    <tr>
-                      <td colspan="2">
-                        <h2 class="text-lg font-bold underline">{documents[key].title}</h2>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        <p class="py-2">{documents[key].description}</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <>
-                        <td>Document Type</td>
-                        <td>{documents[key].type}</td>
-                      </>
-                    </tr>
-                    <tr>
-                      <td>First Published</td>
-                      <td>{documents[key].date}</td>
-                    </tr>
-                  </table>
-                </a>
-              </div>
-            </div>
-          ))
-        }
-
-        <!-- Add more dissertation items as needed -->
-      </div>
-    </div>
-  </PageLayout>
-</astro:template>
+<PageLayout {meta}>
+	<div class="px-4 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
+		<header class="mb-10 text-center">
+			<h1 class="text-3xl md:text-4xl font-bold font-heading text-gray-900 dark:text-slate-100">
+				Academic and Professional Papers
+			</h1>
+		</header>
+		<div class="grid gap-5">
+			{
+				Object.keys(documents).map((key) => (
+					<a
+						href={getRelativeLink(`documents/${key}`)}
+						class="group block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+					>
+						<Card hover class="flex flex-col sm:flex-row gap-5 p-5 sm:p-6">
+							<div class="grid place-items-center w-14 h-14 shrink-0 rounded-xl bg-gray-100 dark:bg-zinc-700/60">
+								<Icon name="zondicons:news-paper" class="w-8 h-8 text-gray-700 dark:text-slate-200" />
+							</div>
+							<div class="min-w-0">
+								<h2 class="text-xl font-bold text-gray-900 dark:text-slate-100 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+									{documents[key].title}
+								</h2>
+								<p class="mt-2 text-gray-600 dark:text-slate-400">{documents[key].description}</p>
+								<ul class="mt-4 flex flex-wrap gap-2">
+									<li class="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-700 dark:bg-zinc-700/80 dark:text-slate-300">
+										{documents[key].type}
+									</li>
+									<li class="px-2.5 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-700 dark:bg-zinc-700/80 dark:text-slate-300">
+										{documents[key].date}
+									</li>
+								</ul>
+							</div>
+						</Card>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</PageLayout>
