@@ -1,129 +1,39 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
 import TypingAnimation from './Typing';
-import profileImage from '~/assets/images/profile.jpg';
+import AvatarChat from './AvatarChat.astro';
 ---
-
-<style>
-	@keyframes swing {
-		0% {
-			transform: rotate(0deg);
-		}
-		25% {
-			transform: rotate(-8deg);
-		}
-		75% {
-			transform: rotate(8deg);
-		}
-		100% {
-			transform: rotate(0deg);
-		}
-	}
-
-	.roll-in {
-		animation: roll-in 2.5s ease-out;
-	}
-
-	.hanging-thread {
-		position: relative;
-		width: fit-content;
-		margin: 0 auto;
-		padding-top: 20px;
-	}
-
-	/* Thread line at the top */
-	.hanging-thread::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 3px;
-		height: 20px;
-		background: linear-gradient(to bottom, #d4a574, #a0826d);
-		transform: translateX(-50%);
-		box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-	}
-
-	.image-container {
-		animation: swing 4s ease-in-out infinite;
-		transform-origin: top center;
-	}
-</style>
 
 <section class="bg-image">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-4 md:py-4">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-				<div class="flex justify-center">
-					<div class="hanging-thread">
-						<div class="image-container relative m-auto max-w-xs ">
-							<div
-								class="roll-in rounded-full w-full border-8 shadow-lg bg-gradient-to-r from-slate-100 to-slate-50 dark:from-gray-900 dark:to-zinc-800"
-							>
-								<Image
-									src={profileImage}
-									class="rounded-full h-64 w-64 object-cover"
-									style={{objectPosition: "top"}}
-									alt="Hero Image"
-									loading="eager"
-									quality="high"
-									format="webp"
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="text-left pb-10 my-10 mx-2">
-				<h1 class="mb-4 text-2xl text-gray-900 dark:text-gray-100 sm:text-3xl font-bold leading-tight">
-					<TypingAnimation client:load />
-				</h1>
-				<div>
-					<div class="flex">
-						<p class="text-base sm:text-lg md:text-lg pt-2 text-justify leading-relaxed">
-								A software engineer driven by curiosity and desire to push the boundaries.
-								<br />
-								<br />
-								I bring 7+ years of experience working in the Software Development industry with a deep understanding of software
-								design and development principles, as well as expertise in various programming languages and frameworks. 
-								<br />
-								<br />
-								I believe that diversity is essential to creating truly innovative solutions, and I am committed to bringing
-								my unique background and perspective to every project I work on.
-								<br />
-							</p>
-							
-						</div>
-						<p class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
-							<span class="text-base sm:text-lg flex-1"
-								>Feel free to read, comment and share. 🙂 <span class="text-sm"
-									><em> Enjoy reading 📖 !</em></span
-								></span
-							>
-						</p>
-						<div class="flex flex-nowrap flex-col sm:flex-row sm:justify-end mt-8 gap-4">
-							
-
-							<div class="flex w-full sm:w-auto">
-								<a
-									class="btn btn-primary sm:mb-0 w-full"
-									href="mailto:subashsapkota59@gmail.com"
-									target="_blank"
-									rel="noopener"
-								>
-									<Icon name="ic:outline-mail" class="w-5 h-5 mr-1 -ml-1.5" /> Message
-								</a>
-							</div>
-							<div class="flex w-full sm:w-auto">
-								<button type="button" class="btn w-full" data-aw-open-request-cv>
-									<Icon name="tabler:file-text" class="w-5 h-5 mr-1 -ml-1.5" />
-									Request CV
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="max-w-3xl py-12 md:py-20">
+			<h1 class="mb-6 text-3xl text-gray-900 dark:text-gray-100 sm:text-4xl md:text-5xl font-bold leading-tight">
+				<TypingAnimation client:load />
+			</h1>
+			<div class="space-y-4 text-base sm:text-lg leading-relaxed text-gray-700 dark:text-slate-300">
+				<p>A software engineer driven by curiosity and desire to push the boundaries.</p>
+				<p>
+					I bring 7+ years of experience working in the Software Development industry with a deep understanding of software
+					design and development principles, as well as expertise in various programming languages and frameworks.
+				</p>
+				<p>
+					I believe that diversity is essential to creating truly innovative solutions, and I am committed to bringing my
+					unique background and perspective to every project I work on.
+				</p>
+			</div>
+			<p class="mt-8 text-base sm:text-lg">
+				Feel free to read, comment and share. 🙂 <span class="text-sm"><em> Enjoy reading 📖 !</em></span>
+			</p>
+			<div class="flex flex-col sm:flex-row mt-8 gap-4">
+				<a class="btn btn-primary w-full sm:w-auto" href="mailto:subashsapkota59@gmail.com" target="_blank" rel="noopener">
+					<Icon name="ic:outline-mail" class="w-5 h-5 mr-1 -ml-1.5" /> Message
+				</a>
+				<button type="button" class="btn w-full sm:w-auto" data-aw-open-request-cv>
+					<Icon name="tabler:file-text" class="w-5 h-5 mr-1 -ml-1.5" />
+					Request CV
+				</button>
 			</div>
 		</div>
 	</div>
+	<AvatarChat />
 </section>

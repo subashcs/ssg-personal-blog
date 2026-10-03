@@ -1,0 +1,330 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import avatarImage from '~/assets/images/avatar/avatar-peek.png';
+
+const contactEmail = 'subashsapkota59@gmail.com';
+const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is he open to new opportunities?'];
+---
+
+<div id="avatar-chat" class="avatar-chat" data-email={contactEmail}>
+	<div
+		id="avatar-chat-panel"
+		class="chat-panel fixed z-40 right-3 sm:right-6 bottom-32 sm:bottom-56 w-[calc(100vw-1.5rem)] sm:w-96 flex flex-col overflow-hidden rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-2xl"
+		role="dialog"
+		aria-modal="false"
+		aria-labelledby="avatar-chat-title"
+		aria-hidden="true"
+		inert
+	>
+		<header class="flex items-center gap-3 px-4 py-3 bg-blue-600 text-white">
+			<div class="w-10 h-10 shrink-0 overflow-hidden rounded-full bg-white/90 ring-2 ring-white/60">
+				<Image src={avatarImage} alt="" width={80} class="w-full h-auto" />
+			</div>
+			<div class="min-w-0 flex-1">
+				<p id="avatar-chat-title" class="font-semibold leading-tight">Ask about Subash</p>
+				<p class="text-xs text-blue-100 flex items-center gap-1.5">
+					<span class="inline-block w-2 h-2 rounded-full bg-amber-300"></span>
+					AI assistant · Preview
+				</p>
+			</div>
+			<button
+				type="button"
+				class="p-1.5 rounded-full hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+				aria-label="Close chat"
+				data-chat-close
+			>
+				<Icon name="tabler:x" class="w-5 h-5" />
+			</button>
+		</header>
+
+		<div
+			class="flex items-start gap-2 px-4 py-2.5 text-xs leading-relaxed bg-amber-50 text-amber-900 border-b border-amber-200 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-900/60"
+		>
+			<Icon name="tabler:tools" class="w-4 h-4 mt-0.5 shrink-0" />
+			<p>
+				<strong>Under development.</strong> I'm still learning about Subash, so answers aren't live yet. Feel free to look around
+				— the full assistant is coming soon!
+			</p>
+		</div>
+
+		<div class="chat-messages flex-1 overflow-y-auto px-4 py-4 space-y-3" data-chat-messages aria-live="polite">
+			<div class="flex gap-2">
+				<div class="max-w-[85%] rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-slate-200">
+					Hi there! 👋 I'm Subash's virtual assistant. Ask me about his work, projects, or experience.
+				</div>
+			</div>
+			<div class="flex flex-wrap gap-2 pt-1" data-chat-suggestions>
+				{
+					suggestions.map((suggestion) => (
+						<button
+							type="button"
+							class="px-3 py-1.5 text-xs rounded-full border border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-900 dark:text-blue-300 dark:hover:bg-blue-950/50"
+							data-chat-suggestion
+						>
+							{suggestion}
+						</button>
+					))
+				}
+			</div>
+		</div>
+
+		<form class="flex items-center gap-2 px-3 py-3 border-t border-gray-200 dark:border-zinc-700" data-chat-form>
+			<label for="avatar-chat-input" class="sr-only">Ask a question about Subash</label>
+			<input
+				id="avatar-chat-input"
+				type="text"
+				autocomplete="off"
+				maxlength="300"
+				placeholder="Ask me anything about Subash…"
+				class="min-w-0 flex-1 px-3.5 py-2 text-sm rounded-full border border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-800 dark:border-zinc-600 dark:text-slate-100"
+			/>
+			<button
+				type="submit"
+				class="shrink-0 p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900"
+				aria-label="Send"
+			>
+				<Icon name="tabler:send" class="w-5 h-5" />
+			</button>
+		</form>
+	</div>
+
+	<div
+		class="greeting fixed z-40 right-24 sm:right-36 bottom-20 sm:bottom-36 px-3 py-2 text-sm font-medium rounded-2xl rounded-br-sm bg-white text-gray-800 shadow-lg border border-gray-200 dark:bg-zinc-800 dark:text-slate-100 dark:border-zinc-700"
+		aria-hidden="true"
+	>
+		Psst! Ask me about Subash 👋
+	</div>
+
+	<button
+		type="button"
+		class="avatar-launcher fixed z-40 right-0 bottom-0 w-20 sm:w-32 focus:outline-none cursor-pointer"
+		aria-label="Chat with Subash's virtual assistant"
+		aria-controls="avatar-chat-panel"
+		aria-expanded="false"
+		data-chat-toggle
+	>
+		<Image
+			src={avatarImage}
+			alt=""
+			widths={[160, 256, 320]}
+			sizes="(min-width: 640px) 128px, 80px"
+			loading="eager"
+			class="w-full h-auto select-none pointer-events-none drop-shadow-xl"
+		/>
+	</button>
+</div>
+
+<style>
+	.avatar-launcher {
+		transform: translateX(110%);
+		transform-origin: bottom right;
+		animation: peek-in 0.9s cubic-bezier(0.22, 1.2, 0.36, 1) 1s forwards;
+		transition: transform 0.3s ease;
+	}
+
+	.avatar-launcher:hover,
+	.avatar-launcher:focus-visible,
+	.avatar-chat[data-open] .avatar-launcher {
+		animation: none;
+		transform: translateX(0) rotate(-4deg);
+	}
+
+	.avatar-launcher:focus-visible {
+		filter: drop-shadow(0 0 0.35rem rgb(37 99 235));
+	}
+
+	@keyframes peek-in {
+		0% {
+			transform: translateX(110%);
+		}
+		70% {
+			transform: translateX(8%) rotate(-6deg);
+		}
+		100% {
+			transform: translateX(16%) rotate(0deg);
+		}
+	}
+
+	.greeting {
+		opacity: 0;
+		transform: translateY(0.5rem) scale(0.95);
+		pointer-events: none;
+		animation: greet 6s ease 2.2s forwards;
+	}
+
+	.avatar-chat[data-open] .greeting,
+	.avatar-chat[data-greeted] .greeting {
+		display: none;
+	}
+
+	@keyframes greet {
+		0%,
+		100% {
+			opacity: 0;
+			transform: translateY(0.5rem) scale(0.95);
+		}
+		10%,
+		85% {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	.chat-panel {
+		max-height: min(32rem, calc(100dvh - 13rem));
+		opacity: 0;
+		transform: translateY(1rem) scale(0.97);
+		transform-origin: bottom right;
+		pointer-events: none;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	@media (min-width: 640px) {
+		.chat-panel {
+			max-height: min(34rem, calc(100dvh - 18rem));
+		}
+	}
+
+	.avatar-chat[data-open] .chat-panel {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+		pointer-events: auto;
+	}
+
+	:global(.typing-dot) {
+		animation: typing 1s infinite ease-in-out;
+	}
+
+	:global(.typing-dot:nth-child(2)) {
+		animation-delay: 0.15s;
+	}
+
+	:global(.typing-dot:nth-child(3)) {
+		animation-delay: 0.3s;
+	}
+
+	@keyframes typing {
+		0%,
+		80%,
+		100% {
+			opacity: 0.3;
+			transform: translateY(0);
+		}
+		40% {
+			opacity: 1;
+			transform: translateY(-2px);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.avatar-launcher,
+		.greeting,
+		:global(.typing-dot) {
+			animation: none;
+		}
+
+		.avatar-launcher {
+			transform: translateX(16%);
+		}
+
+		.greeting {
+			display: none;
+		}
+
+		.chat-panel {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	const root = document.getElementById('avatar-chat');
+
+	if (root) {
+		const panel = root.querySelector<HTMLElement>('#avatar-chat-panel')!;
+		const toggle = root.querySelector<HTMLButtonElement>('[data-chat-toggle]')!;
+		const form = root.querySelector<HTMLFormElement>('[data-chat-form]')!;
+		const input = root.querySelector<HTMLInputElement>('#avatar-chat-input')!;
+		const messages = root.querySelector<HTMLElement>('[data-chat-messages]')!;
+		const suggestions = root.querySelector<HTMLElement>('[data-chat-suggestions]');
+		const email = root.dataset.email;
+
+		const setOpen = (open: boolean) => {
+			root.toggleAttribute('data-open', open);
+			root.setAttribute('data-greeted', '');
+			toggle.setAttribute('aria-expanded', String(open));
+			panel.setAttribute('aria-hidden', String(!open));
+			panel.inert = !open;
+			if (open) {
+				input.focus();
+			} else {
+				toggle.focus();
+			}
+		};
+
+		const addBubble = (from: 'user' | 'bot', content: Node | string) => {
+			const row = document.createElement('div');
+			row.className = from === 'user' ? 'flex justify-end' : 'flex';
+			const bubble = document.createElement('div');
+			bubble.className =
+				from === 'user'
+					? 'max-w-[85%] rounded-2xl rounded-tr-sm px-3.5 py-2.5 text-sm bg-blue-600 text-white'
+					: 'max-w-[85%] rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm bg-gray-100 text-gray-800 dark:bg-zinc-800 dark:text-slate-200';
+			bubble.append(content);
+			row.append(bubble);
+			messages.append(row);
+			messages.scrollTop = messages.scrollHeight;
+			return row;
+		};
+
+		const placeholderReply = () => {
+			const reply = document.createDocumentFragment();
+			reply.append("Great question! I can't answer it just yet — this assistant is still under development. ");
+			const link = document.createElement('a');
+			link.href = `mailto:${email}`;
+			link.className = 'underline font-medium text-blue-700 dark:text-blue-300';
+			link.textContent = 'Email Subash';
+			reply.append('In the meantime, you can ', link, ' directly.');
+			return reply;
+		};
+
+		const ask = (question: string) => {
+			const text = question.trim();
+			if (!text) return;
+			suggestions?.remove();
+			addBubble('user', text);
+			input.value = '';
+
+			const dots = document.createElement('span');
+			dots.className = 'inline-flex gap-1 py-1';
+			dots.setAttribute('aria-label', 'Assistant is typing');
+			for (let i = 0; i < 3; i++) {
+				const dot = document.createElement('span');
+				dot.className = 'typing-dot inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-400';
+				dots.append(dot);
+			}
+			const typing = addBubble('bot', dots);
+
+			window.setTimeout(() => {
+				typing.remove();
+				addBubble('bot', placeholderReply());
+			}, 900);
+		};
+
+		toggle.addEventListener('click', () => setOpen(!root.hasAttribute('data-open')));
+		root.querySelector('[data-chat-close]')?.addEventListener('click', () => setOpen(false));
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			ask(input.value);
+		});
+		root.querySelectorAll<HTMLButtonElement>('[data-chat-suggestion]').forEach((button) =>
+			button.addEventListener('click', () => ask(button.textContent ?? ''))
+		);
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && root.hasAttribute('data-open')) setOpen(false);
+		});
+	}
+</script>
