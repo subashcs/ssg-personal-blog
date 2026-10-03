@@ -13,24 +13,18 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 
 	<div
 		id="avatar-chat-panel"
-		class="chat-panel fixed z-50 inset-x-0 bottom-0 sm:inset-x-auto sm:right-6 sm:bottom-56 w-full sm:w-96 flex flex-col"
+		class="chat-panel fixed z-50 inset-x-0 top-0 sm:top-auto sm:left-auto sm:right-6 sm:bottom-56 w-full sm:w-96 flex flex-col focus:outline-none"
+		tabindex="-1"
 		role="dialog"
 		aria-modal="false"
 		aria-labelledby="avatar-chat-title"
 		aria-hidden="true"
 		inert
 	>
-		<Image
-			src={avatarImage}
-			alt=""
-			width={160}
-			class="drawer-avatar sm:hidden absolute right-0 bottom-full w-20 h-auto select-none pointer-events-none"
-		/>
-
 		<div
-			class="flex flex-1 min-h-0 flex-col overflow-hidden rounded-t-3xl sm:rounded-2xl border border-b-0 sm:border-b border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-2xl"
+			class="flex flex-1 min-h-0 flex-col overflow-hidden sm:rounded-2xl sm:border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 sm:shadow-2xl"
 		>
-			<header class="px-4 pt-2 pb-3 sm:pt-3 bg-blue-600 text-white touch-none" data-chat-drag>
+			<header class="chat-header px-4 pt-2 pb-3 sm:pt-3 bg-blue-600 text-white touch-none" data-chat-drag>
 				<div class="sm:hidden mx-auto mb-2 h-1.5 w-10 rounded-full bg-white/50" aria-hidden="true"></div>
 				<div class="flex items-center gap-3">
 					<div class="w-10 h-10 shrink-0 overflow-hidden rounded-full bg-white/90 ring-2 ring-white/60">
@@ -45,7 +39,7 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 					</div>
 					<button
 						type="button"
-						class="p-1.5 rounded-full hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+						class="-mr-1 p-2.5 sm:mr-0 sm:p-1.5 rounded-full hover:bg-white/15 active:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
 						aria-label="Close chat"
 						data-chat-close
 					>
@@ -81,7 +75,7 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 						suggestions.map((suggestion) => (
 							<button
 								type="button"
-								class="px-3 py-1.5 text-xs rounded-full border border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-900 dark:text-blue-300 dark:hover:bg-blue-950/50 cursor-pointer"
+								class="px-3.5 py-2 sm:px-3 sm:py-1.5 text-sm sm:text-xs rounded-full active:scale-95 transition border border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-900 dark:text-blue-300 dark:hover:bg-blue-950/50 cursor-pointer"
 								data-chat-suggestion
 							>
 								{suggestion}
@@ -107,7 +101,7 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 				/>
 				<button
 					type="submit"
-					class="shrink-0 grid place-items-center w-12 h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 cursor-pointer"
+					class="shrink-0 grid place-items-center w-12 h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 active:scale-95 transition disabled:opacity-40 disabled:hover:bg-blue-600 disabled:active:scale-100 disabled:cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 cursor-pointer"
 					aria-label="Send"
 				>
 					<Icon name="tabler:send" class="w-5 h-5" />
@@ -143,6 +137,15 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 </div>
 
 <style>
+	.avatar-chat :global(button),
+	.avatar-chat :global(a) {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.chat-panel {
+		overscroll-behavior: contain;
+	}
+
 	.avatar-launcher {
 		transform: translateX(110%);
 		transform-origin: bottom right;
@@ -209,14 +212,27 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 		pointer-events: auto;
 	}
 
-	.chat-panel {
-		height: min(36rem, 85dvh);
-		transform: translateY(calc(100% + 6rem));
-		transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-	}
+	@media (max-width: 639px) {
+		.chat-panel {
+			top: var(--chat-top, 0px);
+			height: var(--chat-height, 100dvh);
+			transform: translateY(100%);
+			visibility: hidden;
+			will-change: transform;
+			transition:
+				transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+				visibility 0s linear 0.35s;
+		}
 
-	.avatar-chat[data-open] .chat-panel {
-		transform: translateY(0);
+		.avatar-chat[data-open] .chat-panel {
+			transform: translateY(0);
+			visibility: visible;
+			transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+		}
+
+		.chat-header {
+			padding-top: max(0.5rem, env(safe-area-inset-top));
+		}
 	}
 
 	.chat-panel[data-dragging] {
@@ -317,22 +333,101 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 		const suggestions = root.querySelector<HTMLElement>('[data-chat-suggestions]');
 		const email = root.dataset.email;
 		const isMobile = window.matchMedia('(max-width: 639px)');
+		const viewport = window.visualViewport;
+		let lockedScrollY: number | null = null;
+
+		// iOS ignores overflow: hidden on the page, so pin the body in place instead.
+		const lockPage = () => {
+			if (lockedScrollY !== null) return;
+			lockedScrollY = window.scrollY;
+			Object.assign(document.body.style, {
+				position: 'fixed',
+				top: `-${lockedScrollY}px`,
+				left: '0',
+				right: '0',
+				overflow: 'hidden',
+			});
+			document.documentElement.style.overflow = 'hidden';
+		};
+
+		const unlockPage = () => {
+			if (lockedScrollY === null) return;
+			Object.assign(document.body.style, { position: '', top: '', left: '', right: '', overflow: '' });
+			document.documentElement.style.overflow = '';
+			window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
+			lockedScrollY = null;
+		};
+
+		const scrollToLatest = (behavior: ScrollBehavior = 'smooth') =>
+			messages.scrollTo({ top: messages.scrollHeight, behavior });
+
+		// Keep the sheet sized to the area above the on-screen keyboard.
+		let viewportFrame = 0;
+		const syncViewport = () => {
+			cancelAnimationFrame(viewportFrame);
+			viewportFrame = requestAnimationFrame(() => {
+				if (!viewport || !root.hasAttribute('data-open') || !isMobile.matches) return;
+				panel.style.setProperty('--chat-height', `${viewport.height}px`);
+				panel.style.setProperty('--chat-top', `${viewport.offsetTop}px`);
+				scrollToLatest('instant');
+			});
+		};
+
+		viewport?.addEventListener('resize', syncViewport);
+		viewport?.addEventListener('scroll', syncViewport);
+
+		let historyEntry = false;
+		let savedScrollRestoration: ScrollRestoration | null = null;
 
 		const setOpen = (open: boolean) => {
+			if (open === root.hasAttribute('data-open')) return;
 			root.toggleAttribute('data-open', open);
 			root.setAttribute('data-greeted', '');
 			toggle.setAttribute('aria-expanded', String(open));
 			panel.setAttribute('aria-hidden', String(!open));
 			panel.setAttribute('aria-modal', String(open && isMobile.matches));
 			panel.inert = !open;
-			document.documentElement.style.overflow = open && isMobile.matches ? 'hidden' : '';
-			if (open) {
-				// On mobile, wait for the sheet to slide in so the keyboard doesn't jump the layout mid-animation.
-				window.setTimeout(() => input.focus({ preventScroll: true }), isMobile.matches ? 350 : 0);
-			} else {
-				toggle.focus({ preventScroll: true });
+
+			if (open && isMobile.matches) {
+				lockPage();
+				syncViewport();
+				// Let the system back gesture close the sheet instead of leaving the page.
+				savedScrollRestoration ??= history.scrollRestoration;
+				history.scrollRestoration = 'manual';
+				history.pushState({ avatarChat: true }, '');
+				historyEntry = true;
+				// Programmatic focus pops the keyboard mid-animation on Android and is ignored on iOS,
+				// so focus the dialog and let the user tap the input.
+				panel.focus({ preventScroll: true });
+				return;
 			}
+
+			if (open) {
+				input.focus({ preventScroll: true });
+				return;
+			}
+
+			input.blur();
+			unlockPage();
+			panel.style.removeProperty('--chat-height');
+			panel.style.removeProperty('--chat-top');
+			if (historyEntry) {
+				historyEntry = false;
+				history.back();
+			}
+			toggle.focus({ preventScroll: true });
 		};
+
+		window.addEventListener('popstate', () => {
+			if (savedScrollRestoration) {
+				const mode = savedScrollRestoration;
+				savedScrollRestoration = null;
+				window.setTimeout(() => (history.scrollRestoration = mode), 100);
+			}
+			if (!historyEntry) return;
+			historyEntry = false;
+			setOpen(false);
+		});
 
 		const addBubble = (from: 'user' | 'bot', content: Node | string) => {
 			const row = document.createElement('div');
@@ -345,7 +440,7 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 			bubble.append(content);
 			row.append(bubble);
 			messages.append(row);
-			messages.scrollTop = messages.scrollHeight;
+			scrollToLatest();
 			return row;
 		};
 
@@ -366,6 +461,7 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 			suggestions?.remove();
 			addBubble('user', text);
 			input.value = '';
+			updateSend();
 
 			const dots = document.createElement('span');
 			dots.className = 'inline-flex gap-1 py-1';
@@ -384,28 +480,49 @@ const suggestions = ['What does Subash work on?', "What's his tech stack?", 'Is 
 		};
 
 		let dragStartY: number | null = null;
+		let dragStartTime = 0;
 		let dragOffset = 0;
 
-		dragHandle.addEventListener('touchstart', (event) => {
-			if (!isMobile.matches) return;
-			dragStartY = event.touches[0].clientY;
-			dragOffset = 0;
-			panel.setAttribute('data-dragging', '');
-		});
-
-		dragHandle.addEventListener('touchmove', (event) => {
+		const endDrag = (allowClose: boolean) => {
 			if (dragStartY === null) return;
-			dragOffset = Math.max(0, event.touches[0].clientY - dragStartY);
-			panel.style.transform = `translateY(${dragOffset}px)`;
-		});
-
-		dragHandle.addEventListener('touchend', () => {
-			if (dragStartY === null) return;
+			const velocity = dragOffset / Math.max(1, performance.now() - dragStartTime);
 			dragStartY = null;
 			panel.removeAttribute('data-dragging');
 			panel.style.transform = '';
-			if (dragOffset > 80) setOpen(false);
-		});
+			if (allowClose && (dragOffset > 100 || (dragOffset > 30 && velocity > 0.5))) setOpen(false);
+		};
+
+		dragHandle.addEventListener(
+			'touchstart',
+			(event) => {
+				if (!isMobile.matches || (event.target as Element).closest('button')) return;
+				dragStartY = event.touches[0].clientY;
+				dragStartTime = performance.now();
+				dragOffset = 0;
+				panel.setAttribute('data-dragging', '');
+			},
+			{ passive: true }
+		);
+
+		dragHandle.addEventListener(
+			'touchmove',
+			(event) => {
+				if (dragStartY === null) return;
+				dragOffset = Math.max(0, event.touches[0].clientY - dragStartY);
+				panel.style.transform = `translateY(${dragOffset}px)`;
+			},
+			{ passive: true }
+		);
+
+		dragHandle.addEventListener('touchend', () => endDrag(true));
+		dragHandle.addEventListener('touchcancel', () => endDrag(false));
+
+		const sendButton = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+		const updateSend = () => {
+			sendButton.disabled = !input.value.trim();
+		};
+		input.addEventListener('input', updateSend);
+		updateSend();
 
 		toggle.addEventListener('click', () => setOpen(!root.hasAttribute('data-open')));
 		root.querySelectorAll('[data-chat-close]').forEach((element) => element.addEventListener('click', () => setOpen(false)));
