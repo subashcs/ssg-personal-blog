@@ -12,9 +12,10 @@ const workExperiences = [
     employer: 'Rippey AI',
     type: 'Full-time',
     bulletPoints: [
-      'Led the integration and development of AI-powered logistics automation solutions for freight forwarders.',
-      'Managed a team of engineers and sprint planning.',
-      'Led coordination with developers, product owners, and account managers to discuss and plan deliverables.',
+      'Led the client implementation teams for AI-powered logistics document automation solutions for freight forwarders.',
+      'Managed a team of engineers and task and improvements planning.',
+      'Coordinated with AI engineers, Implementation engineers, Software engineers, Product owners, and Account managers to plan and execute client deliverables.',
+      'Worked on AI driven architecture improvements"
     ],
     toolsUsed: ['Software Design', 'Systems Engineering'],
     projects: [],
@@ -26,8 +27,8 @@ const workExperiences = [
     employer: 'Rippey AI',
     type: 'Full-time',
     bulletPoints: [
-      'Spearheaded code quality initiatives, driving cost reduction and enhancing user experience.',
-      'Engineered a sophisticated prompt engine to streamline workflows for prompt engineers.',
+      'Started code quality initiatives, reducing development cost',
+      'Developed a Prompt engine to streamline workflows for prompt engineers.',
       'Developed and maintained a comprehensive prompt knowledge base.',
     ],
     toolsUsed: ['Software Design', 'Systems Engineering'],
@@ -176,6 +177,22 @@ const workExperiences = [
     <div class="md:pb-6 md:pr-16">
       <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-gray-900 dark:text-white">Professional Work Experience</h2>
       <div class="sm:pl-10">
+        <div class="flex">
+          <div class="flex flex-col items-center mr-3 sm:mr-4">
+            <div>
+              <div
+                class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-blue-600 border-2 bg-blue-600"
+              >
+                <Icon name="tabler:check" class="w-5 h-5 sm:w-6 sm:h-6 text-white dark:text-slate-200" />
+              </div>
+            </div>
+            <div class="w-px h-full bg-gray-300 dark:bg-zinc-500" />
+          </div>
+          <div class="pt-1 pb-8">
+            <p class="text-xl font-bold text-gray-900 dark:text-slate-300">Today</p>
+          </div>
+        </div>
+
         {
           workExperiences.map((job, index) => {
             const jobBadges = job.toolsUsed || job.tools || [];
@@ -187,7 +204,7 @@ const workExperiences = [
                       <Icon name="tabler:arrow-down" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-slate-200" />
                     </div>
                   </div>
-                  <div class="w-px h-full bg-gray-300 dark:bg-zinc-500" />
+                  {index < workExperiences.length - 1 && <div class="w-px h-full bg-gray-300 dark:bg-zinc-500" />}
                 </div>
                 <div class="min-w-0 flex-1 pt-1 pb-8">
                   <p class="mb-2 text-lg font-normal text-gray-900 dark:text-slate-300">
@@ -244,22 +261,6 @@ const workExperiences = [
             );
           })
         }
-
-        <div class="flex">
-          <div class="flex flex-col items-center mr-3 sm:mr-4">
-            <div>
-              <div
-                class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-blue-600 border-2 bg-blue-600"
-              >
-                <Icon name="tabler:check" class="w-5 h-5 sm:w-6 sm:h-6 text-white dark:text-slate-200" />
-              </div>
-            </div>
-          </div>
-          <div class="pt-1">
-            <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Today</p>
-            <p class="text-gray-600 dark:text-slate-400"></p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
